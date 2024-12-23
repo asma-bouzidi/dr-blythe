@@ -1,0 +1,1597 @@
+openapi: "3.0.0"
+info:
+  version: 0.0.1
+  title: Lead API
+  description: API for lead management
+
+paths:
+  /email-template:
+    post:
+      summary: create a new email template
+      operationId: createEmailTemplate
+      tags:
+        - Email
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/EmailTemplate"
+      responses:
+        "201":
+          description: created Email template
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/EmailTemplate"
+    get:
+      summary: get all email templates
+      operationId: getAllEmailTemplates
+      tags:
+        - Email
+      responses:
+        "200":
+          description: list containing all email templates
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: "#/components/schemas/EmailTemplate"
+
+  /email-template/{emailTemplateId}:
+    get:
+      summary: get an email template by Id
+      operationId: getEmailTemplateById
+      parameters:
+        - in: path
+          name: emailTemplateId
+          schema:
+            type: string
+            format: uuid
+          required: true
+          description: Id of the email template
+      tags:
+        - Email
+      responses:
+        "200":
+          description: email template is retrieved
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/EmailTemplate"
+    put:
+      summary: update an existing email template
+      description: update an existing email template
+      operationId: updateEmailTemplate
+      parameters:
+        - in: path
+          name: emailTemplateId
+          schema:
+            type: string
+            format: uuid
+          required: true
+          description: Id of the email template
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/EmailTemplate"
+      tags:
+        - Email
+      responses:
+        "200":
+          description: emailTemplate updated
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/EmailTemplate"
+
+  /html-template:
+    get:
+      summary: get all html templates
+      operationId: getAllHtmlTemplates
+      tags:
+        - Email
+      responses:
+        "200":
+          description: list containing all html templates
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: "#/components/schemas/HtmlTemplate"
+
+  /html-template/{htmlTemplateId}:
+    get:
+      summary: get html template by id
+      operationId: getHtmlTemplateById
+      parameters:
+        - in: path
+          name: htmlTemplateId
+          schema:
+            type: string
+            format: uuid
+          required: true
+          description: Id of the html Template
+      tags:
+        - Email
+      responses:
+        "200":
+          description: get html template by id
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/HtmlTemplate"
+
+  /leads:
+    get:
+      summary: get all leads
+      operationId: getAllLeads
+      tags:
+        - Lead
+      responses:
+        "200":
+          description: list containing all leads
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: "#/components/schemas/Lead"
+    post:
+      summary: create a new Lead
+      operationId: createLead
+      tags:
+        - Lead
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/Lead"
+      responses:
+        "201":
+          description: create a new Lead
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Lead"
+
+  /leads/filter:
+    post:
+      summary: get a paginated list of leads
+      operationId: getFilteredPaginatedLeads
+      tags:
+        - Lead
+      parameters:
+        - name: paginated
+          in: query
+          description: if true return a page, else return all leads
+          required: true
+          schema:
+            type: boolean
+            default: false
+        - name: page
+          in: query
+          description: The page number
+          required: false
+          schema:
+            type: integer
+            default: 1
+        - name: pageSize
+          in: query
+          description: The number of items per page
+          required: false
+          schema:
+            type: integer
+            default: 10
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/LeadFilter"
+      responses:
+        "200":
+          description: paginated result of leads
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/PaginatedLeadResult"
+
+  /leads/populateTestdata:
+    post:
+      summary: get a paginated list of leads
+      operationId: populateLeadData
+      tags:
+        - Lead
+      parameters:
+        - name: numberOfLeads
+          in: query
+          required: true
+          schema:
+            type: integer
+            default: 10
+      responses:
+        "200":
+          description: generated leads
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: "#/components/schemas/Lead"
+
+  /leads/{leadId}:
+    put:
+      summary: update an existing lead
+      description: update an existing lead
+      operationId: updateLead
+      parameters:
+        - in: path
+          name: leadId
+          schema:
+            type: string
+            format: uuid
+          required: true
+          description: Id of the Lead
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/Lead"
+      tags:
+        - Lead
+      responses:
+        "200":
+          description: Lead updated
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Lead"
+    get:
+      summary: Get a lead by Id
+      description: Get a lead by Id
+      operationId: getLeadById
+      parameters:
+        - in: path
+          name: leadId
+          schema:
+            type: string
+            format: uuid
+          required: true
+          description: Id of the Lead to get
+      tags:
+        - Lead
+      responses:
+        "200":
+          description: Lead is retrieved
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Lead"
+
+  /leads/unsubscribe/{leadEmail}:
+    put:
+      summary: Unsubscribe an existing lead
+      description: Unsubscribe an existing lead
+      operationId: unsubscribeLead
+      parameters:
+        - in: path
+          name: leadEmail
+          schema:
+            type: string
+          required: true
+          description: Email of the Lead
+      tags:
+        - Lead
+      responses:
+        "200":
+          description: Unsubscribe Lead Response
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/LeadSubscriptionResponse"
+
+  /leads/subscribe/{leadEmail}:
+    put:
+      summary: Subscribe an existing lead
+      description: Subscribe an existing lead
+      operationId: subscribeLead
+      parameters:
+        - in: path
+          name: leadEmail
+          schema:
+            type: string
+          required: true
+          description: Email of the Lead
+      tags:
+        - Lead
+      responses:
+        "200":
+          description: Subscribe Lead Response
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/LeadSubscriptionResponse"
+
+  /import/companies-and-leads:
+    post:
+      summary: Import Excel file of companies and leads.
+      description: Import Excel file of companies and their leads .
+      tags:
+        - Importing
+      operationId: importCompaniesAndLeads
+      requestBody:
+        required: true
+        content:
+          multipart/form-data:
+            schema:
+              type: object
+              properties:
+                file:
+                  type: string
+                  format: binary
+                  description: The Excel file of leads to import (.csv)
+            encoding:
+              file:
+                contentType: application/vnd.openxmlformats-officedocument.spreadsheetml.sheet, application/vnd.ms-excel
+      responses:
+        '200':
+          description: File successfully uploaded and processed
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ImportCompaniesAndLeadsResponse"
+
+  /companies:
+    post:
+      summary: add a new company
+      operationId: addCompany
+      tags:
+        - Company
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/Company"
+      responses:
+        "201":
+          description: a new company is added
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Company"
+    get:
+      summary: get active companies
+      operationId: getActiveCompanies
+      tags:
+        - Company
+      responses:
+        "200":
+          description: list containing active companies
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: "#/components/schemas/Company"
+
+  /companies/filter:
+    post:
+      summary: get a paginated list of companies
+      operationId: getFilteredCompanies
+      tags:
+        - Company
+      parameters:
+        - name: paginated
+          in: query
+          description: if true return a page, else return all companies
+          required: true
+          schema:
+            type: boolean
+            default: false
+        - name: page
+          in: query
+          description: The page number
+          required: false
+          schema:
+            type: integer
+            default: 1
+        - name: pageSize
+          in: query
+          description: The number of items per page
+          required: false
+          schema:
+            type: integer
+            default: 10
+      requestBody:
+        description: Optional filter criteria to get companies
+        required: false
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/CompanyFilter"
+      responses:
+        "200":
+          description: paginated result of companies
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/PaginatedCompanyResult"
+
+  /companies/{companyId}:
+    put:
+      summary: update an existing company
+      description: update an existing company
+      operationId: updateCompany
+      parameters:
+        - in: path
+          name: companyId
+          schema:
+            type: string
+            format: uuid
+          required: true
+          description: Id of the company
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/Company"
+      tags:
+        - Company
+      responses:
+        "200":
+          description: Company updated
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Company"
+    get:
+      summary: Get a company by Id
+      description: Get a company by Id
+      operationId: getCompanyById
+      parameters:
+        - in: path
+          name: companyId
+          schema:
+            type: string
+            format: uuid
+          required: true
+          description: Id of the company to get
+      tags:
+        - Company
+      responses:
+        "200":
+          description: company is retrieved
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Company"
+
+  /tracks:
+    get:
+      summary: get lead tracks by leadId, campaignId or both
+      operationId: getTracks
+      parameters:
+        - in: query
+          name: leadId
+          schema:
+            type: string
+            format: uuid
+          description: Id of Lead
+        - in: query
+          name: campaignId
+          schema:
+            type: string
+            format: uuid
+          description: Id of campaign
+      tags:
+        - LeadTracking
+      responses:
+        "200":
+          description: lead tracks
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: "#/components/schemas/LeadTracking"
+
+  /tracks/update:
+    post:
+      summary: update an existing lead Track
+      description: update an existing lead Track
+      operationId: updateLeadTracking
+      parameters:
+        - in: query
+          name: leadId
+          schema:
+            type: string
+            format: uuid
+          required: true
+          description: Id of lead
+        - in: query
+          name: campaignId
+          schema:
+            type: string
+            format: uuid
+          required: true
+          description: Id of campaign
+        - in: query
+          name: emailOpened
+          schema:
+            type: boolean
+        - in: query
+          name: landingPageOpened
+          schema:
+            type: boolean
+      tags:
+        - LeadTracking
+      responses:
+        "200":
+          description: update lead tracking
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/LeadTrackingUpdateResponse"
+
+  /tracks/getOpenRate:
+    get:
+      summary: get lead Track email open rate and landing page open rate by campaignId
+      description: get lead Track open rates
+      operationId: getLeadTrackingCampaignOpenRates
+      parameters:
+        - in: query
+          name: campaignId
+          schema:
+            type: string
+            format: uuid
+          required: true
+          description: Id of campaign
+      tags:
+        - LeadTracking
+      responses:
+        "200":
+          description: update lead tracking
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/LeadTrackingOpenRateResponse"
+
+  /testData/populateLeads:
+    post:
+      summary: get a paginated list of leads
+      operationId: populateTestLeadData
+      tags:
+        - Test
+      parameters:
+        - name: numberOfLeads
+          in: query
+          required: true
+          schema:
+            type: integer
+            default: 10
+      responses:
+        "200":
+          description: generated leads
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: "#/components/schemas/Lead"
+
+  /testData/lead:
+    post:
+      summary: create a lead
+      description: create lead with few attributes and the rest will be filled automatically
+      operationId: addTestLead
+      tags:
+        - Test
+      requestBody:
+        required: false
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/Lead"
+      responses:
+        "200":
+          description: generated lead
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Lead"
+
+  /testData/populateCompanies:
+    post:
+      summary: get a list of companies
+      operationId: populateCompanyData
+      tags:
+        - Test
+      parameters:
+        - name: numberOfCompanies
+          in: query
+          required: true
+          schema:
+            type: integer
+            default: 4
+      responses:
+        "200":
+          description: generated companies
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: "#/components/schemas/Company"
+
+  /testData/company:
+    post:
+      summary: create a company
+      description: create company with few attributes and the rest will be filled automatically
+      operationId: addTestCompany
+      tags:
+        - Test
+      requestBody:
+        required: false
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/Company"
+      responses:
+        "200":
+          description: generated company
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Company"
+
+  /campaign/validate:
+    post:
+      summary: validate if the email template works with all assigned leads
+      description: validate if the email template works with all assigned leads
+      operationId: validateCampaign
+      tags:
+        - Campaign
+      parameters:
+        - name: campaignId
+          in: query
+          required: true
+          schema:
+            type: string
+            format: uuid
+      responses:
+        "200":
+          description: campaign is validated
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/CampaignValidation"
+
+  /campaign/review:
+    post:
+      summary: review the campaign before starting it
+      description: review the campaign before starting it
+      operationId: reviewCampaign
+      tags:
+        - Campaign
+      parameters:
+        - name: campaignId
+          in: query
+          required: true
+          schema:
+            type: string
+            format: uuid
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/CampaignReview"
+      responses:
+        "200":
+          description: campaign is reviewed
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Campaign"
+
+  /campaign/start:
+    post:
+      summary: start the emailing campaign
+      description: start the emailing campaign
+      operationId: startCampaign
+      tags:
+        - Campaign
+      parameters:
+        - name: campaignId
+          in: query
+          required: true
+          schema:
+            type: string
+            format: uuid
+      responses:
+        "200":
+          description: campaign started
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/CampaignStartResponse"
+
+  /campaign/{campaignId}/leads:
+    get:
+      summary: Get campaign's leads paginated
+      description: Get leads by campaign Id
+      operationId: getLeadsByCampaignId
+      parameters:
+        - in: path
+          name: campaignId
+          schema:
+            type: string
+            format: uuid
+          required: true
+          description: Id of the campaign
+        - name: paginated
+          in: query
+          description: if true return a page, else return all campaign leads
+          required: true
+          schema:
+            type: boolean
+            default: false
+        - name: page
+          in: query
+          description: The page number
+          required: false
+          schema:
+            type: integer
+            default: 1
+        - name: pageSize
+          in: query
+          description: The number of items per page
+          required: false
+          schema:
+            type: integer
+            default: 10
+      tags:
+        - Campaign
+      responses:
+        "200":
+          description: paginated result of campaign leads
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/PaginatedLeadResult"
+
+  /campaign:
+    post:
+      summary: create a new Campaign
+      operationId: createCampaign
+      tags:
+        - Campaign
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/Campaign"
+      responses:
+        "201":
+          description: create a new Campaign
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Campaign"
+
+  /campaign/filter:
+    post:
+      summary: get a paginated list of campaigns
+      operationId: getFilteredPaginatedCampaigns
+      tags:
+        - Campaign
+      parameters:
+        - name: paginated
+          in: query
+          description: if true return a page, else return all campaigns
+          required: true
+          schema:
+            type: boolean
+            default: false
+        - name: page
+          in: query
+          description: The page number
+          required: false
+          schema:
+            type: integer
+            default: 1
+        - name: pageSize
+          in: query
+          description: The number of items per page
+          required: false
+          schema:
+            type: integer
+            default: 10
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/CampaignFilter"
+      responses:
+        "200":
+          description: paginated result of campaigns
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/PaginatedCampaignResult"
+
+  /campaign/{campaignId}:
+    get:
+      summary: Get a campaign by Id
+      description: Get a campaign by Id
+      operationId: getCampaignById
+      parameters:
+        - in: path
+          name: campaignId
+          schema:
+            type: string
+            format: uuid
+          required: true
+          description: Id of the Lead to get
+      tags:
+        - Campaign
+      responses:
+        "200":
+          description: Campaign is retrieved
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Campaign"
+    put:
+      summary: update an existing campaign
+      description: update an existing campaign
+      operationId: updateCampaign
+      parameters:
+        - in: path
+          name: campaignId
+          schema:
+            type: string
+            format: uuid
+          required: true
+          description: Id of the campaign
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/Campaign"
+      tags:
+        - Campaign
+      responses:
+        "200":
+          description: campaign updated
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Campaign"
+
+  /campaign/{campaignId}/sendTestEmail:
+    post:
+      summary: send a test email for this campaign to logged in user
+      operationId: sendTestEmail
+      parameters:
+        - in: path
+          name: campaignId
+          schema:
+            type: string
+            format: uuid
+          required: true
+          description: Id of the campaign
+        - name: leadId
+          in: query
+          required: true
+          schema:
+            type: string
+            format: uuid
+      tags:
+        - Campaign
+      responses:
+        "201":
+          description: test email is sent to logged user
+
+  /users:
+    get:
+      summary: Get user by email or token. If email is empty or null the get logged user from the token
+      operationId: getUser
+      parameters:
+        - in: query
+          name: userEmail
+          schema:
+            type: string
+          description: Email of the user
+      tags:
+        - User
+      responses:
+        "200":
+          description: The logged user or the user with the given email
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/User"
+
+components:
+  schemas:
+    Lead:
+      properties:
+        id:
+          type: string
+          format: uuid
+        email:
+          type: string
+        firstname:
+          type: string
+        lastname:
+          type: string
+        role:
+          type: string
+        linkedin:
+          type: string
+        owner:
+          type: string
+        mobilePhone:
+          type: string
+        officePhone:
+          type: string
+        salutation:
+          type: string
+        created:
+          type: string
+          format: date-time
+        createdBy:
+          type: string
+        updated:
+          type: string
+          format: date-time
+        status:
+          $ref: "#/components/schemas/LeadStatus"
+        level:
+          $ref: "#/components/schemas/Level"
+        type:
+          $ref: "#/components/schemas/Type"
+        address:
+          $ref: "#/components/schemas/Address"
+        businessType:
+          $ref: "#/components/schemas/BusinessType"
+        company:
+          $ref: "#/components/schemas/Company"
+        language:
+          $ref: "#/components/schemas/Language"
+        note:
+          type: string
+        customFields:
+          type: array
+          items:
+            $ref: "#/components/schemas/AdditionalField"
+
+    LeadFilter:
+      properties:
+        industry:
+          $ref: "#/components/schemas/Industry"
+        companyId:
+          type: string
+        level:
+          $ref: "#/components/schemas/Level"
+        size:
+          $ref: "#/components/schemas/CompanyClassification"
+        country:
+          $ref: "#/components/schemas/Country"
+        notDraft:
+          type: boolean
+        notBlocked:
+          type: boolean
+        isCreatedByMe:
+          type: boolean
+          default: false
+
+    PaginatedLeadResult:
+      type: object
+      properties:
+        data:
+          type: array
+          items:
+            $ref: "#/components/schemas/Lead"
+        totalItems:
+          type: integer
+        totalPages:
+          type: integer
+        pageNumber:
+          type: integer
+        pageSize:
+          type: integer
+
+    Company:
+      properties:
+        id:
+          type: string
+          format: uuid
+        name:
+          type: string
+        shortname:
+          type: string
+        status:
+          $ref: "#/components/schemas/CompanyStatus"
+        legalStatus:
+          type: string
+        industry:
+          $ref: "#/components/schemas/Industry"
+        country:
+          $ref: "#/components/schemas/Country"
+        size:
+          type: integer
+        revenue:
+          type: string
+        activity:
+          type: string
+        website:
+          type: string
+        ceo:
+          type: string
+        funding:
+          type: string
+        foundedAt:
+          type: string
+        created:
+          type: string
+          format: date-time
+        createdBy:
+          type: string
+        updated:
+          type: string
+          format: date-time
+        note:
+          type: string
+        addresses:
+          type: array
+          items:
+            $ref: "#/components/schemas/Address"
+
+    CompanyFilter:
+      properties:
+        industry:
+          $ref: "#/components/schemas/Industry"
+        size:
+          $ref: "#/components/schemas/CompanyClassification"
+        country:
+          $ref: "#/components/schemas/Country"
+        status:
+          $ref: "#/components/schemas/CompanyStatus"
+        isCreatedByMe:
+          type: boolean
+          default: false
+
+    PaginatedCompanyResult:
+      type: object
+      properties:
+        data:
+          type: array
+          items:
+            $ref: "#/components/schemas/Company"
+        totalItems:
+          type: integer
+        totalPages:
+          type: integer
+        pageNumber:
+          type: integer
+        pageSize:
+          type: integer
+
+    Campaign:
+      properties:
+        id:
+          type: string
+          format: uuid
+        title:
+          type: string
+        target:
+          type: string
+        emailOpenRate:
+          type: integer
+        landingPageOpenRate:
+          type: integer
+        emailTemplateId:
+          type: string
+          format: uuid
+        landingPageId:
+          type: string
+          format: uuid
+        targetedLeads:
+          type: array
+          items:
+            $ref: "#/components/schemas/Lead"
+        created:
+          type: string
+          format: date-time
+        updated:
+          type: string
+          format: date-time
+        status:
+          $ref: "#/components/schemas/CampaignStatus"
+        createdBy:
+          type: string
+        reviewedBy:
+          type: string
+        startedBy:
+          type: string
+        senderEmail:
+          type: string
+        reviewedAt:
+          type: string
+          format: date-time
+        startedAt:
+          type: string
+          format: date-time
+        campaignNotes:
+          type: array
+          items:
+            $ref: "#/components/schemas/CampaignNote"
+
+    CampaignFilter:
+      properties:
+        isCreatedByMe:
+          type: boolean
+          default: false
+        status:
+          $ref: "#/components/schemas/CampaignStatus"
+
+    PaginatedCampaignResult:
+      type: object
+      properties:
+        data:
+          type: array
+          items:
+            $ref: "#/components/schemas/Campaign"
+        totalItems:
+          type: integer
+        totalPages:
+          type: integer
+        pageNumber:
+          type: integer
+        pageSize:
+          type: integer
+
+    CampaignNote:
+      properties:
+        id:
+          type: string
+          format: uuid
+        description:
+          type: string
+        context:
+          $ref: "#/components/schemas/CampaignNoteContext"
+        status:
+          $ref: "#/components/schemas/CampaignNoteStatus"
+        created:
+          type: string
+          format: date-time
+        updated:
+          type: string
+          format: date-time
+        createdBy:
+          type: string
+
+    Address:
+      properties:
+        id:
+          type: string
+          format: uuid
+        streetName:
+          type: string
+        city:
+          type: string
+        postCode:
+          type: integer
+        streetNumber:
+          type: string
+        country:
+          $ref: "#/components/schemas/Country"
+
+    EmailTemplate:
+      properties:
+        id:
+          type: string
+          format: uuid
+        title:
+          type: string
+        body:
+          type: string
+        subject:
+          type: string
+        htmlTemplateId:
+          type: string
+          format: uuid
+        created:
+          type: string
+          format: date-time
+        updated:
+          type: string
+          format: date-time
+        status:
+          $ref: "#/components/schemas/EmailStatus"
+        createdBy:
+          type: string
+      required:
+        - title
+        - status
+
+    LandingPage:
+      properties:
+        id:
+          type: string
+        created:
+          type: string
+          format: date
+
+    LeadTracking:
+      properties:
+        id:
+          type: string
+          format: uuid
+        leadId:
+          type: string
+          format: uuid
+        campaignId:
+          type: string
+          format: uuid
+        emailOpenRate:
+          type: integer
+        landingPageOpenRate:
+          type: integer
+        created:
+          type: string
+          format: date-time
+
+    LeadTrackingUpdateResponse:
+      properties:
+        updated:
+          type: boolean
+          default: false
+
+    LeadTrackingOpenRateResponse:
+      properties:
+        emailOpenRate:
+          type: integer
+        landingPageOpenRate:
+          type: integer
+
+    ImportCompaniesAndLeadsResponse:
+      properties:
+        message:
+          type: string
+        succeededCompanies:
+          type: array
+          items:
+            type: string
+        failedCompanies:
+          type: array
+          items:
+            $ref: "#/components/schemas/FailedCompany"
+        succeededLeads:
+          type: array
+          items:
+            type: string
+        failedLeads:
+          type: array
+          items:
+            $ref: "#/components/schemas/FailedLead"
+
+    FailedCompany:
+      properties:
+        companyName:
+          type: string
+        failReason:
+          type: string
+
+    FailedLead:
+      properties:
+        leadInfo:
+          type: string
+        failReason:
+          type: string
+
+    Email:
+      properties:
+        id:
+          type: string
+          format: uuid
+        emailFrom:
+          type: string
+        emailTo:
+          type: string
+        createdBy:
+          type: string
+        body:
+          type: string
+        subject:
+          type: string
+        htmlTemplateId:
+          type: string
+          format: uuid
+        emailTemplateId:
+          type: string
+          format: uuid
+        campaignId:
+          type: string
+          format: uuid
+        leadId:
+          type: string
+          format: uuid
+        status:
+          $ref: "#/components/schemas/EmailSendingStatus"
+
+    User:
+      properties:
+        email:
+          type: string
+        otherEMails:
+          type: array
+          items:
+            type: string
+        firstname:
+          type: string
+        lastname:
+          type: string
+        title:
+          type: string
+        phone:
+          type: string
+        photo:
+          type: string
+        roles:
+          type: array
+          items:
+            $ref: "#/components/schemas/LeadManagementRole"
+
+    HtmlTemplate:
+      properties:
+        id:
+          type: string
+          format: uuid
+        htmlCode:
+          type: string
+        photoUrl:
+          type: string
+        title:
+          type: string
+        created:
+          type: string
+          format: date
+
+    CampaignValidation:
+      properties:
+        valid:
+          type: boolean
+          default: false
+        invalidLeads:
+          type: array
+          items:
+            $ref: "#/components/schemas/LeadValidation"
+
+    LeadValidation:
+      properties:
+        invalidLead:
+          $ref: "#/components/schemas/Lead"
+        issues:
+          type: array
+          items:
+            type: string
+
+    CampaignReview:
+      properties:
+        accepted:
+          type: boolean
+          default: false
+        campaignNotes:
+          type: array
+          items:
+            $ref: "#/components/schemas/CampaignNote"
+
+    CampaignStartResponse:
+      properties:
+        started:
+          type: boolean
+          default: false
+
+    LeadSubscriptionResponse:
+      properties:
+        message:
+          type: string
+
+    CampaignNoteContext:
+      type: string
+      enum:
+        - REQUEST_CHANGES
+        - REGULAR
+
+    CampaignNoteStatus:
+      type: string
+      enum:
+        - ACTIVE
+        - OUTDATED
+
+    BusinessType:
+      type: string
+      enum:
+        - PRIVATE_SECTOR
+        - PUBLIC_SECTOR
+
+    Industry:
+      type: string
+      enum:
+        - BANKING
+        - FINANCE
+        - HEALTHCARE
+        - RETAIL
+        - MANUFACTURING
+        - TELECOMMUNICATIONS
+        - EDUCATION
+        - ENERGY
+        - TRANSPORTATION
+        - LOGISTICS
+        - MEDIA
+        - ENTERTAINMENT
+        - INSURANCE
+        - REAL_ESTATE
+        - IT
+        - AUTOMOTIVE
+        - CONSULTING
+        - PHARMA
+        - RECRUITMENT
+        - MARKETING
+
+    LeadStatus:
+      type: string
+      enum:
+        - ACTIVE
+        - TIMEOUT
+
+    CompanyStatus:
+      type: string
+      enum:
+        - ACTIVE
+        - BLOCKED
+
+    Level:
+      type: string
+      enum:
+        - SEED
+        - PENDING
+        - PROSPECT
+        - CUSTOMER
+        - BLOCKED
+        - DRAFT
+
+    Type:
+      type: string
+      enum:
+        - PERSON
+        - COMPANY
+
+    Country:
+      type: string
+      enum:
+        - FRANCE
+        - GERMANY
+        - SWITZERLAND
+        - AUSTRIA
+        - BELGIUM
+        - UAE
+        - QATAR
+        - LUXEMBOURG
+        - NETHERLANDS
+        - UK
+        - KSA
+
+    EmailStatus:
+      type: string
+      enum:
+        - DRAFT
+        - READY
+
+    #ToBeChanged To EmailStatus
+    EmailSendingStatus:
+      type: string
+      enum:
+        - PENDING
+        - SENT
+        - SENDING_ERROR
+        - GENERATION_ERROR
+
+    EmailAttributes:
+      type: string
+      enum:
+        - $lead_fullname
+        - $lead_firstname
+        - $lead_lastname
+        - $lead_email
+        - $lead_id
+        - $company_website
+        - $company
+        - $country
+        - $industry
+        - $legal_status
+        - $salutation
+        - $sender_email
+        - $sender_fullname
+        - $sender_phone
+        - $sender_position
+        - $beacon
+        - $campaign_id
+        - $track_id
+      x-enumNames:
+        - LEAD_FULLNAME
+        - LEAD_FIRSTNAME
+        - LEAD_LASTNAME
+        - LEAD_EMAIL
+        - LEAD_ID
+        - COMPANY_WEBSITE
+        - COMPANY
+        - COUNTRY
+        - INDUSTRY
+        - LEGAL_STATUS
+        - SALUTATION
+        - SENDER_EMAIL
+        - SENDER_FULLNAME
+        - SENDER_PHONE
+        - SENDER_POSITION
+        - BEACON
+        - CAMPAIGN_ID
+        - TRACK_ID
+
+    Language:
+      type: string
+      enum:
+        - DE
+        - EN
+        - FR
+        - AR
+
+    CompanyClassification:
+      type: string
+      enum:
+        - UNKNOWN
+        - MICRO_1_9
+        - SME_10_49
+        - MSE_50_249
+        - LE_250_999
+        - VLE_1000_9999
+        - BE_10000
+
+    AdditionalField:
+      properties:
+        name:
+          type: string
+        value:
+          type: string
+
+    CampaignStatus:
+      type: string
+      enum:
+        - DRAFT
+        - VALIDATED
+        - REVIEWED
+        - STARTED
+        - DONE
+
+    LeadManagementRole:
+      type: string
+      enum:
+        - LEAD_MANAGER
+        - CAMPAIGN_MANAGER
+        - BD_TEAM_MEMBER
+        - PUBLIC

@@ -1,0 +1,9 @@
+variables:
+
+stages:
+  - cleanup
+  - test
+  - build
+  - publish
+  - deploy-uat
+  - deploy-prod

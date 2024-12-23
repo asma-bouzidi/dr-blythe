@@ -1,0 +1,51 @@
+info:
+  app:
+    name: Dr Blythe
+    version: MVP
+  description:
+
+springdoc:
+  api-docs:
+    enabled: true
+    path: /v3/api-docs
+  packages-to-scan: com.iset.drblythe
+  writer-with-order-by-keys: true
+  swagger-ui:
+    path: /swagger-ui.html
+    enabled: true
+    doc-expansion: none
+    operationsSorter: alpha
+    tagsSorter: alpha
+    disable-swagger-default-url: true
+    tryItOutEnabled: true
+    deep-linking: true
+
+spring:
+  application:
+    name: dr-blythe-backend
+  datasource:
+    url: ${DATABASE_URL}
+    username: ${DATABASE_USERNAME} # for local run
+    password: ${DATABASE_PASSWORD}
+    hikari:
+      keepalive-time: 120000 # check idle connections every 2 minutes+
+  jpa:
+    hibernate:
+      ddl-auto: update
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: health, info, metrics
+
+logging:
+  level:
+    root: INFO
+    com.iset.drblythe: DEBUG
+    org.liquibase: DEBUG
+
+server:
+  port: 8080
+  servlet:
+    context-path: /api

@@ -1,0 +1,9 @@
+.mvn
+.DS_Store
+tmp
+*.log
+.vite
+
+# IntelliJ
+.idea
+/.run/*.run.xml
