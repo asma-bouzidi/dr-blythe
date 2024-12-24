@@ -24,9 +24,9 @@ spring:
   application:
     name: dr-blythe-backend
   datasource:
-    url: ${DATABASE_URL}
-    username: ${DATABASE_USERNAME} # for local run
-    password: ${DATABASE_PASSWORD}
+    url: jdbc:postgresql://localhost:5433/dr-blythe-db
+    username: dr-blythe # for local run
+    password: iset
     hikari:
       keepalive-time: 120000 # check idle connections every 2 minutes+
   jpa:
