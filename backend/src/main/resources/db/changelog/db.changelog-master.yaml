@@ -1,3 +1,5 @@
 databaseChangeLog:
   - include:
       file: classpath:/db/migrations/20241224-1_initial_schema.sql
+  - include:
+      file: classpath:/db/migrations/20241224-2_create_table_patient.sql
