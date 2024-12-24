@@ -1,7 +1,7 @@
 services:
-  lmp-backend-db:
+  dr-blythe-backend-db:
     image: postgres:16
-    container_name: lmp-backend-db
+    container_name: dr-blythe-backend-db
     environment:
       POSTGRES_USER: ${DATABASE_USERNAME}
       POSTGRES_PASSWORD: ${DATABASE_PASSWORD}
