@@ -3,14 +3,12 @@ services:
     image: postgres:16
     container_name: dr-blythe-backend-db
     environment:
-      POSTGRES_USER: ${DATABASE_USERNAME}
-      POSTGRES_PASSWORD: ${DATABASE_PASSWORD}
-      POSTGRES_DB: ${DATABASE_NAME}
+      POSTGRES_USER: dr-blythe
+      POSTGRES_PASSWORD: iset
+      POSTGRES_DB: dr-blythe-db
     restart: unless-stopped
-    volumes:
-      - /home/iterise/data/portal/lmp-backend-db:/var/lib/postgresql/data
     healthcheck:
-      test: [ "CMD-SHELL", "pg_isready -U $DATABASE_USERNAME -d $DATABASE_NAME" ]
+      test: [ "CMD-SHELL", "pg_isready -U dr-blythe -d dr-blythe-db" ]
       interval: 10s
       timeout: 5s
       retries: 5
