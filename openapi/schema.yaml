@@ -25,6 +25,28 @@ paths:
               schema:
                 $ref: "#/components/schemas/Patient"
 
+  /patient/{patientId}:
+    get:
+      summary: get existing patient
+      operationId: getPatientById
+      parameters:
+        - in: path
+          name: patientId
+          schema: 
+            type: string
+            format: uuid
+          required: true
+          description: Id of the patient
+      tags:
+        - Patient
+      responses: 
+        "200":
+          description: patient is retreived
+          content:
+            application/json: 
+              schema: 
+                $ref: "#/components/schemas/Patient"
+
 components:
   schemas:
     Patient:
