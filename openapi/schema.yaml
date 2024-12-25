@@ -1,0 +1,77 @@
+openapi: "3.0.0"
+info:
+  version: 0.0.1
+  title: DR Blythe API
+  description: API for DR Blythe management
+
+paths:
+  /patient:
+    post:
+      summary: create new patient
+      operationId: createPatient
+      tags:
+        - Patient
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/Patient"
+      responses:
+        "201":
+          description: create a new Patient
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Patient"
+
+components:
+  schemas:
+    Patient:
+      properties:
+        id:
+          type: string
+          format: uuid
+        email:
+          type: string
+        phone:
+          type: string
+        name:
+          type: string
+        emergencyContactName:
+          type: string
+        emergencyContactNumber:
+          type: string
+        insuranceProvider:
+          type: string
+        insurancePolicyNumber:
+          type: string
+        allergies:
+          type: string
+        currentMedication:
+          type: string
+        primaryConsent:
+          type: boolean
+        gender:
+          type: string
+        birthdate:
+          type: string
+          format: date
+        address:
+          type: string
+        occupation:
+          type: string
+        familyMedicalHistory:
+          type: string
+        pastMedicalHistory:
+          type: string
+        identificationType:
+          type: string
+        identificationNumber:
+          type: string
+        identificationDocumentId:
+          type: string
+        identificationDocumentUrl:
+          type: string
+        primaryPhysician:
+          type: string
