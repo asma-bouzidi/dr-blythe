@@ -58,7 +58,7 @@ public class PatientEntity {
     @Column(name = "gender", length = 100)
     private String gender;
 
-    @Column(name = "birthdate", columnDefinition = "TIMESTAMP")
+    @Column(name = "birthdate")
     @DateTimeFormat(pattern = "yyyy-MM-dd")
     private LocalDate birthdate;
 

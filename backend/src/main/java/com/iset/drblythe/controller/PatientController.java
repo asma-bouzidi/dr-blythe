@@ -1,5 +1,7 @@
 package com.iset.drblythe.controller;
 
+import java.util.UUID;
+
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
@@ -24,6 +26,16 @@ public class PatientController implements PatientApi {
     Patient createdPatient = patientService.createPatient(patient);
     log.debug("Response: patient created with id {}", createdPatient.getId());
     return ResponseEntity.status(HttpStatus.CREATED).body(createdPatient);
+  }
+
+  @Override
+  public ResponseEntity<Patient> getPatientById (UUID patientId) {
+
+    log.debug("Request: get patient by id: {}", patientId);
+    Patient patient = patientService.getPatientById(patientId);
+    log.debug("Response: patient with id {}", patientId);
+    return ResponseEntity.status(HttpStatus.OK).body(patient);
+
   }
 
 }
