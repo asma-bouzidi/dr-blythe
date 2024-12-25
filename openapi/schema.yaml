@@ -24,6 +24,21 @@ paths:
             application/json:
               schema:
                 $ref: "#/components/schemas/Patient"
+    get: 
+      summary: get all patients
+      operationId: getAllPatients
+      tags: 
+        - Patient
+      responses:
+        "200":
+          description: list containing all patients
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: "#/components/schemas/Patient"
+
 
   /patient/{patientId}:
     get:

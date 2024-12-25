@@ -1,5 +1,6 @@
 package com.iset.drblythe.persistence;
 
+import java.util.List;
 import java.util.UUID;
 
 import org.springframework.stereotype.Repository;
@@ -33,5 +34,10 @@ public class PatientRepository {
         
         return patientMapper.patientEntityToPatient(patientEntity);
 
+    }
+
+    public List<Patient> getAllPatients(){
+        var patientEntities = patientJpaRepository.findAll();
+        return patientMapper.patientEntitiesToPatients(patientEntities);
     }
 }

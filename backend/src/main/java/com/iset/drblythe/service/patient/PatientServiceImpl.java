@@ -1,5 +1,6 @@
 package com.iset.drblythe.service.patient;
 
+import java.util.List;
 import java.util.UUID;
 
 import org.springframework.stereotype.Service;
@@ -27,5 +28,9 @@ public class PatientServiceImpl implements PatientService {
         return patientRepository.getPatientById(patientId);
     }
 
+    @Override
+    public List<Patient> getAllPatients(){
+        return patientRepository.getAllPatients();
+    }
 
 }

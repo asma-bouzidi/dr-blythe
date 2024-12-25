@@ -1,5 +1,6 @@
 package com.iset.drblythe.controller;
 
+import java.util.List;
 import java.util.UUID;
 
 import org.springframework.http.HttpStatus;
@@ -38,4 +39,11 @@ public class PatientController implements PatientApi {
 
   }
 
+  @Override
+  public ResponseEntity<List<Patient>> getAllPatients (){
+
+    log.debug("Request: get all patients");
+    var patients = patientService.getAllPatients();
+    return ResponseEntity.status(HttpStatus.OK).body(patients);
+  }
 }
