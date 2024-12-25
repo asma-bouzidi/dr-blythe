@@ -61,6 +61,33 @@ paths:
             application/json: 
               schema: 
                 $ref: "#/components/schemas/Patient"
+    put: 
+      summary: update an existing patient
+      description: update an existing patient by Id
+      operationId: updatePatient
+      parameters:
+        - in: path
+          name: patientId
+          schema: 
+            type: string
+            format: uuid
+          required: true
+          description: Id of the patient
+      requestBody: 
+        required: true
+        content:
+          application/json: 
+            schema:
+              $ref: "#/components/schemas/Patient"
+      tags: 
+        - Patient:
+      responses: 
+        "200":
+          description: patient updated
+          content:
+            application/json: 
+              schema: 
+                $ref: "#/components/schemas/Patient"
 
 components:
   schemas:
