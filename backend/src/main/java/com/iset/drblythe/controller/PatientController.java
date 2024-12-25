@@ -18,7 +18,7 @@ public class PatientController implements PatientApi {
 
   private final PatientService patientService;
     
-    @Override
+   @Override
     public ResponseEntity<Patient> createPatient(Patient patient) {
     log.debug("Request: create a new patient");
     Patient createdPatient = patientService.createPatient(patient);
