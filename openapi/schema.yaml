@@ -146,6 +146,34 @@ paths:
               schema: 
                 $ref: "#/components/schemas/Appointment"
 
+    put: 
+      summary: update an existing appointment
+      description: update an existing appointment by Id
+      operationId: updateAppointment
+      parameters:
+        - in: path
+          name: appointmentId
+          schema: 
+            type: string
+            format: uuid
+          required: true
+          description: Id of the appointment
+      requestBody: 
+        required: true
+        content:
+          application/json: 
+            schema:
+              $ref: "#/components/schemas/Appointment"
+      tags: 
+        - Appointment
+      responses: 
+        "200":
+          description: appointment updated
+          content:
+            application/json: 
+              schema: 
+                $ref: "#/components/schemas/Appointment"
+
 components:
   schemas:
     Patient:

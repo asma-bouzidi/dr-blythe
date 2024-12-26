@@ -8,7 +8,9 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 
 import com.iset.drblythe.api.AppointmentApi;
+import com.iset.drblythe.exception.MatchingException;
 import com.iset.drblythe.model.Appointment;
+import com.iset.drblythe.model.Patient;
 import com.iset.drblythe.service.appointment.AppointmentService;
 
 import lombok.RequiredArgsConstructor;
@@ -18,6 +20,8 @@ import lombok.extern.slf4j.Slf4j;
 @RequiredArgsConstructor
 @Slf4j
 public class AppointmentController implements AppointmentApi {
+
+    public static final String APPOINTMENT_NOT_FOUND_EXCEPTION = "The id parameter and the appointment id are not matching.";
 
     private final AppointmentService appointmentService;
 
@@ -42,6 +46,19 @@ public class AppointmentController implements AppointmentApi {
     Appointment createdAppointment = appointmentService.createAppointment(appointment);
     log.debug("Response: patient created with id {}", createdAppointment.getId());
     return ResponseEntity.status(HttpStatus.CREATED).body(createdAppointment);
+  }
+
+  @Override
+  public ResponseEntity<Appointment> updateAppointment(UUID appointmentId, Appointment appointment){
+    log.debug("Request: update patient with Id: {}", appointmentId);
+    
+    if(!appointmentId.equals(appointment.getId())) {
+      throw new MatchingException(APPOINTMENT_NOT_FOUND_EXCEPTION);
+    }
+
+    Appointment updatedAppointment = appointmentService.updateAppointment(appointmentId, appointment);
+    log.debug("Response: updated patient with Id: {}", appointmentId);
+    return ResponseEntity.status(HttpStatus.OK).body(updatedAppointment);
   }
 
 }

@@ -13,4 +13,6 @@ public interface AppointmentService {
 
     Appointment createAppointment(Appointment appointment);
 
+    Appointment updateAppointment(UUID appointmentId, Appointment appointment);
+
 }
