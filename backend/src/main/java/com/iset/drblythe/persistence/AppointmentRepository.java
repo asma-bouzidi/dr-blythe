@@ -7,7 +7,7 @@ import org.springframework.stereotype.Repository;
 
 import com.iset.drblythe.model.Appointment;
 import com.iset.drblythe.persistence.mappers.AppointmentMapper;
-import com.iset.drblythe.persistence.mappers.PatientMapper;
+import com.iset.drblythe.exception.NotFoundException;
 
 import lombok.AllArgsConstructor;
 
