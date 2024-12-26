@@ -12,6 +12,8 @@ public interface PatientService {
     Patient getPatientById ( UUID patientId);
 
     List<Patient> getAllPatients();
+
+    Patient updatePatient(UUID patientId, Patient patient);
     
     
 

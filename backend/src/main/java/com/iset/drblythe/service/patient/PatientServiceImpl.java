@@ -33,4 +33,9 @@ public class PatientServiceImpl implements PatientService {
         return patientRepository.getAllPatients();
     }
 
+    @Override
+    public Patient updatePatient(UUID patientId, Patient updatedPatient) {
+        return patientRepository.updatePatient(updatedPatient);
+    }
+
 }

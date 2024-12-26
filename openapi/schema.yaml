@@ -80,7 +80,7 @@ paths:
             schema:
               $ref: "#/components/schemas/Patient"
       tags: 
-        - Patient:
+        - Patient
       responses: 
         "200":
           description: patient updated

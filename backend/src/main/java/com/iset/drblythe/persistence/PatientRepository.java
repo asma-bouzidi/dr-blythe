@@ -40,4 +40,10 @@ public class PatientRepository {
         var patientEntities = patientJpaRepository.findAll();
         return patientMapper.patientEntitiesToPatients(patientEntities);
     }
+
+    public Patient updatePatient(Patient updatedPatient){
+        PatientEntity updatedPatientEntity = patientMapper.patientToPatientEntity(updatedPatient);
+        updatedPatientEntity = patientJpaRepository.save(updatedPatientEntity);
+        return patientMapper.patientEntityToPatient(updatedPatientEntity);
+    }
 }
