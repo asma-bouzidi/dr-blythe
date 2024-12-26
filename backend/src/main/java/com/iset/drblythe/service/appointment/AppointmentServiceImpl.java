@@ -33,4 +33,9 @@ public class AppointmentServiceImpl implements AppointmentService{
     public Appointment createAppointment(Appointment appointment) {
         return appointmentRepository.createAppointment(appointment);
     }
+
+    @Override
+    public Appointment updateAppointment(UUID appointmentId, Appointment updatedAppointment) {
+        return appointmentRepository.updateAppointment(updatedAppointment);
+    }
 }

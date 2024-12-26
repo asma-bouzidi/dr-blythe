@@ -40,4 +40,10 @@ public class AppointmentRepository {
         return appointmentMapper.appointmentEntityToAppointment(newPatientEntity);
     }
 
+    public Appointment updateAppointment(Appointment updatedAppointment){
+        AppointmentEntity updatedAppointmentEntity = appointmentMapper.appointmentToAppointmentEntity(updatedAppointment);
+        updatedAppointmentEntity = appointmentJpaRepository.save(updatedAppointmentEntity);
+        return appointmentMapper.appointmentEntityToAppointment(updatedAppointmentEntity);
+    }
+
 }
