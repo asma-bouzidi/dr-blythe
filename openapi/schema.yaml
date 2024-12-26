@@ -39,7 +39,6 @@ paths:
                 items:
                   $ref: "#/components/schemas/Patient"
 
-
   /patient/{patientId}:
     get:
       summary: get existing patient
@@ -139,3 +138,28 @@ components:
           type: string
         primaryPhysician:
           type: string
+          
+    Appointment:
+      properties:
+        id:
+          type: string
+          format: uuid
+        primaryPhysician:
+          type: string
+        reason:
+          type: string
+        note:
+          type: string
+        cancellationReason:
+          type: string
+        schedule:
+          type: string
+          format: date
+        status:
+          $ref: "#/components/schemas/Status"
+    
+    Status:
+      type: string
+      enum: 
+        - ON 
+        - OFF 
