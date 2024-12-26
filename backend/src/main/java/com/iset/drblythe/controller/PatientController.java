@@ -8,6 +8,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 
 import com.iset.drblythe.api.PatientApi;
+import com.iset.drblythe.exception.MatchingException;
 import com.iset.drblythe.model.Patient;
 import com.iset.drblythe.service.patient.PatientService;
 
@@ -18,6 +19,9 @@ import lombok.extern.slf4j.Slf4j;
 @RequiredArgsConstructor
 @Slf4j
 public class PatientController implements PatientApi {
+  
+  public static final String PATIENT_NOT_FOUND_EXCEPTION = "The id parameter and the patient id are not matching.";
+
 
   private final PatientService patientService;
     
@@ -46,4 +50,19 @@ public class PatientController implements PatientApi {
     var patients = patientService.getAllPatients();
     return ResponseEntity.status(HttpStatus.OK).body(patients);
   }
+
+
+  @Override
+  public ResponseEntity<Patient> updatePatient(UUID patientId, Patient patient){
+    log.debug("Request: update patient with Id: {}", patientId);
+    
+    if(!patientId.equals(patient.getId())) {
+      throw new MatchingException(PATIENT_NOT_FOUND_EXCEPTION);
+    }
+
+    Patient updatedPatient = patientService.updatePatient(patientId, patient);
+    log.debug("Response: updated patient with Id: {}", patientId);
+    return ResponseEntity.status(HttpStatus.OK).body(updatedPatient);
+  }
+
 }

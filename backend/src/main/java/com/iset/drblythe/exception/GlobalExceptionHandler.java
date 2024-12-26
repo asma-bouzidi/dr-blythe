@@ -16,6 +16,12 @@ public class GlobalExceptionHandler {
         return new CustomError(LocalDateTime.now(), getExceptionMessage(ex));
     }
 
+    @ResponseStatus(code = HttpStatus.BAD_REQUEST)
+    @ExceptionHandler(MatchingException.class)
+    public CustomError handleMatchingException(MatchingException ex) {
+        return new CustomError(LocalDateTime.now(), getExceptionMessage(ex));
+    }
+
     private String getExceptionMessage(Exception exception) {
         return
             exception.getMessage() == null
