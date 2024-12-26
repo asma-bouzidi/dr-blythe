@@ -60,6 +60,7 @@ paths:
             application/json: 
               schema: 
                 $ref: "#/components/schemas/Patient"
+                
     put: 
       summary: update an existing patient
       description: update an existing patient by Id
@@ -89,6 +90,25 @@ paths:
                 $ref: "#/components/schemas/Patient"
                 
   /appointment:
+    post:
+      summary: create new appointment
+      operationId: createAppointment
+      tags:
+        - Appointment
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/Appointment"
+      responses:
+        "201":
+          description: create a new Appointment
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Appointment"
+
     get: 
       summary: get all appointments
       operationId: getAllAppointments
@@ -103,28 +123,6 @@ paths:
                 type: array
                 items:
                   $ref: "#/components/schemas/Appointment"
-
-  /appointment/{appointmentId}:
-    get:
-      summary: get existing appointment
-      operationId: getAppointmentById
-      parameters:
-        - in: path
-          name: appointmentId
-          schema: 
-            type: string
-            format: uuid
-          required: true
-          description: Id of the appointment
-      tags:
-        - Appointment
-      responses: 
-        "200":
-          description: appointment is retreived
-          content:
-            application/json: 
-              schema: 
-                $ref: "#/components/schemas/Appointment"
 
   /appointment/{appointmentId}:
     get:
@@ -220,5 +218,5 @@ components:
     Status:
       type: string
       enum: 
-        - ON 
-        - OFF 
+        - ON
+        - OFF

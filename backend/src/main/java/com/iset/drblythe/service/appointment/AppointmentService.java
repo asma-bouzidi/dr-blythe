@@ -11,4 +11,6 @@ public interface AppointmentService {
 
     List<Appointment> getAllAppointment();
 
+    Appointment createAppointment(Appointment appointment);
+
 }
