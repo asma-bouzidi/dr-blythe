@@ -11,7 +11,7 @@ CREATE TABLE patient (
     current_medication VARCHAR(100),
     primary_consent BOOLEAN,
     gender VARCHAR(100),
-    birthdate VARCHAR(100),
+    age INTEGER,
     address VARCHAR(100),
     occupation VARCHAR(100),
     family_medical_history VARCHAR(100),

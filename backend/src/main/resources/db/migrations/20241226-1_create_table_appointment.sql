@@ -5,5 +5,5 @@ CREATE TABLE appointment (
     reason VARCHAR(100),
     note VARCHAR(100),
     cancellationReason VARCHAR(100),
-    schedule DATE,
-)
+    schedule DATE
+);
