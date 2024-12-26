@@ -101,7 +101,7 @@ paths:
           required: true
           description: Id of the appointment
       tags:
-        - Patient
+        - Appointment
       responses: 
         "200":
           description: appointment is retreived
@@ -139,9 +139,8 @@ components:
           type: boolean
         gender:
           type: string
-        birthdate:
-          type: string
-          format: date
+        age:
+          type: int
         address:
           type: string
         occupation:

@@ -1,7 +1,6 @@
 package com.iset.drblythe.persistence.entity;
 
 import java.time.LocalDate;
-import java.time.LocalDateTime;
 import java.util.UUID;
 
 import org.springframework.format.annotation.DateTimeFormat;
@@ -58,9 +57,8 @@ public class PatientEntity {
     @Column(name = "gender", length = 100)
     private String gender;
 
-    @Column(name = "birthdate")
-    @DateTimeFormat(pattern = "yyyy-MM-dd")
-    private LocalDate birthdate;
+    @Column(name = "age", length = 3)
+    private Integer age;
 
     @Column(name = "address", length = 100)
     private String address;
