@@ -13,4 +13,7 @@ public interface AppointmentMapper {
     Appointment appointmentEntityToAppointment(AppointmentEntity appointmentEntity);
 
     List<Appointment> appointmentEntitiesToAppointments(List<AppointmentEntity> appointmentEntities);
+
+    AppointmentEntity appointmentToAppointmentEntity(Appointment appointment);
+
 }

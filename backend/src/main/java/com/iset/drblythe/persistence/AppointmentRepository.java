@@ -7,8 +7,8 @@ import org.springframework.stereotype.Repository;
 
 import com.iset.drblythe.exception.NotFoundException;
 import com.iset.drblythe.model.Appointment;
+import com.iset.drblythe.persistence.entity.AppointmentEntity;
 import com.iset.drblythe.persistence.mappers.AppointmentMapper;
-import com.iset.drblythe.persistence.mappers.PatientMapper;
 
 import lombok.AllArgsConstructor;
 
@@ -30,8 +30,14 @@ public class AppointmentRepository {
     public Appointment getAppointmentById (UUID appointmentId) {
         var appointmentEntity = appointmentJpaRepository.findById(appointmentId)
             .orElseThrow(() -> new NotFoundException(APPOINTMENT_ID_NOT_FOUND + appointmentId));
+        
+        return appointmentMapper.appointmentEntityToAppointment(appointmentEntity);
+    }
 
-    return appointmentMapper.appointmentEntityToAppointment(appointmentEntity);
+    public Appointment createAppointment(Appointment appointment){
+        var appointmentEntity = appointmentMapper.appointmentToAppointmentEntity(appointment);
+        AppointmentEntity newPatientEntity = appointmentJpaRepository.save(appointmentEntity);
+        return appointmentMapper.appointmentEntityToAppointment(newPatientEntity);
     }
 
 }
