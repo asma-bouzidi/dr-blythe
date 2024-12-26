@@ -3,3 +3,7 @@ databaseChangeLog:
       file: classpath:/db/migrations/20241224-1_initial_schema.sql
   - include:
       file: classpath:/db/migrations/20241224-2_create_table_patient.sql
+  - include:
+      file: classpath:/db/migrations/20241226-1_create_table_appointment.sql
+  - include:
+      file: classpath:/db/migrations/20241226-2_alter_table_patient.sql
