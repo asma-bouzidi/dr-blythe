@@ -14,7 +14,5 @@ public interface PatientService {
     List<Patient> getAllPatients();
 
     Patient updatePatient(UUID patientId, Patient patient);
-    
-    
 
 }

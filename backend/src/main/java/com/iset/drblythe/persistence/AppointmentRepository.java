@@ -1,5 +1,6 @@
 package com.iset.drblythe.persistence;
 
+import java.util.List;
 import java.util.UUID;
 
 import org.springframework.stereotype.Repository;
@@ -19,6 +20,12 @@ public class AppointmentRepository {
 
     private final AppointmentMapper appointmentMapper;
     private final AppointmentJpaRepository appointmentJpaRepository;
+
+    public List<Appointment> getAllAppointment(){
+        var appointmentEntities = appointmentJpaRepository.findAll();
+        return appointmentMapper.appointmentEntitiesToAppointments(appointmentEntities);
+
+    } 
 
     public Appointment getAppointmentById (UUID appointmentId) {
         var appointmentEntity = appointmentJpaRepository.findById(appointmentId)

@@ -87,6 +87,44 @@ paths:
             application/json: 
               schema: 
                 $ref: "#/components/schemas/Patient"
+                
+  /appointment:
+    get: 
+      summary: get all appointments
+      operationId: getAllAppointments
+      tags: 
+        - Appointment
+      responses:
+        "200":
+          description: list containing all appointments
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: "#/components/schemas/Appointment"
+
+  /appointment/{appointmentId}:
+    get:
+      summary: get existing appointment
+      operationId: getAppointmentById
+      parameters:
+        - in: path
+          name: appointmentId
+          schema: 
+            type: string
+            format: uuid
+          required: true
+          description: Id of the appointment
+      tags:
+        - Appointment
+      responses: 
+        "200":
+          description: appointment is retreived
+          content:
+            application/json: 
+              schema: 
+                $ref: "#/components/schemas/Appointment"
 
   /appointment/{appointmentId}:
     get:
