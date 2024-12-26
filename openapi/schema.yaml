@@ -87,6 +87,22 @@ paths:
             application/json: 
               schema: 
                 $ref: "#/components/schemas/Patient"
+                
+  /appointment:
+    get: 
+      summary: get all appointments
+      operationId: getAllAppointments
+      tags: 
+        - Appointment
+      responses:
+        "200":
+          description: list containing all appointments
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: "#/components/schemas/Patient"
 
 components:
   schemas:
