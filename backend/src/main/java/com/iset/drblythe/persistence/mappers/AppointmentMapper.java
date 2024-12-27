@@ -1,6 +1,7 @@
 package com.iset.drblythe.persistence.mappers;
 
 import java.util.List;
+
 import org.mapstruct.InjectionStrategy;
 import org.mapstruct.Mapper;
 

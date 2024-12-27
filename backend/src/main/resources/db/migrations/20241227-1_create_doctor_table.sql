@@ -1,0 +1,5 @@
+CREATE TABLE doctor (
+    id UUID NOT NULL PRIMARY KEY,
+    name VARCHAR(100),
+    image VARCHAR(1000)
+);

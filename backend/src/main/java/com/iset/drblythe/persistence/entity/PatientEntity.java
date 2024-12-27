@@ -1,9 +1,6 @@
 package com.iset.drblythe.persistence.entity;
 
-import java.time.LocalDate;
 import java.util.UUID;
-
-import org.springframework.format.annotation.DateTimeFormat;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
