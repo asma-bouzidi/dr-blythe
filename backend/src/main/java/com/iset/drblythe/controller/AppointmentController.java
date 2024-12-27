@@ -10,7 +10,6 @@ import org.springframework.stereotype.Controller;
 import com.iset.drblythe.api.AppointmentApi;
 import com.iset.drblythe.exception.MatchingException;
 import com.iset.drblythe.model.Appointment;
-import com.iset.drblythe.model.Patient;
 import com.iset.drblythe.service.appointment.AppointmentService;
 
 import lombok.RequiredArgsConstructor;

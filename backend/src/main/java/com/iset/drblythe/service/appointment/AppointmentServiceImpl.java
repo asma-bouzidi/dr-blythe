@@ -5,8 +5,7 @@ import java.util.UUID;
 
 import org.springframework.stereotype.Service;
 
-import com.iset.drblythe.model.Appointment;
-import com.iset.drblythe.model.Patient;
+import com.iset.drblythe.model.Appointment;  
 import com.iset.drblythe.persistence.AppointmentRepository;
 
 import lombok.AllArgsConstructor;

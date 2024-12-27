@@ -108,7 +108,7 @@ paths:
             application/json:
               schema:
                 $ref: "#/components/schemas/Appointment"
-
+                
     get: 
       summary: get all appointments
       operationId: getAllAppointments
@@ -173,6 +173,39 @@ paths:
             application/json: 
               schema: 
                 $ref: "#/components/schemas/Appointment"
+  /doctor:
+    post:
+      summary: create new doctor
+      operationId: createDoctor
+      tags:
+        - Doctor
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/Doctor"
+      responses:
+        "201":
+          description: create a new Doctor
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Doctor"
+    get: 
+      summary: get all doctors
+      operationId: getAllDoctors
+      tags: 
+        - Doctor
+      responses:
+        "200":
+          description: list containing all doctors
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: "#/components/schemas/Doctor"
 
 components:
   schemas:
@@ -204,7 +237,7 @@ components:
         gender:
           type: string
         age:
-          type: int
+          type: integer
         address:
           type: string
         occupation:
@@ -248,3 +281,14 @@ components:
       enum: 
         - ON
         - OFF
+    Doctor: 
+      properties:
+        id:
+          type: string
+          format: uuid
+        name:
+          type: string
+        image:
+          type: string
+        
+        
