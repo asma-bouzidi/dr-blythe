@@ -12,4 +12,6 @@ public interface DoctorService {
     Doctor getDoctorById (UUID doctorId);
 
     Doctor updateDoctor(UUID doctorId, Doctor doctor);
+
+    Doctor createDoctor(Doctor doctor);
 }

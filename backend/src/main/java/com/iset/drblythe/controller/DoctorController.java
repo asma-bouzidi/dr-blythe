@@ -9,6 +9,7 @@ import org.springframework.stereotype.Controller;
 
 import com.iset.drblythe.api.DoctorApi;
 import com.iset.drblythe.exception.MatchingException;
+import com.iset.drblythe.model.Appointment;
 import com.iset.drblythe.model.Doctor;
 import com.iset.drblythe.service.doctor.DoctorService;
 
@@ -50,6 +51,14 @@ public class DoctorController implements DoctorApi{
     Doctor updatedDoctor = doctorService.updateDoctor(doctorId, doctor);
     log.debug("Response: updated patient with Id: {}", doctorId);
     return ResponseEntity.status(HttpStatus.OK).body(updatedDoctor);
+  }
+
+  @Override
+    public ResponseEntity<Doctor> createDoctor(Doctor doctor) {
+    log.debug("Request: create a new patient");
+    Doctor createdDoctor = doctorService.createDoctor(doctor);
+    log.debug("Response: patient created with id {}", createdDoctor.getId());
+    return ResponseEntity.status(HttpStatus.CREATED).body(createdDoctor);
   }
 
 
