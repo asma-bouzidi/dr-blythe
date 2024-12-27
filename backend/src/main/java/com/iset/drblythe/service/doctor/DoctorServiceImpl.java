@@ -1,10 +1,10 @@
 package com.iset.drblythe.service.doctor;
 
 import java.util.List;
+import java.util.UUID;
 
 import org.springframework.stereotype.Service;
 
-import com.iset.drblythe.model.Appointment;
 import com.iset.drblythe.model.Doctor;
 import com.iset.drblythe.persistence.DoctorRepository;
 
@@ -21,6 +21,16 @@ public class DoctorServiceImpl implements DoctorService{
     @Override
     public List<Doctor> getAllDoctor() {
         return doctorRepository.getAllDoctor();
+    }
+
+    @Override
+    public Doctor getDoctorById (UUID doctorId){
+         return doctorRepository.getDoctorById(doctorId);
+     }
+
+     @Override
+     public Doctor updateDoctor(UUID doctorId, Doctor updatedDoctor) {
+        return doctorRepository.updateDoctor(updatedDoctor);
     }
 
 }

@@ -206,6 +206,55 @@ paths:
                 type: array
                 items:
                   $ref: "#/components/schemas/Doctor"
+  /doctor/{doctorId}:
+    get:
+      summary: get existing doctor
+      operationId: getDoctorById
+      parameters:
+        - in: path
+          name: doctorId
+          schema: 
+            type: string
+            format: uuid
+          required: true
+          description: Id of the doctor
+      tags:
+        - Doctor
+      responses: 
+        "200":
+          description: doctor is retreived
+          content:
+            application/json: 
+              schema: 
+                $ref: "#/components/schemas/Doctor"
+    put: 
+      summary: update an existing doctor 
+      description: update an existing doctor by Id
+      operationId: updateDoctor
+      parameters:
+        - in: path
+          name: doctorId
+          schema: 
+            type: string
+            format: uuid
+          required: true
+          description: Id of the doctor
+      requestBody: 
+        required: true
+        content:
+          application/json: 
+            schema:
+              $ref: "#/components/schemas/Doctor"
+      tags: 
+        - Doctor
+      responses: 
+        "200":
+          description: doctor updated
+          content:
+            application/json: 
+              schema: 
+                $ref: "#/components/schemas/Doctor"
+  
 
 components:
   schemas:
@@ -281,6 +330,7 @@ components:
       enum: 
         - ON
         - OFF
+    
     Doctor: 
       properties:
         id:
@@ -290,5 +340,3 @@ components:
           type: string
         image:
           type: string
-        
-        
