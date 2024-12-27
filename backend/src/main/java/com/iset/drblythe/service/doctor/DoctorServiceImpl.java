@@ -33,4 +33,9 @@ public class DoctorServiceImpl implements DoctorService{
         return doctorRepository.updateDoctor(updatedDoctor);
     }
 
+    @Override
+    public Doctor createDoctor(Doctor doctor) {
+        return doctorRepository.createDoctor(doctor);
+    }
+
 }

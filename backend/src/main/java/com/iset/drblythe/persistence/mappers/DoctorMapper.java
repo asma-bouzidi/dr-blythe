@@ -17,4 +17,6 @@ public interface DoctorMapper {
     List<Doctor> doctorEntitiesToDoctors(List<DoctorEntity> doctorEntities);
 
     DoctorEntity doctorToDoctorEntity(Doctor doctor);
+
+    
 }

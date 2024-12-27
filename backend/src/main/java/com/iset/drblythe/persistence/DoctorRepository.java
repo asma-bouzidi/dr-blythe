@@ -39,4 +39,11 @@ public class DoctorRepository {
         updatedDoctorEntity = doctorJpaRepository.save(updatedDoctorEntity);
         return doctorMapper.doctorEntityToDoctor(updatedDoctorEntity);
     }
+
+     public Doctor createDoctor(Doctor doctor){
+        var doctorEntity = doctorMapper.doctorToDoctorEntity(doctor);
+        DoctorEntity newDoctorEntity = doctorJpaRepository.save(doctorEntity);
+        return doctorMapper.doctorEntityToDoctor(newDoctorEntity);
+    }
+
 }
