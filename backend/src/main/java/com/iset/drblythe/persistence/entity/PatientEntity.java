@@ -1,5 +1,7 @@
 package com.iset.drblythe.persistence.entity;
 
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.ManyToOne;
 import java.util.UUID;
 
 import jakarta.persistence.Column;
@@ -83,4 +85,8 @@ public class PatientEntity {
 
     @Column(name = "primary_physician", length = 100)
     private String primaryPhysician;
+
+    @ManyToOne
+    @JoinColumn(name = "doctor_id")
+    private DoctorEntity doctor;
 }

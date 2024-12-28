@@ -1,5 +1,8 @@
 package com.iset.drblythe.persistence.entity;
 
+import jakarta.persistence.CascadeType;
+import jakarta.persistence.OneToMany;
+import java.util.List;
 import java.util.UUID;
 
 import jakarta.persistence.Column;
@@ -26,5 +29,8 @@ public class DoctorEntity {
 
     @Column(name = "image", length = 1000)
     private String image;
+
+    @OneToMany(mappedBy = "doctor", cascade = CascadeType.ALL)
+    private List<PatientEntity> patients;
 
 }
