@@ -9,4 +9,5 @@ databaseChangeLog:
       file: classpath:/db/migrations/20241227-1_create_doctor_table.sql
   - include:
       file: classpath:/db/migrations/20241228-1_add_one_to_many_migration.sql
-
+  - include:
+      file: classpath:/db/migrations/20241228-2_add_one_to_many_migration.sql
