@@ -305,6 +305,8 @@ components:
           type: string
         primaryPhysician:
           type: string
+        doctor:
+          $ref: "#/components/schemas/Doctor"
           
     Appointment:
       properties:
@@ -340,3 +342,7 @@ components:
           type: string
         image:
           type: string
+        patients:
+          type: array
+          items:
+            $ref: "#/components/schemas/Patient"

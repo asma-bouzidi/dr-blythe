@@ -35,7 +35,7 @@ public class DoctorServiceImpl implements DoctorService{
 
     @Override
     public Doctor createDoctor(Doctor doctor) {
-        return doctorRepository.createDoctor(doctor);
+      return doctorRepository.createDoctor(doctor);
     }
 
 }
