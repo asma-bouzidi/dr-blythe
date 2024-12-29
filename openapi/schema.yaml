@@ -24,10 +24,10 @@ paths:
             application/json:
               schema:
                 $ref: "#/components/schemas/Patient"
-    get: 
+    get:
       summary: get all patients
       operationId: getAllPatients
-      tags: 
+      tags:
         - Patient
       responses:
         "200":
@@ -46,49 +46,49 @@ paths:
       parameters:
         - in: path
           name: patientId
-          schema: 
+          schema:
             type: string
             format: uuid
           required: true
           description: Id of the patient
       tags:
         - Patient
-      responses: 
+      responses:
         "200":
           description: patient is retreived
           content:
-            application/json: 
-              schema: 
+            application/json:
+              schema:
                 $ref: "#/components/schemas/Patient"
-                
-    put: 
+
+    put:
       summary: update an existing patient
       description: update an existing patient by Id
       operationId: updatePatient
       parameters:
         - in: path
           name: patientId
-          schema: 
+          schema:
             type: string
             format: uuid
           required: true
           description: Id of the patient
-      requestBody: 
+      requestBody:
         required: true
         content:
-          application/json: 
+          application/json:
             schema:
               $ref: "#/components/schemas/Patient"
-      tags: 
+      tags:
         - Patient
-      responses: 
+      responses:
         "200":
           description: patient updated
           content:
-            application/json: 
-              schema: 
+            application/json:
+              schema:
                 $ref: "#/components/schemas/Patient"
-                
+
   /appointment:
     post:
       summary: create new appointment
@@ -108,11 +108,11 @@ paths:
             application/json:
               schema:
                 $ref: "#/components/schemas/Appointment"
-                
-    get: 
+
+    get:
       summary: get all appointments
       operationId: getAllAppointments
-      tags: 
+      tags:
         - Appointment
       responses:
         "200":
@@ -131,47 +131,47 @@ paths:
       parameters:
         - in: path
           name: appointmentId
-          schema: 
+          schema:
             type: string
             format: uuid
           required: true
           description: Id of the appointment
       tags:
         - Appointment
-      responses: 
+      responses:
         "200":
           description: appointment is retreived
           content:
-            application/json: 
-              schema: 
+            application/json:
+              schema:
                 $ref: "#/components/schemas/Appointment"
 
-    put: 
+    put:
       summary: update an existing appointment
       description: update an existing appointment by Id
       operationId: updateAppointment
       parameters:
         - in: path
           name: appointmentId
-          schema: 
+          schema:
             type: string
             format: uuid
           required: true
           description: Id of the appointment
-      requestBody: 
+      requestBody:
         required: true
         content:
-          application/json: 
+          application/json:
             schema:
               $ref: "#/components/schemas/Appointment"
-      tags: 
+      tags:
         - Appointment
-      responses: 
+      responses:
         "200":
           description: appointment updated
           content:
-            application/json: 
-              schema: 
+            application/json:
+              schema:
                 $ref: "#/components/schemas/Appointment"
   /doctor:
     post:
@@ -192,10 +192,10 @@ paths:
             application/json:
               schema:
                 $ref: "#/components/schemas/Doctor"
-    get: 
+    get:
       summary: get all doctors
       operationId: getAllDoctors
-      tags: 
+      tags:
         - Doctor
       responses:
         "200":
@@ -213,48 +213,48 @@ paths:
       parameters:
         - in: path
           name: doctorId
-          schema: 
+          schema:
             type: string
             format: uuid
           required: true
           description: Id of the doctor
       tags:
         - Doctor
-      responses: 
+      responses:
         "200":
           description: doctor is retreived
           content:
-            application/json: 
-              schema: 
+            application/json:
+              schema:
                 $ref: "#/components/schemas/Doctor"
-    put: 
-      summary: update an existing doctor 
+    put:
+      summary: update an existing doctor
       description: update an existing doctor by Id
       operationId: updateDoctor
       parameters:
         - in: path
           name: doctorId
-          schema: 
+          schema:
             type: string
             format: uuid
           required: true
           description: Id of the doctor
-      requestBody: 
+      requestBody:
         required: true
         content:
-          application/json: 
+          application/json:
             schema:
               $ref: "#/components/schemas/Doctor"
-      tags: 
+      tags:
         - Doctor
-      responses: 
+      responses:
         "200":
           description: doctor updated
           content:
-            application/json: 
-              schema: 
+            application/json:
+              schema:
                 $ref: "#/components/schemas/Doctor"
-  
+
 
 components:
   schemas:
@@ -305,6 +305,10 @@ components:
           type: string
         primaryPhysician:
           type: string
+        appointments:
+          type: array
+          items:
+            $ref: "#/components/schemas/Appointment"
 
     Appointment:
       properties:
@@ -327,11 +331,11 @@ components:
     
     Status:
       type: string
-      enum: 
+      enum:
         - ON
         - OFF
     
-    Doctor: 
+    Doctor:
       properties:
         id:
           type: string

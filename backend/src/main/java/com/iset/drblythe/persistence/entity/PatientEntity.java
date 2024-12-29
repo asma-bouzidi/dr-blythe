@@ -94,4 +94,6 @@ public class PatientEntity {
 
   @OneToMany(mappedBy = "patient", cascade = CascadeType.ALL)
   private List<AppointmentEntity> appointments;
+
+
 }
