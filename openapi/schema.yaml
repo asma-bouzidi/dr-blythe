@@ -305,9 +305,7 @@ components:
           type: string
         primaryPhysician:
           type: string
-        doctor:
-          $ref: "#/components/schemas/Doctor"
-          
+
     Appointment:
       properties:
         id:

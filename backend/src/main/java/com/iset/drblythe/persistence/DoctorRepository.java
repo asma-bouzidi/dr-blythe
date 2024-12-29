@@ -14,6 +14,7 @@ import com.iset.drblythe.persistence.entity.DoctorEntity;
 import com.iset.drblythe.persistence.mappers.DoctorMapper;
 
 import lombok.AllArgsConstructor;
+import org.springframework.transaction.annotation.Transactional;
 
 @Repository
 @AllArgsConstructor
@@ -45,6 +46,7 @@ public class DoctorRepository {
         return doctorMapper.doctorEntityToDoctor(updatedDoctorEntity);
     }
 
+    @Transactional
      public Doctor createDoctor(Doctor doctor){
         var doctorEntity = doctorMapper.doctorToDoctorEntity(doctor);
 
