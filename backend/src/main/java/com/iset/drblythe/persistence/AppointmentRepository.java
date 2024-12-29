@@ -46,4 +46,9 @@ public class AppointmentRepository {
         return appointmentMapper.appointmentEntityToAppointment(updatedAppointmentEntity);
     }
 
+    public  String deleteAppointment(UUID appointmentId){
+        appointmentJpaRepository.deleteById(appointmentId);
+        return "Successfully deleted appointment with id: " + appointmentId;
+    }
+
 }

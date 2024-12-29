@@ -34,30 +34,37 @@ public class AppointmentController implements AppointmentApi {
 
     @Override
     public ResponseEntity<List<Appointment>> getAllAppointments() {
-        log.debug("Request: get all patients");
-        var patients = appointmentService.getAllAppointment();
-        return ResponseEntity.status(HttpStatus.OK).body(patients);
+        log.debug("Request: get all appointment");
+        var appointments = appointmentService.getAllAppointment();
+        return ResponseEntity.status(HttpStatus.OK).body(appointments);
     }
 
     @Override
     public ResponseEntity<Appointment> createAppointment(Appointment appointment) {
-    log.debug("Request: create a new patient");
+    log.debug("Request: create a new appointment");
     Appointment createdAppointment = appointmentService.createAppointment(appointment);
-    log.debug("Response: patient created with id {}", createdAppointment.getId());
+    log.debug("Response: appointment created with id {}", createdAppointment.getId());
     return ResponseEntity.status(HttpStatus.CREATED).body(createdAppointment);
   }
 
   @Override
   public ResponseEntity<Appointment> updateAppointment(UUID appointmentId, Appointment appointment){
-    log.debug("Request: update patient with Id: {}", appointmentId);
+    log.debug("Request: update appointment with Id: {}", appointmentId);
     
     if(!appointmentId.equals(appointment.getId())) {
       throw new MatchingException(APPOINTMENT_NOT_FOUND_EXCEPTION);
     }
 
     Appointment updatedAppointment = appointmentService.updateAppointment(appointmentId, appointment);
-    log.debug("Response: updated patient with Id: {}", appointmentId);
+    log.debug("Response: updated appointment with Id: {}", appointmentId);
     return ResponseEntity.status(HttpStatus.OK).body(updatedAppointment);
+  }
+
+  @Override
+  public ResponseEntity<String> deleteAppointment(UUID appointmentId){
+    log.debug("Response: updated appointment with Id: {}", appointmentId);
+    String deleteAppointmentResponse = appointmentService.deleteAppointment(appointmentId);
+    return ResponseEntity.status(HttpStatus.OK).body(deleteAppointmentResponse);
   }
 
 }

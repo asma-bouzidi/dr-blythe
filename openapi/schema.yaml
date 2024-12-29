@@ -173,6 +173,29 @@ paths:
             application/json:
               schema:
                 $ref: "#/components/schemas/Appointment"
+
+    delete:
+      summary: Delete an existing appointment
+      description: Delete an existing appointment by Id
+      operationId: deleteAppointment
+      tags:
+        - Appointment
+      parameters:
+        - in: path
+          name: appointmentId
+          schema:
+            type: string
+            format: uuid
+          required: true
+          description: Id of the appointment
+      responses:
+        '200':
+          description: Appointment successfully deleted.
+          content:
+            text/plain:
+              schema:
+                type: string
+
   /doctor:
     post:
       summary: create new doctor
@@ -206,6 +229,7 @@ paths:
                 type: array
                 items:
                   $ref: "#/components/schemas/Doctor"
+
   /doctor/{doctorId}:
     get:
       summary: get existing doctor

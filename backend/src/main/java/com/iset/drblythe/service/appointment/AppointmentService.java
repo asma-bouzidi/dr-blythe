@@ -15,4 +15,6 @@ public interface AppointmentService {
 
     Appointment updateAppointment(UUID appointmentId, Appointment appointment);
 
+    String deleteAppointment(UUID appointmentId);
+
 }
