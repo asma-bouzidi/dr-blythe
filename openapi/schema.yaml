@@ -89,6 +89,28 @@ paths:
               schema:
                 $ref: "#/components/schemas/Patient"
 
+    delete:
+      summary: Delete an existing patient
+      description: Delete an existing patient by Id
+      operationId: deletePatient
+      tags:
+        - Patient
+      parameters:
+        - in: path
+          name: patientId
+          schema:
+            type: string
+            format: uuid
+          required: true
+          description: Id of the patient
+      responses:
+        '200':
+          description: Patient successfully deleted.
+          content:
+            text/plain:
+              schema:
+                type: string
+
   /appointment:
     post:
       summary: create new appointment
