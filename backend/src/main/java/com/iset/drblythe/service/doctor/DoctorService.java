@@ -14,4 +14,6 @@ public interface DoctorService {
     Doctor updateDoctor(UUID doctorId, Doctor doctor);
 
     Doctor createDoctor(Doctor doctor);
+
+    String deleteDoctor(UUID doctorId);
 }

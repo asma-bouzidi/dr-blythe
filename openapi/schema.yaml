@@ -300,6 +300,27 @@ paths:
             application/json:
               schema:
                 $ref: "#/components/schemas/Doctor"
+    delete:
+      summary: Delete an existing doctor
+      description: Delete an existing doctor by Id
+      operationId: deleteDoctor
+      tags:
+        - Doctor
+      parameters:
+        - in: path
+          name: doctorId
+          schema:
+            type: string
+            format: uuid
+          required: true
+          description: Id of the doctor
+      responses:
+        '200':
+          description: Doctor successfully deleted.
+          content:
+            text/plain:
+              schema:
+                type: string
 
 
 components:

@@ -65,4 +65,9 @@ public class DoctorRepository {
         return doctorMapper.doctorEntityToDoctor(newDoctorEntity);
     }
 
+  public  String deleteDoctor(UUID doctorId){
+    doctorJpaRepository.deleteById(doctorId);
+    return "Successfully deleted doctor with id: " + doctorId;
+  }
+
 }
