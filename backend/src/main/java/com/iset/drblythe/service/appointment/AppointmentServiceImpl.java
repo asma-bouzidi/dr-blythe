@@ -37,4 +37,9 @@ public class AppointmentServiceImpl implements AppointmentService{
     public Appointment updateAppointment(UUID appointmentId, Appointment updatedAppointment) {
         return appointmentRepository.updateAppointment(updatedAppointment);
     }
+
+    @Override
+    public String deleteAppointment(UUID appointmentId){
+        return appointmentRepository.deleteAppointment(appointmentId);
+    }
 }
