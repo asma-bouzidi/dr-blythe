@@ -62,4 +62,9 @@ public class PatientRepository {
     updatedPatientEntity = patientJpaRepository.save(updatedPatientEntity);
     return patientMapper.patientEntityToPatient(updatedPatientEntity);
   }
+
+  public String deletePatient(UUID patientId) {
+    patientJpaRepository.deleteById(patientId);
+    return "Successfully deleted patient with id: " + patientId;
+  }
 }
