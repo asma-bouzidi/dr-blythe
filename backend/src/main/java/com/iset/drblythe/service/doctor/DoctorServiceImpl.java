@@ -38,4 +38,10 @@ public class DoctorServiceImpl implements DoctorService{
       return doctorRepository.createDoctor(doctor);
     }
 
+    @Override
+    public String deleteDoctor(UUID doctorId){
+      return doctorRepository.deleteDoctor(doctorId);
+    }
+
+
 }
