@@ -10,7 +10,7 @@ import {
   ApexResponsive,
   NgApexchartsModule,
 } from "ng-apexcharts";
-import { DemoMaterialModule } from "src/app/demo-material-module";
+import { DrBlytheModule } from "src/app/dr-blythe-module";
 
 export interface VisitorChartOptions {
   series: ApexNonAxisChartSeries | any;
@@ -28,7 +28,7 @@ export interface VisitorChartOptions {
 @Component({
   selector: "app-our-visiter",
   standalone: true,
-  imports: [NgApexchartsModule, DemoMaterialModule],
+  imports: [NgApexchartsModule, DrBlytheModule],
   templateUrl: "./our-visiter.component.html"
 })
 export class OurVisiterComponent {

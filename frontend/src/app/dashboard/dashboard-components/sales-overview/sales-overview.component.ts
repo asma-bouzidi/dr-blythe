@@ -14,7 +14,7 @@ import {
   ApexGrid,
   NgApexchartsModule
 } from "ng-apexcharts";
-import { DemoMaterialModule } from "src/app/demo-material-module";
+import { DrBlytheModule } from "src/app/dr-blythe-module";
 
 export interface ChartOptions {
   series: ApexAxisChartSeries | any;
@@ -33,7 +33,7 @@ export interface ChartOptions {
 @Component({
   selector: "app-sales-overview",
   standalone: true,
-  imports: [NgApexchartsModule, DemoMaterialModule],
+  imports: [NgApexchartsModule, DrBlytheModule],
   templateUrl: "./sales-overview.component.html"
 })
 export class SalesOverviewComponent implements OnInit {

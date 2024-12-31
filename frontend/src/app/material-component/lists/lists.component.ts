@@ -3,12 +3,12 @@ import { Component } from '@angular/core';
 import { MatDividerModule } from '@angular/material/divider';
 import { MatIconModule } from '@angular/material/icon';
 import {MatListModule} from '@angular/material/list';
-import { DemoMaterialModule } from 'src/app/demo-material-module';
+import { DrBlytheModule } from 'src/app/dr-blythe-module';
 
 @Component({
   selector: 'app-lists',
   standalone: true,
-  imports: [DemoMaterialModule, CommonModule, MatListModule, NgFor, MatIconModule, MatDividerModule, DatePipe],
+  imports: [DrBlytheModule, CommonModule, MatListModule, NgFor, MatIconModule, MatDividerModule, DatePipe],
   templateUrl: './lists.component.html',
   styleUrls: ['./lists.component.scss']
 })

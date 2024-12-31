@@ -2,12 +2,12 @@ import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, FormsModule, ReactiveFormsModule, Validators } from '@angular/forms';
 import { STEPPER_GLOBAL_OPTIONS } from '@angular/cdk/stepper';
 import { MatStepperModule } from '@angular/material/stepper';
-import { DemoMaterialModule } from 'src/app/demo-material-module';
+import { DrBlytheModule } from 'src/app/dr-blythe-module';
 
 @Component({
 	selector: 'app-stepper',
 	standalone: true,
-	imports: [DemoMaterialModule, FormsModule, ReactiveFormsModule],
+	imports: [DrBlytheModule, FormsModule, ReactiveFormsModule],
 	templateUrl: './stepper.component.html',
 	styleUrls: ['./stepper.component.scss'],
 	providers: [{
