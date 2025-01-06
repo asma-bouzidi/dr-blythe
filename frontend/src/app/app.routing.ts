@@ -9,7 +9,7 @@ export const AppRoutes: Routes = [
     children: [
       {
         path: '',
-        redirectTo: '/dashboard',
+        redirectTo: '/patient',
         pathMatch: 'full'
       },
       {
@@ -24,7 +24,8 @@ export const AppRoutes: Routes = [
       {
         path: 'patient',
         loadChildren: () => import('./components/patient/patient.module').then(m => m.PatientModule)
-      }
+      },
+
     ]
   }
 ];
