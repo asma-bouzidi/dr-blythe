@@ -1,0 +1,22 @@
+<div *ngIf="patients.length > 0; else noData">
+  <table>
+    <thead>
+    <tr>
+      <th>#</th>
+      <th>Name</th>
+      <th>Age</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr *ngFor="let patient of patients; index as i">
+      <td>{{ i + 1 }}</td>
+      <td>{{ patient.name }}</td>
+      <td>{{ patient.age }}</td>
+    </tr>
+    </tbody>
+  </table>
+</div>
+
+<ng-template #noData>
+  <p>No patients found.</p>
+</ng-template>
