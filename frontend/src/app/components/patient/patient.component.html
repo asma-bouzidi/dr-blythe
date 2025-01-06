@@ -1,3 +1,7 @@
+<h2>List of patients</h2>
+
+<button mat-flat-button color="primary" class="align-right" (click)="addPatient()">Add patient</button>
+
 <div *ngIf="patients.length > 0; else noData">
   <table>
     <thead>

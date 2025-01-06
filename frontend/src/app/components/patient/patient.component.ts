@@ -4,13 +4,16 @@ import {catchError, EMPTY, tap} from "rxjs";
 import {NgToastService} from "ng-angular-popup";
 import {PatientService} from "../../services/patient.service";
 import {NgForOf, NgIf} from "@angular/common";
+import {MatButton} from "@angular/material/button";
+import {Router} from "@angular/router";
 
 @Component({
   selector: 'app-patient',
   standalone: true,
   imports: [
     NgIf,
-    NgForOf
+    NgForOf,
+    MatButton
   ],
   templateUrl: './patient.component.html',
   styleUrl: './patient.component.scss'
@@ -21,6 +24,7 @@ export class PatientComponent implements OnInit {
   message: string = '';
 
   constructor(
+    private router: Router,
     private patientService: PatientService,
     private toast: NgToastService
   ) {
@@ -45,6 +49,10 @@ export class PatientComponent implements OnInit {
         return EMPTY;
       })
     ).subscribe();
+  }
+
+  addPatient() {
+    this.router.navigate(['patient/add']);
   }
 
 }

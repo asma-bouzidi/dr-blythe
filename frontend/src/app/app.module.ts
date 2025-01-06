@@ -6,6 +6,7 @@ import { FormsModule } from '@angular/forms';
 import { HttpClientModule, HttpClient } from '@angular/common/http';
 import { LocationStrategy, PathLocationStrategy } from '@angular/common';
 import { AppRoutes } from './app.routing';
+import { PatientRoutes } from './components/patient/patient.routing';
 import { AppComponent } from './app.component';
 
 import { FullComponent } from './components/layouts/full/full.component';
