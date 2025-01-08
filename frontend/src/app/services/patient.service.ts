@@ -20,4 +20,8 @@ export class PatientService {
   createPatient(patient: { name: string; }): Observable<string> {
     return this.http.post<string>(`${this.apiUrl}/patient`, patient);
   }
+
+  deletePatientById(patientId: string): Observable<void> {
+    return this.http.delete<void>(`${this.apiUrl}/patient/${patientId}`);
+  }
 }

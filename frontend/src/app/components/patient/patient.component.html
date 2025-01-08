@@ -1,6 +1,7 @@
 <h2>List of patients</h2>
 
-<button mat-flat-button color="primary" class="align-right" (click)="addPatient()">Add patient</button>
+<button mat-flat-button color="primary" class="align-right" (click)="addPatient()">Add patient
+</button>
 
 <div *ngIf="patients.length > 0; else noData">
   <table>
@@ -9,6 +10,7 @@
       <th>#</th>
       <th>Name</th>
       <th>Age</th>
+      <th>Actions</th>
     </tr>
     </thead>
     <tbody>
@@ -16,6 +18,9 @@
       <td>{{ i + 1 }}</td>
       <td>{{ patient.name }}</td>
       <td>{{ patient.age }}</td>
+      <td>
+        <button (click)="deletePatient(patient.id)">Delete Patient</button>
+      </td>
     </tr>
     </tbody>
   </table>
