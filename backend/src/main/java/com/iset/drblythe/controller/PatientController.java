@@ -2,6 +2,7 @@ package com.iset.drblythe.controller;
 
 import com.iset.drblythe.api.PatientApi;
 import com.iset.drblythe.exception.MatchingException;
+import com.iset.drblythe.model.DeleteResponse;
 import com.iset.drblythe.model.Patient;
 import com.iset.drblythe.service.patient.PatientService;
 import java.util.List;
@@ -31,13 +32,15 @@ public class PatientController implements PatientApi {
   }
 
   @Override
-  public ResponseEntity<Patient> getPatientById(UUID patientId) {
+  public ResponseEntity<DeleteResponse> deletePatient(UUID patientId) {
+    log.debug("Response: updated patient with Id: {}", patientId);
+    String deletePatientResponse = patientService.deletePatient(patientId);
 
-    log.debug("Request: get patient by id: {}", patientId);
-    Patient patient = patientService.getPatientById(patientId);
-    log.debug("Response: patient with id {}", patientId);
-    return ResponseEntity.status(HttpStatus.OK).body(patient);
+    DeleteResponse deleteResponse = new DeleteResponse();
+    deleteResponse.setSuccess(true);
+    deleteResponse.setMessage(deletePatientResponse);
 
+    return ResponseEntity.status(HttpStatus.OK).body(deleteResponse);
   }
 
   @Override
@@ -48,6 +51,15 @@ public class PatientController implements PatientApi {
     return ResponseEntity.status(HttpStatus.OK).body(patients);
   }
 
+  @Override
+  public ResponseEntity<Patient> getPatientById(UUID patientId) {
+
+    log.debug("Request: get patient by id: {}", patientId);
+    Patient patient = patientService.getPatientById(patientId);
+    log.debug("Response: patient with id {}", patientId);
+    return ResponseEntity.status(HttpStatus.OK).body(patient);
+
+  }
 
   @Override
   public ResponseEntity<Patient> updatePatient(UUID patientId, Patient patient) {
@@ -60,13 +72,6 @@ public class PatientController implements PatientApi {
     Patient updatedPatient = patientService.updatePatient(patientId, patient);
     log.debug("Response: updated patient with Id: {}", patientId);
     return ResponseEntity.status(HttpStatus.OK).body(updatedPatient);
-  }
-
-  @Override
-  public ResponseEntity<String> deletePatient(UUID patientId) {
-    log.debug("Response: updated patient with Id: {}", patientId);
-    String deletePatientResponse = patientService.deletePatient(patientId);
-    return ResponseEntity.status(HttpStatus.OK).body((deletePatientResponse));
   }
 
 }
