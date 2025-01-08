@@ -107,9 +107,9 @@ paths:
         '200':
           description: Patient successfully deleted.
           content:
-            text/plain:
+            application/json:
               schema:
-                type: string
+                $ref: "#/components/schemas/DeleteResponse"
 
   /appointment:
     post:
@@ -415,3 +415,10 @@ components:
           type: array
           items:
             $ref: "#/components/schemas/Patient"
+
+    DeleteResponse:
+      properties:
+        success:
+          type: boolean
+        message:
+          type: string
