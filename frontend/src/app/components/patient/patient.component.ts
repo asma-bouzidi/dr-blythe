@@ -51,6 +51,26 @@ export class PatientComponent implements OnInit {
     ).subscribe();
   }
 
+  deletePatient(patientId: string): void {
+
+    if (confirm('Are you sure you want to delete this Patient?')) {
+      this.patientService.deletePatientById(patientId).pipe(
+        tap(() => {
+          this.patients = this.patients.filter(patient => patient.id !== patientId);
+          this.message = 'Patient deleted successfully';
+          this.toast.success(this.message, '', 3000);
+          //this.ngOnInit();
+        }),
+        catchError((error) => {
+          this.message = 'Error deleting patient';
+          this.toast.danger(this.message, '', 3000);
+          console.error(error);
+          return EMPTY;
+        })
+      ).subscribe();
+    }
+  }
+
   addPatient() {
     this.router.navigate(['patient/add']);
   }
