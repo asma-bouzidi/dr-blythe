@@ -13,6 +13,7 @@ import {Patient} from '../../../models/patient.model';
 import {MatCheckbox} from '@angular/material/checkbox';
 import {Util} from '../../../utils/Util';
 import {MatButton} from "@angular/material/button";
+import {Router} from "@angular/router";
 
 @Component({
   selector: 'app-patient-add',
@@ -40,6 +41,7 @@ export class PatientAddComponent {
   protected readonly ToasterPosition = ToasterPosition;
 
   constructor(
+    private router: Router,
     private patientService: PatientService,
     private toast: NgToastService,
   ) {
@@ -51,9 +53,13 @@ export class PatientAddComponent {
       .pipe(
         tap(() => {
           this.message = 'Patient created successfully!';
-          this.toast.success(this.message, '', 3000);
+          setTimeout(() => {
+            this.toast.success(this.message, '', 3000);
+          });
           this.resetForm();
-
+          setTimeout(() => {
+            this.router.navigate(['/']);
+          }, 3000);
         }),
         catchError((error) => {
           this.message = 'Error creating patient!';
