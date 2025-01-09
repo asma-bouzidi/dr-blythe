@@ -7,6 +7,9 @@ import {NgForOf, NgIf} from "@angular/common";
 import {MatButton, MatIconButton} from "@angular/material/button";
 import {MatIcon} from "@angular/material/icon";
 import {Router} from "@angular/router";
+import {
+  update
+} from "@angular-devkit/build-angular/src/tools/esbuild/angular/compilation/parallel-worker";
 
 @Component({
   selector: 'app-patient',
@@ -72,9 +75,15 @@ export class PatientComponent implements OnInit {
     }
   }
 
+  updatePatient(PatientId: string): void {
+    this.router.navigate(['patient/' + PatientId]);
+  }
+
+
   addPatient() {
     this.router.navigate(['patient/add']);
   }
 
+  protected readonly update = update;
 }
 

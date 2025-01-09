@@ -83,11 +83,8 @@ paths:
         - Patient
       responses:
         "200":
-          description: patient updated
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/Patient"
+          description: patient updated successfully
+
 
     delete:
       summary: Delete an existing patient
