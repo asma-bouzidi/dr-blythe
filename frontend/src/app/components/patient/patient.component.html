@@ -19,7 +19,9 @@
       <td>{{ patient.name }}</td>
       <td>{{ patient.age }}</td>
       <td>
-        <button (click)="deletePatient(patient.id)">Delete Patient</button>
+        <button (click)="deletePatient(patient.id)" color="warn" mat-icon-button>
+          <mat-icon>delete</mat-icon>
+        </button>
       </td>
     </tr>
     </tbody>

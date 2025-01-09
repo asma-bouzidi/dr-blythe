@@ -4,7 +4,8 @@ import {catchError, EMPTY, tap} from "rxjs";
 import {NgToastService} from "ng-angular-popup";
 import {PatientService} from "../../services/patient.service";
 import {NgForOf, NgIf} from "@angular/common";
-import {MatButton} from "@angular/material/button";
+import {MatButton, MatIconButton} from "@angular/material/button";
+import {MatIcon} from "@angular/material/icon";
 import {Router} from "@angular/router";
 
 @Component({
@@ -13,7 +14,9 @@ import {Router} from "@angular/router";
   imports: [
     NgIf,
     NgForOf,
-    MatButton
+    MatButton,
+    MatIcon,
+    MatIconButton
   ],
   templateUrl: './patient.component.html',
   styleUrl: './patient.component.scss'
@@ -52,14 +55,12 @@ export class PatientComponent implements OnInit {
   }
 
   deletePatient(patientId: string): void {
-
     if (confirm('Are you sure you want to delete this Patient?')) {
       this.patientService.deletePatientById(patientId).pipe(
         tap(() => {
           this.patients = this.patients.filter(patient => patient.id !== patientId);
           this.message = 'Patient deleted successfully';
           this.toast.success(this.message, '', 3000);
-          //this.ngOnInit();
         }),
         catchError((error) => {
           this.message = 'Error deleting patient';
