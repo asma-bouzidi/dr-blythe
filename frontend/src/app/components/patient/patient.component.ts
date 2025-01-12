@@ -7,6 +7,8 @@ import {NgForOf, NgIf} from "@angular/common";
 import {MatButton, MatIconButton} from "@angular/material/button";
 import {MatIcon} from "@angular/material/icon";
 import {Router} from "@angular/router";
+import {MatTableModule} from '@angular/material/table';
+
 
 @Component({
   selector: 'app-patient',
@@ -16,13 +18,16 @@ import {Router} from "@angular/router";
     NgForOf,
     MatButton,
     MatIcon,
-    MatIconButton
+    MatIconButton,
+    MatTableModule
   ],
   templateUrl: './patient.component.html',
   styleUrl: './patient.component.scss'
 })
 export class PatientComponent implements OnInit {
   patients: Patient[] = [];
+
+  displayedColumns: string[] = ['name', 'age', 'gender', 'allergies', 'currentMedication', 'actions'];
 
   message: string = '';
 
@@ -48,7 +53,6 @@ export class PatientComponent implements OnInit {
         this.message = 'Error fetching patients!';
         this.toast.danger(this.message, '', 3000);
         console.error(error);
-        // Return an empty observable or handle the error as needed
         return EMPTY;
       })
     ).subscribe();

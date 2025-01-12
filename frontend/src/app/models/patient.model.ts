@@ -20,6 +20,4 @@ export interface Patient {
   identificationNumber: string;
   identificationDocumentId: string;
   identificationDocumentUrl: string;
-
-
 }

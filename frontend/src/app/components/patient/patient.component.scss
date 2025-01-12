@@ -2,3 +2,9 @@
   margin-left: auto;
   display: block;
 }
+
+.header-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
