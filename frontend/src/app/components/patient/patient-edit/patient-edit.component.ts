@@ -42,8 +42,11 @@ export class PatientEditComponent implements OnInit {
   ) {
   }
 
+  routeId = this.route.snapshot.paramMap.get('patientId');
+
   ngOnInit() {
-    const patientId = this.route.snapshot.paramMap.get('patientId'); // Get patient ID from route
+    const patientId = this.routeId;
+
     if (patientId) {
       this.fetchPatient(patientId); // Fetch patient data by ID
     } else {
@@ -75,6 +78,7 @@ export class PatientEditComponent implements OnInit {
   }
 
   updatePatient() {
+    const patientId = this.routeId;
     if (this.patient?.id) {
       this.patientService
       .updatePatientById(this.patient.id, this.patient)
@@ -83,7 +87,7 @@ export class PatientEditComponent implements OnInit {
           this.message = 'Patient updated successfully!';
           this.toast.success(this.message, '', 3000);
           setTimeout(() => {
-            this.router.navigate(['/']); // Redirect to patient list or another page
+            this.navigateToPatientEdit(patientId!);
           }, 3000);
         }),
         catchError((error) => {
@@ -98,5 +102,9 @@ export class PatientEditComponent implements OnInit {
       this.message = 'Patient ID is missing!';
       this.toast.danger(this.message, '', 3000);
     }
+  }
+
+  navigateToPatientEdit(patientId: string): void {
+    this.router.navigate(['patient/details/', patientId]);
   }
 }
