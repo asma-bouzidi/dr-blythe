@@ -7,15 +7,15 @@
       <h4>Patient Identification</h4>
       <mat-card-content>
         <mat-form-field>
-          <mat-label>Name</mat-label>
+          <label>Name</label>
           <input [(ngModel)]="patient.name" id="name" matInput name="name"/>
         </mat-form-field>
         <mat-form-field>
-          <mat-label>Age</mat-label>
+          <label>Age</label>
           <input [(ngModel)]="patient.age" id="age" matInput name="age" type="number"/>
         </mat-form-field>
         <mat-form-field>
-          <mat-label>Gender</mat-label>
+          <label>Gender</label>
           <input [(ngModel)]="patient.gender" id="gender" matInput name="gender"/>
         </mat-form-field>
       </mat-card-content>
@@ -26,15 +26,15 @@
       <mat-card-title>Contact Information</mat-card-title>
       <mat-card-content>
         <mat-form-field>
-          <mat-label>Email</mat-label>
+          <label>Email</label>
           <input [(ngModel)]="patient.email" id="email" matInput name="email" type="email"/>
         </mat-form-field>
         <mat-form-field>
-          <mat-label>Phone</mat-label>
+          <label>Phone</label>
           <input [(ngModel)]="patient.phone" id="phone" matInput name="phone" type="tel"/>
         </mat-form-field>
         <mat-form-field>
-          <mat-label>Address</mat-label>
+          <label>Address</label>
           <input [(ngModel)]="patient.address" id="address" matInput name="address"/>
         </mat-form-field>
       </mat-card-content>
@@ -45,12 +45,12 @@
       <mat-card-title>Emergency Contact</mat-card-title>
       <mat-card-content>
         <mat-form-field>
-          <mat-label>Contact Name</mat-label>
+          <label>Contact Name</label>
           <input [(ngModel)]="patient.emergencyContactName" id="emergencyContactName" matInput
                  name="emergencyContactName"/>
         </mat-form-field>
         <mat-form-field>
-          <mat-label>Contact Number</mat-label>
+          <label>Contact Number</label>
           <input [(ngModel)]="patient.emergencyContactNumber" id="emergencyContactNumber" matInput
                  name="emergencyContactNumber" type="tel"/>
         </mat-form-field>
@@ -62,12 +62,12 @@
       <mat-card-title>Medical Information</mat-card-title>
       <mat-card-content>
         <mat-form-field>
-          <mat-label>Allergies</mat-label>
+          <label>Allergies</label>
           <textarea [(ngModel)]="patient.allergies" id="allergies" matInput
                     name="allergies"></textarea>
         </mat-form-field>
         <mat-form-field>
-          <mat-label>Current Medication</mat-label>
+          <label>Current Medication</label>
           <textarea [(ngModel)]="patient.currentMedication" id="currentMedication" matInput
                     name="currentMedication"></textarea>
         </mat-form-field>
@@ -75,12 +75,12 @@
           Primary Consent
         </mat-checkbox>
         <mat-form-field>
-          <mat-label>Family Medical History</mat-label>
+          <label>Family Medical History</label>
           <textarea [(ngModel)]="patient.familyMedicalHistory" id="familyMedicalHistory" matInput
                     name="familyMedicalHistory"></textarea>
         </mat-form-field>
         <mat-form-field>
-          <mat-label>Past Medical History</mat-label>
+          <label>Past Medical History</label>
           <textarea [(ngModel)]="patient.pastMedicalHistory" id="pastMedicalHistory" matInput
                     name="pastMedicalHistory"></textarea>
         </mat-form-field>
@@ -92,12 +92,12 @@
       <mat-card-title>Insurance Information</mat-card-title>
       <mat-card-content>
         <mat-form-field>
-          <mat-label>Provider</mat-label>
+          <label>Provider</label>
           <input [(ngModel)]="patient.insuranceProvider" id="insuranceProvider" matInput
                  name="insuranceProvider"/>
         </mat-form-field>
         <mat-form-field>
-          <mat-label>Policy Number</mat-label>
+          <label>Policy Number</label>
           <input [(ngModel)]="patient.insurancePolicyNumber" id="insurancePolicyNumber" matInput
                  name="insurancePolicyNumber"/>
         </mat-form-field>
@@ -109,22 +109,22 @@
       <mat-card-title>Identification</mat-card-title>
       <mat-card-content>
         <mat-form-field>
-          <mat-label>Type</mat-label>
+          <label>Type</label>
           <input [(ngModel)]="patient.identificationType" id="identificationType" matInput
                  name="identificationType"/>
         </mat-form-field>
         <mat-form-field>
-          <mat-label>Number</mat-label>
+          <label>Number</label>
           <input [(ngModel)]="patient.identificationNumber" id="identificationNumber" matInput
                  name="identificationNumber"/>
         </mat-form-field>
         <mat-form-field>
-          <mat-label>Document ID</mat-label>
+          <label>Document ID</label>
           <input [(ngModel)]="patient.identificationDocumentId" id="identificationDocumentId"
                  matInput name="identificationDocumentId"/>
         </mat-form-field>
         <mat-form-field>
-          <mat-label>Document URL</mat-label>
+          <label>Document URL</label>
           <input [(ngModel)]="patient.identificationDocumentUrl" id="identificationDocumentUrl"
                  matInput name="identificationDocumentUrl"
                  type="url"/>

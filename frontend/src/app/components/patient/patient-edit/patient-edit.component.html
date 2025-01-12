@@ -1,0 +1,49 @@
+<div class="container" *ngIf="patient !== null; else noData">
+  <h2>Update Patient</h2>
+
+  <form (ngSubmit)="updatePatient()">
+    <!-- Patient Identification -->
+    <mat-card>
+      <h4>Patient Identification</h4>
+      <mat-card-content>
+        <mat-form-field>
+          <label>Name</label>
+          <input [(ngModel)]="patient.name" id="name" matInput name="name" required/>
+        </mat-form-field>
+        <mat-form-field>
+          <label>Age</label>
+          <input [(ngModel)]="patient.age" id="age" matInput name="age" type="number" required/>
+        </mat-form-field>
+        <mat-form-field>
+          <label>Gender</label>
+          <input [(ngModel)]="patient.gender" id="gender" matInput name="gender" required/>
+        </mat-form-field>
+      </mat-card-content>
+    </mat-card>
+
+    <!-- Contact Information -->
+    <mat-card>
+      <mat-card-title>Contact Information</mat-card-title>
+      <mat-card-content>
+        <mat-form-field>
+          <label>Email</label>
+          <input [(ngModel)]="patient.email" id="email" matInput name="email" type="email"
+                 required/>
+        </mat-form-field>
+        <mat-form-field>
+          <label>Phone</label>
+          <input [(ngModel)]="patient.phone" id="phone" matInput name="phone" type="tel" required/>
+        </mat-form-field>
+      </mat-card-content>
+    </mat-card>
+
+    <button class="align-right" color="primary" mat-flat-button type="submit">
+      Update Patient
+    </button>
+  </form>
+</div>
+
+<ng-template #noData>
+  <p *ngIf="message">{{ message }}</p>
+  <p *ngIf="!message">Loading patient data...</p>
+</ng-template>

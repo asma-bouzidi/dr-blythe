@@ -80,5 +80,9 @@ export class PatientComponent implements OnInit {
     this.router.navigate(['patient/add']);
   }
 
+  navigateToPatientEdit(patientId: string): void {
+    this.router.navigate(['patient/edit/', patientId]);
+  }
+
 }
 

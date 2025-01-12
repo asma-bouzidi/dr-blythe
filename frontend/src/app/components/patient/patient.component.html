@@ -19,12 +19,16 @@
       <td>{{ patient.name }}</td>
       <td>{{ patient.age }}</td>
       <td>
-        <button (click)="deletePatient(patient.id)" color="warn" mat-icon-button>
-          <mat-icon>delete</mat-icon>
-        </button>
         <button (click)="navigateToPatientDetails(patient.id)" color="primary" mat-icon-button>
           <mat-icon>visibility</mat-icon>
         </button>
+        <button (click)="navigateToPatientEdit(patient.id)" color="accent" mat-icon-button>
+          <mat-icon>edit</mat-icon>
+        </button>
+        <button (click)="deletePatient(patient.id)" color="warn" mat-icon-button>
+          <mat-icon>delete</mat-icon>
+        </button>
+
       </td>
     </tr>
     </tbody>
