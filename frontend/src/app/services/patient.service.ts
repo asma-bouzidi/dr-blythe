@@ -1,6 +1,7 @@
-import {Injectable} from '@angular/core';
-import {HttpClient} from "@angular/common/http";
-import {Observable} from "rxjs";
+import { Injectable } from '@angular/core';
+import { HttpClient } from '@angular/common/http';
+import { Observable, throwError } from 'rxjs';
+import { catchError } from 'rxjs/operators';
 import {Patient} from "../models/patient.model";
 
 @Injectable({
@@ -24,4 +25,19 @@ export class PatientService {
   deletePatientById(patientId: string): Observable<void> {
     return this.http.delete<void>(`${this.apiUrl}/patient/${patientId}`);
   }
+
+  viewPatientDetails(patientId: string): Observable<any> {
+    return this.http.get<any>(`${this.apiUrl}/patient/${patientId}`);
+  }
+
+  getPatientById(patientId: string): Observable<Patient> {
+    return this.http.get<Patient>(`${this.apiUrl}/patient/${patientId}`).pipe(
+      catchError(err => {
+        console.error('Error fetching patient data', err);
+        return throwError(() => 'Failed to retrieve patient data.');
+      })
+    );
+  }
+
+
 }
