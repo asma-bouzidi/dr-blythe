@@ -15,7 +15,7 @@ export const PatientRoutes: Routes =
       component: PatientAddComponent
     },
     {
-      path: 'details',
+      path: 'details/:patientId',
       component: PatientDetailsComponent
     },
   ];

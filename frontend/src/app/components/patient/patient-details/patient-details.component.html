@@ -1,13 +1,14 @@
-<div class="container">
-  <h2>View Patient Details</h2>
-
-  <form (ngSubmit)="viewPatientDetails()">
-    <mat-card>
-      <h3>Patient Details</h3>
-      <h4>Patient Identification</h4>
-      <table>
-
-      </table>
-    </mat-card>
-  </form>
+<div *ngIf="patient">
+  <h2>Patient Details</h2>
+  <p><strong>Name:</strong> {{ patient.name }}</p>
+  <p><strong>Age:</strong> {{ patient.age }}</p>
 </div>
+
+<div *ngIf="!patient && error">
+  <p>Error fetching patient data: {{ error }}</p>
+</div>
+
+<div *ngIf="!patient && !error">
+  <p>Loading patient data...</p>
+</div>
+

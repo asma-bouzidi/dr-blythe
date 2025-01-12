@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import {MatSelectModule} from '@angular/material/select';
 import {MatFormFieldModule} from '@angular/material/form-field';
@@ -26,28 +26,31 @@ import {Util} from '../../../utils/Util';
   templateUrl: './patient-details.component.html',
   styleUrl: './patient-details.component.scss'
 })
-export class PatientDetailsComponent {
-  patient: Patient = Util.initializePatient();
-  message = '';
+export class PatientDetailsComponent implements OnInit {
+  patient: Patient | null = null;
+  error: string | null = null;
 
   protected readonly ToasterPosition = ToasterPosition;
 
-  constructor(private route: ActivatedRoute,
-              private patientService: PatientService,
-              ) {
-  }
+  constructor(
+    private route: ActivatedRoute,
+    private patientService: PatientService
+  ) {}
 
-
-  viewPatientDetails() {
+  ngOnInit(): void {
     const patientId = this.route.snapshot.paramMap.get('patientId');
     if (patientId) {
-      this.patientService.viewPatientDetails(patientId).subscribe({
-        next: (data) => this.patient = data,
-        error: (err) => this.message = `Error fetching patient: ${err}`
-      });
+      this.loadPatientData(patientId);
     } else {
-      this.message = 'Patient ID not provided in route.';
+      this.error = 'Invalid patient ID';
     }
+  }
+
+  loadPatientData(patientId: string): void {
+    this.patientService.getPatientById(patientId).subscribe({
+      next: (data) => (this.patient = data),
+      error: (err) => (this.error = err)
+    });
   }
 
 

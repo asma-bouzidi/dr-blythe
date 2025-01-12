@@ -72,8 +72,8 @@ export class PatientComponent implements OnInit {
     }
   }
 
-  viewPatientDetails(patientId: string): void {
-    this.router.navigate(['patient/details', patientId]);
+  navigateToPatientDetails(patientId: string): void {
+    this.router.navigate(['patient/details/', patientId]);
   }
 
   addPatient() {
