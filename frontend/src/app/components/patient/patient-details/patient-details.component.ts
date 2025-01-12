@@ -6,7 +6,7 @@ import {FormsModule} from '@angular/forms';
 import {PatientService} from '../../../services/patient.service';
 import {NgIf} from '@angular/common';
 import {NgToastModule,} from 'ng-angular-popup';
-import {Patient} from '../../../models/patient.model';
+import {MatTableModule} from '@angular/material/table';
 
 @Component({
   selector: 'app-patient-details',
@@ -17,14 +17,39 @@ import {Patient} from '../../../models/patient.model';
     FormsModule,
     NgIf,
     NgToastModule,
-
+    MatTableModule
   ],
   templateUrl: './patient-details.component.html',
   styleUrl: './patient-details.component.scss'
 })
 export class PatientDetailsComponent implements OnInit {
-  patient: Patient | null = null;
+  patient: any | null = null;
   error: string | null = null;
+
+  displayedColumns: string[] = [
+    'name',
+    'age',
+    'gender',
+    'address',
+    'email',
+    'phone',
+    'occupation',
+    'emergencyContactName',
+    'emergencyContactNumber',
+    'insuranceProvider',
+    'insurancePolicyNumber',
+    'allergies',
+    'currentMedication',
+    'primaryConsent',
+    'familyMedicalHistory',
+    'pastMedicalHistory',
+    'identificationType',
+    'identificationNumber',
+    'identificationDocumentId',
+    'identificationDocumentUrl'];
+
+
+  message: string = '';
 
   constructor(
     private route: ActivatedRoute,
