@@ -1,4 +1,5 @@
 import {Patient} from '../models/patient.model';
+import {Doctor} from '../models/doctor.model';
 
 export class Util {
   static initializePatient(): Patient {
@@ -25,5 +26,13 @@ export class Util {
       identificationDocumentId: '',
       identificationDocumentUrl: '',
     };
+  }
+  static initializeDoctor(): Doctor {
+    return {
+      id: '',
+      name: '',
+      image: '',
+      patients: '',
+    }
   }
 }
