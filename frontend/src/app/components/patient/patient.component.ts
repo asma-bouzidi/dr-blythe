@@ -9,7 +9,6 @@ import {MatIcon} from "@angular/material/icon";
 import {Router} from "@angular/router";
 import {MatTableModule} from '@angular/material/table';
 
-
 @Component({
   selector: 'app-patient',
   standalone: true,
@@ -19,7 +18,7 @@ import {MatTableModule} from '@angular/material/table';
     MatButton,
     MatIcon,
     MatIconButton,
-    MatTableModule
+    MatTableModule,
   ],
   templateUrl: './patient.component.html',
   styleUrl: './patient.component.scss'

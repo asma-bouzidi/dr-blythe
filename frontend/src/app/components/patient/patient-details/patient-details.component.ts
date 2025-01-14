@@ -7,6 +7,11 @@ import {PatientService} from '../../../services/patient.service';
 import {NgIf} from '@angular/common';
 import {NgToastModule,} from 'ng-angular-popup';
 import {MatTableModule} from '@angular/material/table';
+import {MatCard, MatCardContent, MatCardHeader, MatCardTitle} from "@angular/material/card";
+import {MatInput} from "@angular/material/input";
+import {MatIcon} from "@angular/material/icon";
+import {MatCheckbox} from "@angular/material/checkbox";
+import {MatProgressSpinner} from "@angular/material/progress-spinner";
 
 @Component({
   selector: 'app-patient-details',
@@ -17,7 +22,15 @@ import {MatTableModule} from '@angular/material/table';
     FormsModule,
     NgIf,
     NgToastModule,
-    MatTableModule
+    MatTableModule,
+    MatCard,
+    MatCardContent,
+    MatCardTitle,
+    MatInput,
+    MatCardHeader,
+    MatIcon,
+    MatCheckbox,
+    MatProgressSpinner
   ],
   templateUrl: './patient-details.component.html',
   styleUrl: './patient-details.component.scss'

@@ -1,125 +1,115 @@
-<div *ngIf="patient">
-  <h2>Patient Details</h2>
+<div *ngIf="patient" class="patient-details">
+  <h2 class="header-title">Patient Details</h2>
 
+  <!-- Patient Identification -->
+  <mat-card class="patient-card">
+    <mat-card-header>
+      <mat-card-title>
+        <mat-icon>badge</mat-icon>
+        Patient Identification
+      </mat-card-title>
+    </mat-card-header>
+    <mat-card-content>
+      <div class="patient-info">
+        <p><strong>Name:</strong> {{ patient.name }}</p>
+        <p><strong>Age:</strong> {{ patient.age }}</p>
+        <p><strong>Gender:</strong> {{ patient.gender }}</p>
+      </div>
+    </mat-card-content>
+  </mat-card>
 
-  <br>
+  <!-- Contact Information -->
+  <mat-card class="patient-card">
+    <mat-card-header>
+      <mat-card-title>
+        <mat-icon>contact_phone</mat-icon>
+        Contact Information
+      </mat-card-title>
+    </mat-card-header>
+    <mat-card-content>
+      <div class="patient-info">
+        <p><strong>Email:</strong> {{ patient.email }}</p>
+        <p><strong>Phone:</strong> {{ patient.phone }}</p>
+        <p><strong>Address:</strong> {{ patient.address }}</p>
+      </div>
+    </mat-card-content>
+  </mat-card>
 
-  <table mat-table [dataSource]=[patient] class="mat-elevation-z8 demo-table">
+  <!-- Emergency Contact -->
+  <mat-card class="patient-card">
+    <mat-card-header>
+      <mat-card-title>
+        <mat-icon>emergency</mat-icon>
+        Emergency Contact
+      </mat-card-title>
+    </mat-card-header>
+    <mat-card-content>
+      <div class="patient-info">
+        <p><strong>Contact Name:</strong> {{ patient.emergencyContactName }}</p>
+        <p><strong>Contact Number:</strong> {{ patient.emergencyContactNumber }}</p>
+      </div>
+    </mat-card-content>
+  </mat-card>
 
-    <!-- Name Column -->
-    <ng-container matColumnDef="name">
-      <th mat-header-cell *matHeaderCellDef>Name</th>
-      <td mat-cell *matCellDef="let patient"> {{ patient.name }}</td>
-    </ng-container>
+  <!-- Medical Information -->
+  <mat-card class="patient-card">
+    <mat-card-header>
+      <mat-card-title>
+        <mat-icon>medical_services</mat-icon>
+        Medical Information
+      </mat-card-title>
+    </mat-card-header>
+    <mat-card-content>
+      <div class="patient-info">
+        <p><strong>Allergies:</strong> {{ patient.allergies }}</p>
+        <p><strong>Current Medication:</strong> {{ patient.currentMedication }}</p>
+        <p><strong>Primary Consent:</strong> {{ patient.primaryConsent }}</p>
+        <p><strong>Family Medical History:</strong> {{ patient.familyMedicalHistory }}</p>
+        <p><strong>Past Medical History:</strong> {{ patient.pastMedicalHistory }}</p>
+      </div>
+    </mat-card-content>
+  </mat-card>
 
-    <ng-container matColumnDef="age">
-      <th mat-header-cell *matHeaderCellDef>Age</th>
-      <td mat-cell *matCellDef="let patient"> {{ patient.age }}</td>
-    </ng-container>
+  <!-- Insurance Information -->
+  <mat-card class="patient-card">
+    <mat-card-header>
+      <mat-card-title>
+        <mat-icon>health_and_safety</mat-icon>
+        Insurance Information
+      </mat-card-title>
+    </mat-card-header>
+    <mat-card-content>
+      <div class="patient-info">
+        <p><strong>Provider:</strong> {{ patient.insuranceProvider }}</p>
+        <p><strong>Policy Number:</strong> {{ patient.insurancePolicyNumber }}</p>
+      </div>
+    </mat-card-content>
+  </mat-card>
 
-    <ng-container matColumnDef="gender">
-      <th mat-header-cell *matHeaderCellDef>Gender</th>
-      <td mat-cell *matCellDef="let patient"> {{ patient.gender }}</td>
-    </ng-container>
-
-    <ng-container matColumnDef="address">
-      <th mat-header-cell *matHeaderCellDef>Address</th>
-      <td mat-cell *matCellDef="let patient"> {{ patient.address }}</td>
-    </ng-container>
-
-    <ng-container matColumnDef="email">
-      <th mat-header-cell *matHeaderCellDef>Email</th>
-      <td mat-cell *matCellDef="let patient"> {{ patient.email }}</td>
-    </ng-container>
-
-    <ng-container matColumnDef="phone">
-      <th mat-header-cell *matHeaderCellDef>Phone</th>
-      <td mat-cell *matCellDef="let patient"> {{ patient.phone }}</td>
-    </ng-container>
-
-    <ng-container matColumnDef="occupation">
-      <th mat-header-cell *matHeaderCellDef>Occupation</th>
-      <td mat-cell *matCellDef="let patient"> {{ patient.occupation }}</td>
-    </ng-container>
-
-    <ng-container matColumnDef="emergencyContactName">
-      <th mat-header-cell *matHeaderCellDef>Emergency Contact Name</th>
-      <td mat-cell *matCellDef="let patient"> {{ patient.emergencyContactName }}</td>
-    </ng-container>
-
-    <ng-container matColumnDef="emergencyContactNumber">
-      <th mat-header-cell *matHeaderCellDef>Emergency Contact Number</th>
-      <td mat-cell *matCellDef="let patient"> {{ patient.emergencyContactNumber }}</td>
-    </ng-container>
-
-    <ng-container matColumnDef="insuranceProvider">
-      <th mat-header-cell *matHeaderCellDef>Insurance Provider</th>
-      <td mat-cell *matCellDef="let patient"> {{ patient.insuranceProvider }}</td>
-    </ng-container>
-
-    <ng-container matColumnDef="insurancePolicyNumber">
-      <th mat-header-cell *matHeaderCellDef>Insurance Policy Number</th>
-      <td mat-cell *matCellDef="let patient"> {{ patient.insurancePolicyNumber }}</td>
-    </ng-container>
-
-
-    <ng-container matColumnDef="allergies">
-      <th mat-header-cell *matHeaderCellDef>Allergies</th>
-      <td mat-cell *matCellDef="let patient"> {{ patient.allergies }}</td>
-    </ng-container>
-
-    <ng-container matColumnDef="currentMedication">
-      <th mat-header-cell *matHeaderCellDef>Current Medication</th>
-      <td mat-cell *matCellDef="let patient"> {{ patient.currentMedication }}</td>
-    </ng-container>
-
-    <ng-container matColumnDef="primaryConsent">
-      <th mat-header-cell *matHeaderCellDef>Primary Consent</th>
-      <td mat-cell *matCellDef="let patient"> {{ patient.primaryConsent }}</td>
-    </ng-container>
-
-    <ng-container matColumnDef="familyMedicalHistory">
-      <th mat-header-cell *matHeaderCellDef>Family Medical History</th>
-      <td mat-cell *matCellDef="let patient"> {{ patient.familyMedicalHistory }}</td>
-    </ng-container>
-
-    <ng-container matColumnDef="pastMedicalHistory">
-      <th mat-header-cell *matHeaderCellDef>Past Medical History</th>
-      <td mat-cell *matCellDef="let patient"> {{ patient.pastMedicalHistory }}</td>
-    </ng-container>
-
-    <ng-container matColumnDef="identificationType">
-      <th mat-header-cell *matHeaderCellDef>Identification Type</th>
-      <td mat-cell *matCellDef="let patient"> {{ patient.identificationType }}</td>
-    </ng-container>
-
-    <ng-container matColumnDef="identificationNumber">
-      <th mat-header-cell *matHeaderCellDef>Identification Number</th>
-      <td mat-cell *matCellDef="let patient"> {{ patient.identificationNumber }}</td>
-    </ng-container>
-
-    <ng-container matColumnDef="identificationDocumentId">
-      <th mat-header-cell *matHeaderCellDef>Identification Document Id</th>
-      <td mat-cell *matCellDef="let patient"> {{ patient.identificationDocumentId }}</td>
-    </ng-container>
-
-    <ng-container matColumnDef="identificationDocumentUrl">
-      <th mat-header-cell *matHeaderCellDef>Identification Document Url</th>
-      <td mat-cell *matCellDef="let patient"> {{ patient.identificationDocumentUrl }}</td>
-    </ng-container>
-
-
-    <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
-    <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
-
-  </table>
+  <!-- Identification -->
+  <mat-card class="patient-card">
+    <mat-card-header>
+      <mat-card-title>
+        <mat-icon>fingerprint</mat-icon>
+        Identification
+      </mat-card-title>
+    </mat-card-header>
+    <mat-card-content>
+      <div class="patient-info">
+        <p><strong>Type:</strong> {{ patient.identificationType }}</p>
+        <p><strong>Number:</strong> {{ patient.identificationNumber }}</p>
+        <p><strong>Document ID:</strong> {{ patient.identificationDocumentId }}</p>
+        <p><strong>Document URL: </strong>{{ patient.identificationDocumentUrl }}</p>
+      </div>
+    </mat-card-content>
+  </mat-card>
 </div>
 
-
-<div *ngIf="!patient && error">
+<div *ngIf="!patient && error" class="error-container">
   <p>Error fetching patient data: {{ error }}</p>
 </div>
 
-<div *ngIf="!patient && !error">
+<div *ngIf="!patient && !error" class="loading-container">
+  <mat-spinner></mat-spinner>
   <p>Loading patient data...</p>
 </div>

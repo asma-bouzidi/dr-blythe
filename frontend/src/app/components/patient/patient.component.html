@@ -1,58 +1,74 @@
 <div class="header-container">
-  <h2>List of Patients</h2>
-  <button mat-flat-button color="primary" (click)="addPatient()">
+  <h2 class="header-title">List of Patients</h2>
+  <button (click)="addPatient()" color="primary" mat-flat-button>
     Add Patient
   </button>
 </div>
 
-<br>
+<div class="table-container mat-elevation-z8" id="tableContainer">
+  <table [dataSource]="patients" class="demo-table" mat-table>
+    <!-- Name Column -->
+    <ng-container matColumnDef="name">
+      <th *matHeaderCellDef mat-header-cell> Name</th>
+      <td *matCellDef="let patient" mat-cell> {{ patient.name }}</td>
+    </ng-container>
 
-<table mat-table [dataSource]="patients" class="mat-elevation-z8 demo-table">
+    <!-- Age Column -->
+    <ng-container matColumnDef="age">
+      <th *matHeaderCellDef mat-header-cell> Age</th>
+      <td *matCellDef="let patient" mat-cell> {{ patient.age }}</td>
+    </ng-container>
 
-  <!-- Name Column -->
-  <ng-container matColumnDef="name">
-    <th mat-header-cell *matHeaderCellDef>Name</th>
-    <td mat-cell *matCellDef="let patient"> {{ patient.name }} </td>
-  </ng-container>
+    <!-- Gender Column -->
+    <ng-container matColumnDef="gender">
+      <th *matHeaderCellDef mat-header-cell> Gender</th>
+      <td *matCellDef="let patient" mat-cell> {{ patient.gender }}</td>
+    </ng-container>
 
-  <ng-container matColumnDef="age">
-    <th mat-header-cell *matHeaderCellDef>Age</th>
-    <td mat-cell *matCellDef="let patient"> {{ patient.age }} </td>
-  </ng-container>
+    <!-- Allergies Column -->
+    <ng-container matColumnDef="allergies">
+      <th *matHeaderCellDef mat-header-cell> Allergies</th>
+      <td *matCellDef="let patient" mat-cell> {{ patient.allergies }}</td>
+    </ng-container>
 
-  <ng-container matColumnDef="gender">
-    <th mat-header-cell *matHeaderCellDef>Gender</th>
-    <td mat-cell *matCellDef="let patient"> {{ patient.gender }} </td>
-  </ng-container>
+    <!-- Current Medication Column -->
+    <ng-container matColumnDef="currentMedication">
+      <th *matHeaderCellDef mat-header-cell> Current Medication</th>
+      <td *matCellDef="let patient" mat-cell> {{ patient.currentMedication }}</td>
+    </ng-container>
 
-  <ng-container matColumnDef="allergies">
-    <th mat-header-cell *matHeaderCellDef>Allergies</th>
-    <td mat-cell *matCellDef="let patient"> {{ patient.allergies }} </td>
-  </ng-container>
+    <!-- Actions Column -->
+    <ng-container matColumnDef="actions">
+      <th *matHeaderCellDef mat-header-cell> Actions</th>
+      <td *matCellDef="let patient" class="actions-cell" mat-cell>
+        <button
+          (click)="navigateToPatientDetails(patient.id)"
+          aria-label="View details"
+          color="primary"
+          mat-icon-button
+        >
+          <mat-icon>visibility</mat-icon>
+        </button>
+        <button
+          (click)="navigateToPatientEdit(patient.id)"
+          aria-label="Edit patient"
+          color="accent"
+          mat-icon-button
+        >
+          <mat-icon>edit</mat-icon>
+        </button>
+        <button
+          (click)="deletePatient(patient.id)"
+          aria-label="Delete patient"
+          color="warn"
+          mat-icon-button
+        >
+          <mat-icon>delete</mat-icon>
+        </button>
+      </td>
+    </ng-container>
 
-  <ng-container matColumnDef="currentMedication">
-    <th mat-header-cell *matHeaderCellDef>Current Medication</th>
-    <td mat-cell *matCellDef="let patient"> {{ patient.currentMedication }} </td>
-  </ng-container>
-
-  <!-- Actions Column -->
-  <ng-container matColumnDef="actions">
-    <th mat-header-cell *matHeaderCellDef>Actions</th>
-    <td mat-cell *matCellDef="let patient">
-      <button (click)="navigateToPatientDetails(patient.id)" color="primary" mat-icon-button>
-        <mat-icon>visibility</mat-icon>
-      </button>
-      <button (click)="navigateToPatientEdit(patient.id)" color="accent" mat-icon-button>
-        <mat-icon>edit</mat-icon>
-      </button>
-      <button (click)="deletePatient(patient.id)" color="warn" mat-icon-button>
-        <mat-icon>delete</mat-icon>
-      </button>
-    </td>
-  </ng-container>
-
-  <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
-  <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
-
-</table>
-
+    <tr *matHeaderRowDef="displayedColumns" mat-header-row></tr>
+    <tr *matRowDef="let row; columns: displayedColumns;" mat-row></tr>
+  </table>
+</div>
