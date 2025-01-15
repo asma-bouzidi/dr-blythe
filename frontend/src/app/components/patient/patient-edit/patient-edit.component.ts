@@ -5,11 +5,14 @@ import {PatientService} from "../../../services/patient.service";
 import {NgToastModule, NgToastService, ToasterPosition,} from 'ng-angular-popup';
 import {catchError, of, tap} from "rxjs";
 import {FormsModule} from "@angular/forms";
-import {MatCard, MatCardContent, MatCardTitle} from "@angular/material/card";
-import {MatFormField} from "@angular/material/form-field";
+import {MatCard, MatCardContent, MatCardHeader, MatCardTitle} from "@angular/material/card";
+import {MatFormField, MatFormFieldModule} from "@angular/material/form-field";
 import {NgIf} from "@angular/common";
-import {MatInput} from "@angular/material/input";
+import {MatInput, MatInputModule} from "@angular/material/input";
 import {MatButton} from "@angular/material/button";
+import {MatOption, MatSelect} from "@angular/material/select";
+import {MatIcon} from "@angular/material/icon";
+import {ScrollerComponent} from "../../scroller/scroller.component";
 
 @Component({
   selector: 'app-patient-edit',
@@ -23,7 +26,14 @@ import {MatButton} from "@angular/material/button";
     NgToastModule,
     NgIf,
     MatInput,
-    MatButton
+    MatButton,
+    MatSelect,
+    MatOption,
+    MatCardHeader,
+    MatIcon,
+    MatFormFieldModule,
+    MatInputModule,
+    ScrollerComponent,
   ],
   templateUrl: './patient-edit.component.html',
   styleUrl: './patient-edit.component.scss'
@@ -31,7 +41,7 @@ import {MatButton} from "@angular/material/button";
 export class PatientEditComponent implements OnInit {
   patient: Patient | null = null; // Initially null until data is fetched
   message = '';
-
+  routeId = this.route.snapshot.paramMap.get('patientId');
   protected readonly ToasterPosition = ToasterPosition;
 
   constructor(
@@ -41,8 +51,6 @@ export class PatientEditComponent implements OnInit {
     private toast: NgToastService
   ) {
   }
-
-  routeId = this.route.snapshot.paramMap.get('patientId');
 
   ngOnInit() {
     const patientId = this.routeId;

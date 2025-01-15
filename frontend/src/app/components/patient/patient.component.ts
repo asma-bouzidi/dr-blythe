@@ -3,23 +3,19 @@ import {Patient} from "../../models/patient.model";
 import {catchError, EMPTY, tap} from "rxjs";
 import {NgToastService} from "ng-angular-popup";
 import {PatientService} from "../../services/patient.service";
-import {NgForOf, NgIf} from "@angular/common";
 import {MatButton, MatIconButton} from "@angular/material/button";
 import {MatIcon} from "@angular/material/icon";
 import {Router} from "@angular/router";
 import {MatTableModule} from '@angular/material/table';
 
-
 @Component({
   selector: 'app-patient',
   standalone: true,
   imports: [
-    NgIf,
-    NgForOf,
     MatButton,
     MatIcon,
     MatIconButton,
-    MatTableModule
+    MatTableModule,
   ],
   templateUrl: './patient.component.html',
   styleUrl: './patient.component.scss'
@@ -89,4 +85,3 @@ export class PatientComponent implements OnInit {
   }
 
 }
-
