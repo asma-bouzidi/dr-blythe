@@ -1,186 +1,195 @@
-<div *ngIf="patient" class="patient-details">
-  <h2 class="header-title">Update Patient</h2>
+<div class="container">
 
-  <form (ngSubmit)="updatePatient()">
-    <!-- Patient Identification -->
-    <mat-card class="patient-card">
-      <mat-card-header>
-        <mat-card-title>
-          <mat-icon>badge</mat-icon>
-          Patient Identification
-        </mat-card-title>
-      </mat-card-header>
-      <mat-card-content>
-        <div class="patient-info">
-          <mat-form-field appearance="outline">
-            <mat-label>Name</mat-label>
-            <input [(ngModel)]="patient.name" matInput name="name"/>
-          </mat-form-field>
-          <mat-form-field appearance="outline">
-            <mat-label>Age</mat-label>
-            <input [(ngModel)]="patient.age" matInput name="age" type="number"/>
-          </mat-form-field>
-          <mat-form-field appearance="outline">
-            <mat-label>Gender</mat-label>
-            <mat-select [(ngModel)]="patient.gender" name="gender">
-              <mat-option value="Male">Male</mat-option>
-              <mat-option value="Female">Female</mat-option>
-              <mat-option value="Other">Other</mat-option>
-            </mat-select>
-          </mat-form-field>
-        </div>
-      </mat-card-content>
-    </mat-card>
+  <div *ngIf="patient" class="patient-details">
+    <h2 class="header-title">Update Patient</h2>
 
-    <!-- Contact Information -->
-    <mat-card class="patient-card">
-      <mat-card-header>
-        <mat-card-title>
-          <mat-icon>contact_phone</mat-icon>
-          Contact Information
-        </mat-card-title>
-      </mat-card-header>
-      <mat-card-content>
-        <div class="patient-info">
-          <mat-form-field appearance="outline">
-            <mat-label>Email</mat-label>
-            <input [(ngModel)]="patient.email" matInput name="email" type="email"/>
-          </mat-form-field>
-          <mat-form-field appearance="outline">
-            <mat-label>Phone</mat-label>
-            <input [(ngModel)]="patient.phone" matInput name="phone" type="tel"/>
-          </mat-form-field>
-          <mat-form-field appearance="outline">
-            <mat-label>Address</mat-label>
-            <textarea [(ngModel)]="patient.address" matInput name="address" rows="3"></textarea>
-          </mat-form-field>
-        </div>
-      </mat-card-content>
-    </mat-card>
+    <form (ngSubmit)="updatePatient()">
+      <!-- Patient Identification -->
+      <mat-card class="patient-card">
+        <mat-card-header>
+          <mat-card-title>
+            <mat-icon>badge</mat-icon>
+            Patient Identification
+          </mat-card-title>
+        </mat-card-header>
+        <mat-card-content>
+          <div class="patient-info">
+            <mat-form-field appearance="outline">
+              <mat-label>Name</mat-label>
+              <input [(ngModel)]="patient.name" matInput name="name"/>
+            </mat-form-field>
+            <mat-form-field appearance="outline">
+              <mat-label>Age</mat-label>
+              <input [(ngModel)]="patient.age" matInput name="age" type="number"/>
+            </mat-form-field>
+            <mat-form-field appearance="outline">
+              <mat-label>Gender</mat-label>
+              <mat-select [(ngModel)]="patient.gender" name="gender">
+                <mat-option value="Male">Male</mat-option>
+                <mat-option value="Female">Female</mat-option>
+                <mat-option value="Other">Other</mat-option>
+              </mat-select>
+            </mat-form-field>
+          </div>
+        </mat-card-content>
+      </mat-card>
 
-    <!-- Emergency Contact -->
-    <mat-card class="patient-card">
-      <mat-card-header>
-        <mat-card-title>
-          <mat-icon>emergency</mat-icon>
-          Emergency Contact
-        </mat-card-title>
-      </mat-card-header>
-      <mat-card-content>
-        <div class="patient-info">
-          <mat-form-field appearance="outline">
-            <mat-label>Contact Name</mat-label>
-            <input [(ngModel)]="patient.emergencyContactName" matInput name="emergencyContactName"/>
-          </mat-form-field>
-          <mat-form-field appearance="outline">
-            <mat-label>Contact Number</mat-label>
-            <input [(ngModel)]="patient.emergencyContactNumber" matInput
-                   name="emergencyContactNumber" type="tel"/>
-          </mat-form-field>
-        </div>
-      </mat-card-content>
-    </mat-card>
+      <!-- Contact Information -->
+      <mat-card class="patient-card">
+        <mat-card-header>
+          <mat-card-title>
+            <mat-icon>contact_phone</mat-icon>
+            Contact Information
+          </mat-card-title>
+        </mat-card-header>
+        <mat-card-content>
+          <div class="patient-info">
+            <mat-form-field appearance="outline">
+              <mat-label>Email</mat-label>
+              <input [(ngModel)]="patient.email" matInput name="email" type="email"/>
+            </mat-form-field>
+            <mat-form-field appearance="outline">
+              <mat-label>Phone</mat-label>
+              <input [(ngModel)]="patient.phone" matInput name="phone" type="tel"/>
+            </mat-form-field>
+            <mat-form-field appearance="outline">
+              <mat-label>Address</mat-label>
+              <textarea [(ngModel)]="patient.address" matInput name="address" rows="3"></textarea>
+            </mat-form-field>
+          </div>
+        </mat-card-content>
+      </mat-card>
 
-    <!-- Medical Information -->
-    <mat-card class="patient-card">
-      <mat-card-header>
-        <mat-card-title>
-          <mat-icon>medical_services</mat-icon>
-          Medical Information
-        </mat-card-title>
-      </mat-card-header>
-      <mat-card-content>
-        <div class="patient-info">
-          <mat-form-field appearance="outline">
-            <mat-label>Allergies</mat-label>
-            <textarea [(ngModel)]="patient.allergies" matInput name="allergies" rows="3"></textarea>
-          </mat-form-field>
-          <mat-form-field appearance="outline">
-            <mat-label>Current Medication</mat-label>
-            <textarea [(ngModel)]="patient.currentMedication" matInput name="currentMedication"
-                      rows="3"></textarea>
-          </mat-form-field>
-          <mat-form-field appearance="outline">
-            <mat-label>Primary Consent</mat-label>
-            <textarea [(ngModel)]="patient.primaryConsent" matInput name="primaryConsent"
-                      rows="3"></textarea>
-          </mat-form-field>
-          <mat-form-field appearance="outline">
-            <mat-label>Family Medical History</mat-label>
-            <textarea [(ngModel)]="patient.familyMedicalHistory" matInput
-                      name="familyMedicalHistory"
-                      rows="3"></textarea>
-          </mat-form-field>
-          <mat-form-field appearance="outline">
-            <mat-label>Past Medical History</mat-label>
-            <textarea [(ngModel)]="patient.pastMedicalHistory" matInput name="pastMedicalHistory"
-                      rows="3"></textarea>
-          </mat-form-field>
-        </div>
-      </mat-card-content>
-    </mat-card>
+      <!-- Emergency Contact -->
+      <mat-card class="patient-card">
+        <mat-card-header>
+          <mat-card-title>
+            <mat-icon>emergency</mat-icon>
+            Emergency Contact
+          </mat-card-title>
+        </mat-card-header>
+        <mat-card-content>
+          <div class="patient-info">
+            <mat-form-field appearance="outline">
+              <mat-label>Contact Name</mat-label>
+              <input [(ngModel)]="patient.emergencyContactName" matInput
+                     name="emergencyContactName"/>
+            </mat-form-field>
+            <mat-form-field appearance="outline">
+              <mat-label>Contact Number</mat-label>
+              <input [(ngModel)]="patient.emergencyContactNumber" matInput
+                     name="emergencyContactNumber" type="tel"/>
+            </mat-form-field>
+          </div>
+        </mat-card-content>
+      </mat-card>
 
-    <!-- Insurance Information -->
-    <mat-card class="patient-card">
-      <mat-card-header>
-        <mat-card-title>
-          <mat-icon>health_and_safety</mat-icon>
-          Insurance Information
-        </mat-card-title>
-      </mat-card-header>
-      <mat-card-content>
-        <div class="patient-info">
-          <mat-form-field appearance="outline">
-            <mat-label>Provider</mat-label>
-            <input [(ngModel)]="patient.insuranceProvider" matInput name="insuranceProvider"/>
-          </mat-form-field>
-          <mat-form-field appearance="outline">
-            <mat-label>Policy Number</mat-label>
-            <input [(ngModel)]="patient.insurancePolicyNumber" matInput
-                   name="insurancePolicyNumber"/>
-          </mat-form-field>
-        </div>
-      </mat-card-content>
-    </mat-card>
+      <!-- Medical Information -->
+      <mat-card class="patient-card">
+        <mat-card-header>
+          <mat-card-title>
+            <mat-icon>medical_services</mat-icon>
+            Medical Information
+          </mat-card-title>
+        </mat-card-header>
+        <mat-card-content>
+          <div class="patient-info">
+            <mat-form-field appearance="outline">
+              <mat-label>Allergies</mat-label>
+              <textarea [(ngModel)]="patient.allergies" matInput name="allergies"
+                        rows="3"></textarea>
+            </mat-form-field>
+            <mat-form-field appearance="outline">
+              <mat-label>Current Medication</mat-label>
+              <textarea [(ngModel)]="patient.currentMedication" matInput name="currentMedication"
+                        rows="3"></textarea>
+            </mat-form-field>
+            <mat-form-field appearance="outline">
+              <mat-label>Primary Consent</mat-label>
+              <textarea [(ngModel)]="patient.primaryConsent" matInput name="primaryConsent"
+                        rows="3"></textarea>
+            </mat-form-field>
+            <mat-form-field appearance="outline">
+              <mat-label>Family Medical History</mat-label>
+              <textarea [(ngModel)]="patient.familyMedicalHistory" matInput
+                        name="familyMedicalHistory"
+                        rows="3"></textarea>
+            </mat-form-field>
+            <mat-form-field appearance="outline">
+              <mat-label>Past Medical History</mat-label>
+              <textarea [(ngModel)]="patient.pastMedicalHistory" matInput name="pastMedicalHistory"
+                        rows="3"></textarea>
+            </mat-form-field>
+          </div>
+        </mat-card-content>
+      </mat-card>
 
-    <!-- Identification -->
-    <mat-card class="patient-card">
-      <mat-card-header>
-        <mat-card-title>
-          <mat-icon>fingerprint</mat-icon>
-          Identification
-        </mat-card-title>
-      </mat-card-header>
-      <mat-card-content>
-        <div class="patient-info">
-          <mat-form-field appearance="outline">
-            <mat-label>Type</mat-label>
-            <input [(ngModel)]="patient.identificationType" matInput name="identificationType"/>
-          </mat-form-field>
-          <mat-form-field appearance="outline">
-            <mat-label>Number</mat-label>
-            <input [(ngModel)]="patient.identificationNumber" matInput
-                   name="identificationNumber"/>
-          </mat-form-field>
-          <mat-form-field appearance="outline">
-            <mat-label>Document ID</mat-label>
-            <input [(ngModel)]="patient.identificationDocumentId" matInput
-                   name="identificationDocumentId"/>
-          </mat-form-field>
-          <mat-form-field appearance="outline">
-            <mat-label>Document URL</mat-label>
-            <input [(ngModel)]="patient.identificationDocumentUrl" matInput
-                   name="identificationDocumentUrl"/>
-          </mat-form-field>
-        </div>
-      </mat-card-content>
-    </mat-card>
+      <!-- Insurance Information -->
+      <mat-card class="patient-card">
+        <mat-card-header>
+          <mat-card-title>
+            <mat-icon>health_and_safety</mat-icon>
+            Insurance Information
+          </mat-card-title>
+        </mat-card-header>
+        <mat-card-content>
+          <div class="patient-info">
+            <mat-form-field appearance="outline">
+              <mat-label>Provider</mat-label>
+              <input [(ngModel)]="patient.insuranceProvider" matInput name="insuranceProvider"/>
+            </mat-form-field>
+            <mat-form-field appearance="outline">
+              <mat-label>Policy Number</mat-label>
+              <input [(ngModel)]="patient.insurancePolicyNumber" matInput
+                     name="insurancePolicyNumber"/>
+            </mat-form-field>
+          </div>
+        </mat-card-content>
+      </mat-card>
 
-    <button color="primary" mat-raised-button type="submit">Update</button>
-  </form>
+      <!-- Identification -->
+      <mat-card class="patient-card">
+        <mat-card-header>
+          <mat-card-title>
+            <mat-icon>fingerprint</mat-icon>
+            Identification
+          </mat-card-title>
+        </mat-card-header>
+        <mat-card-content>
+          <div class="patient-info">
+            <mat-form-field appearance="outline">
+              <mat-label>Type</mat-label>
+              <input [(ngModel)]="patient.identificationType" matInput name="identificationType"/>
+            </mat-form-field>
+            <mat-form-field appearance="outline">
+              <mat-label>Number</mat-label>
+              <input [(ngModel)]="patient.identificationNumber" matInput
+                     name="identificationNumber"/>
+            </mat-form-field>
+            <mat-form-field appearance="outline">
+              <mat-label>Document ID</mat-label>
+              <input [(ngModel)]="patient.identificationDocumentId" matInput
+                     name="identificationDocumentId"/>
+            </mat-form-field>
+            <mat-form-field appearance="outline">
+              <mat-label>Document URL</mat-label>
+              <input [(ngModel)]="patient.identificationDocumentUrl" matInput
+                     name="identificationDocumentUrl"/>
+            </mat-form-field>
+          </div>
+        </mat-card-content>
+      </mat-card>
+
+      <button color="primary" mat-raised-button type="submit">Update</button>
+    </form>
+  </div>
+
+  <ng-template #noData>
+    <p *ngIf="message">{{ message }}</p>
+    <p *ngIf="!message">Loading patient data...</p>
+  </ng-template>
+
 </div>
 
-<ng-template #noData>
-  <p *ngIf="message">{{ message }}</p>
-  <p *ngIf="!message">Loading patient data...</p>
-</ng-template>
+<!-- Scroll Buttons -->
+<app-scroller></app-scroller>

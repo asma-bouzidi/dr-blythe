@@ -13,6 +13,7 @@ import {MatButton} from "@angular/material/button";
 import {MatOption, MatSelect} from "@angular/material/select";
 import {MatProgressSpinner} from "@angular/material/progress-spinner";
 import {MatIcon} from "@angular/material/icon";
+import {ScrollerComponent} from "../../scroller/scroller.component";
 
 @Component({
   selector: 'app-patient-edit',
@@ -34,6 +35,7 @@ import {MatIcon} from "@angular/material/icon";
     MatIcon,
     MatFormFieldModule,
     MatInputModule,
+    ScrollerComponent,
   ],
   templateUrl: './patient-edit.component.html',
   styleUrl: './patient-edit.component.scss'

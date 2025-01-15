@@ -12,6 +12,7 @@ import {MatInput} from "@angular/material/input";
 import {MatIcon} from "@angular/material/icon";
 import {MatCheckbox} from "@angular/material/checkbox";
 import {MatProgressSpinner} from "@angular/material/progress-spinner";
+import {ScrollerComponent} from "../../scroller/scroller.component";
 
 @Component({
   selector: 'app-patient-details',
@@ -30,7 +31,8 @@ import {MatProgressSpinner} from "@angular/material/progress-spinner";
     MatCardHeader,
     MatIcon,
     MatCheckbox,
-    MatProgressSpinner
+    MatProgressSpinner,
+    ScrollerComponent
   ],
   templateUrl: './patient-details.component.html',
   styleUrl: './patient-details.component.scss'

@@ -1,3 +1,16 @@
+.container {
+  height: 80vh; /* Adjust to fit your layout */
+  overflow-y: scroll; /* Enable scrolling */
+
+  /* Hide the scrollbar in WebKit-based browsers (Chrome, Safari) */
+  ::-webkit-scrollbar {
+    display: none;
+  }
+
+  /* Firefox */
+  scrollbar-width: none; /* hides the scrollbar in Firefox */
+}
+
 .patient-details {
   max-width: 800px;
   margin: 0 auto;

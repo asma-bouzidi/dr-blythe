@@ -15,6 +15,7 @@ import {Util} from '../../../utils/Util';
 import {MatButton, MatIconButton} from "@angular/material/button";
 import {Router} from "@angular/router";
 import {MatIcon} from "@angular/material/icon";
+import {ScrollerComponent} from "../../scroller/scroller.component";
 
 @Component({
   selector: 'app-patient-add',
@@ -33,6 +34,7 @@ import {MatIcon} from "@angular/material/icon";
     MatButton,
     MatIcon,
     MatIconButton,
+    ScrollerComponent,
   ],
   templateUrl: './patient-add.component.html',
   styleUrl: './patient-add.component.scss'
@@ -72,16 +74,6 @@ export class PatientAddComponent {
       }),
     )
     .subscribe();
-  }
-
-  scrollToTop() {
-    const container = document.querySelector('.container') as HTMLElement;
-    container?.scrollTo({top: 0, behavior: 'smooth'});
-  }
-
-  scrollToBottom() {
-    const container = document.querySelector('.container') as HTMLElement;
-    container?.scrollTo({top: container.scrollHeight, behavior: 'smooth'});
   }
 
   private resetForm() {

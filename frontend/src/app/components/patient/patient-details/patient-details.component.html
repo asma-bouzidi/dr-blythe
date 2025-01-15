@@ -1,115 +1,120 @@
-<div *ngIf="patient" class="patient-details">
-  <h2 class="header-title">Patient Details</h2>
+<div class="container">
+  <div *ngIf="patient" class="patient-details">
+    <h2 class="header-title">Patient Details</h2>
 
-  <!-- Patient Identification -->
-  <mat-card class="patient-card">
-    <mat-card-header>
-      <mat-card-title>
-        <mat-icon>badge</mat-icon>
-        Patient Identification
-      </mat-card-title>
-    </mat-card-header>
-    <mat-card-content>
-      <div class="patient-info">
-        <p><strong>Name:</strong> {{ patient.name }}</p>
-        <p><strong>Age:</strong> {{ patient.age }}</p>
-        <p><strong>Gender:</strong> {{ patient.gender }}</p>
-      </div>
-    </mat-card-content>
-  </mat-card>
+    <!-- Patient Identification -->
+    <mat-card class="patient-card">
+      <mat-card-header>
+        <mat-card-title>
+          <mat-icon>badge</mat-icon>
+          Patient Identification
+        </mat-card-title>
+      </mat-card-header>
+      <mat-card-content>
+        <div class="patient-info">
+          <p><strong>Name:</strong> {{ patient.name }}</p>
+          <p><strong>Age:</strong> {{ patient.age }}</p>
+          <p><strong>Gender:</strong> {{ patient.gender }}</p>
+        </div>
+      </mat-card-content>
+    </mat-card>
 
-  <!-- Contact Information -->
-  <mat-card class="patient-card">
-    <mat-card-header>
-      <mat-card-title>
-        <mat-icon>contact_phone</mat-icon>
-        Contact Information
-      </mat-card-title>
-    </mat-card-header>
-    <mat-card-content>
-      <div class="patient-info">
-        <p><strong>Email:</strong> {{ patient.email }}</p>
-        <p><strong>Phone:</strong> {{ patient.phone }}</p>
-        <p><strong>Address:</strong> {{ patient.address }}</p>
-      </div>
-    </mat-card-content>
-  </mat-card>
+    <!-- Contact Information -->
+    <mat-card class="patient-card">
+      <mat-card-header>
+        <mat-card-title>
+          <mat-icon>contact_phone</mat-icon>
+          Contact Information
+        </mat-card-title>
+      </mat-card-header>
+      <mat-card-content>
+        <div class="patient-info">
+          <p><strong>Email:</strong> {{ patient.email }}</p>
+          <p><strong>Phone:</strong> {{ patient.phone }}</p>
+          <p><strong>Address:</strong> {{ patient.address }}</p>
+        </div>
+      </mat-card-content>
+    </mat-card>
 
-  <!-- Emergency Contact -->
-  <mat-card class="patient-card">
-    <mat-card-header>
-      <mat-card-title>
-        <mat-icon>emergency</mat-icon>
-        Emergency Contact
-      </mat-card-title>
-    </mat-card-header>
-    <mat-card-content>
-      <div class="patient-info">
-        <p><strong>Contact Name:</strong> {{ patient.emergencyContactName }}</p>
-        <p><strong>Contact Number:</strong> {{ patient.emergencyContactNumber }}</p>
-      </div>
-    </mat-card-content>
-  </mat-card>
+    <!-- Emergency Contact -->
+    <mat-card class="patient-card">
+      <mat-card-header>
+        <mat-card-title>
+          <mat-icon>emergency</mat-icon>
+          Emergency Contact
+        </mat-card-title>
+      </mat-card-header>
+      <mat-card-content>
+        <div class="patient-info">
+          <p><strong>Contact Name:</strong> {{ patient.emergencyContactName }}</p>
+          <p><strong>Contact Number:</strong> {{ patient.emergencyContactNumber }}</p>
+        </div>
+      </mat-card-content>
+    </mat-card>
 
-  <!-- Medical Information -->
-  <mat-card class="patient-card">
-    <mat-card-header>
-      <mat-card-title>
-        <mat-icon>medical_services</mat-icon>
-        Medical Information
-      </mat-card-title>
-    </mat-card-header>
-    <mat-card-content>
-      <div class="patient-info">
-        <p><strong>Allergies:</strong> {{ patient.allergies }}</p>
-        <p><strong>Current Medication:</strong> {{ patient.currentMedication }}</p>
-        <p><strong>Primary Consent:</strong> {{ patient.primaryConsent }}</p>
-        <p><strong>Family Medical History:</strong> {{ patient.familyMedicalHistory }}</p>
-        <p><strong>Past Medical History:</strong> {{ patient.pastMedicalHistory }}</p>
-      </div>
-    </mat-card-content>
-  </mat-card>
+    <!-- Medical Information -->
+    <mat-card class="patient-card">
+      <mat-card-header>
+        <mat-card-title>
+          <mat-icon>medical_services</mat-icon>
+          Medical Information
+        </mat-card-title>
+      </mat-card-header>
+      <mat-card-content>
+        <div class="patient-info">
+          <p><strong>Allergies:</strong> {{ patient.allergies }}</p>
+          <p><strong>Current Medication:</strong> {{ patient.currentMedication }}</p>
+          <p><strong>Primary Consent:</strong> {{ patient.primaryConsent }}</p>
+          <p><strong>Family Medical History:</strong> {{ patient.familyMedicalHistory }}</p>
+          <p><strong>Past Medical History:</strong> {{ patient.pastMedicalHistory }}</p>
+        </div>
+      </mat-card-content>
+    </mat-card>
 
-  <!-- Insurance Information -->
-  <mat-card class="patient-card">
-    <mat-card-header>
-      <mat-card-title>
-        <mat-icon>health_and_safety</mat-icon>
-        Insurance Information
-      </mat-card-title>
-    </mat-card-header>
-    <mat-card-content>
-      <div class="patient-info">
-        <p><strong>Provider:</strong> {{ patient.insuranceProvider }}</p>
-        <p><strong>Policy Number:</strong> {{ patient.insurancePolicyNumber }}</p>
-      </div>
-    </mat-card-content>
-  </mat-card>
+    <!-- Insurance Information -->
+    <mat-card class="patient-card">
+      <mat-card-header>
+        <mat-card-title>
+          <mat-icon>health_and_safety</mat-icon>
+          Insurance Information
+        </mat-card-title>
+      </mat-card-header>
+      <mat-card-content>
+        <div class="patient-info">
+          <p><strong>Provider:</strong> {{ patient.insuranceProvider }}</p>
+          <p><strong>Policy Number:</strong> {{ patient.insurancePolicyNumber }}</p>
+        </div>
+      </mat-card-content>
+    </mat-card>
 
-  <!-- Identification -->
-  <mat-card class="patient-card">
-    <mat-card-header>
-      <mat-card-title>
-        <mat-icon>fingerprint</mat-icon>
-        Identification
-      </mat-card-title>
-    </mat-card-header>
-    <mat-card-content>
-      <div class="patient-info">
-        <p><strong>Type:</strong> {{ patient.identificationType }}</p>
-        <p><strong>Number:</strong> {{ patient.identificationNumber }}</p>
-        <p><strong>Document ID:</strong> {{ patient.identificationDocumentId }}</p>
-        <p><strong>Document URL: </strong>{{ patient.identificationDocumentUrl }}</p>
-      </div>
-    </mat-card-content>
-  </mat-card>
+    <!-- Identification -->
+    <mat-card class="patient-card">
+      <mat-card-header>
+        <mat-card-title>
+          <mat-icon>fingerprint</mat-icon>
+          Identification
+        </mat-card-title>
+      </mat-card-header>
+      <mat-card-content>
+        <div class="patient-info">
+          <p><strong>Type:</strong> {{ patient.identificationType }}</p>
+          <p><strong>Number:</strong> {{ patient.identificationNumber }}</p>
+          <p><strong>Document ID:</strong> {{ patient.identificationDocumentId }}</p>
+          <p><strong>Document URL: </strong>{{ patient.identificationDocumentUrl }}</p>
+        </div>
+      </mat-card-content>
+    </mat-card>
+  </div>
+
+  <div *ngIf="!patient && error" class="error-container">
+    <p>Error fetching patient data: {{ error }}</p>
+  </div>
+
+  <div *ngIf="!patient && !error" class="loading-container">
+    <mat-spinner></mat-spinner>
+    <p>Loading patient data...</p>
+  </div>
 </div>
 
-<div *ngIf="!patient && error" class="error-container">
-  <p>Error fetching patient data: {{ error }}</p>
-</div>
-
-<div *ngIf="!patient && !error" class="loading-container">
-  <mat-spinner></mat-spinner>
-  <p>Loading patient data...</p>
-</div>
+<!-- Scroll Buttons -->
+<app-scroller></app-scroller>
