@@ -1,0 +1,16 @@
+<div class="container">
+  <h2>Create Doctor</h2>
+
+
+  <form (ngSubmit)="createDoctor()">
+    <mat-card>
+      <h4>Doctor Identification</h4>
+      <mat-card-content>
+        <mat-form-field>
+          <label>Name</label>
+          <input [(ngModel)]="doctor.name" id="name" matInput name="name"/>
+        </mat-form-field>
+        </mat-card-content>
+    </mat-card>
+  </form>
+</div>
