@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import {Component} from '@angular/core';
 import {MatSelectModule} from '@angular/material/select';
 import {MatInputModule} from '@angular/material/input';
 import {MatFormFieldModule} from '@angular/material/form-field';
@@ -14,6 +14,7 @@ import {MatCheckbox} from '@angular/material/checkbox';
 import {Util} from '../../../utils/Util';
 import {MatButton} from "@angular/material/button";
 import {Router} from "@angular/router";
+import {ScrollerComponent} from "../../scroller/scroller.component";
 
 @Component({
   selector: 'app-patient-add',
@@ -30,6 +31,7 @@ import {Router} from "@angular/router";
     MatCard,
     MatCheckbox,
     MatButton,
+    ScrollerComponent,
   ],
   templateUrl: './patient-add.component.html',
   styleUrl: './patient-add.component.scss'
@@ -49,30 +51,29 @@ export class PatientAddComponent {
 
   createPatient() {
     this.patientService
-      .createPatient(this.patient)
-      .pipe(
-        tap(() => {
-          this.message = 'Patient created successfully!';
-          setTimeout(() => {
-            this.toast.success(this.message, '', 3000);
-          });
-          this.resetForm();
-          setTimeout(() => {
-            this.router.navigate(['/']);
-          }, 3000);
-        }),
-        catchError((error) => {
-          this.message = 'Error creating patient!';
-          this.toast.danger(this.message, '', 3000);
-          console.error(error);
-          return of(error);
-        }),
-      )
-      .subscribe();
+    .createPatient(this.patient)
+    .pipe(
+      tap(() => {
+        this.message = 'Patient created successfully!';
+        setTimeout(() => {
+          this.toast.success(this.message, '', 3000);
+        });
+        this.resetForm();
+        setTimeout(() => {
+          this.router.navigate(['/']);
+        }, 3000);
+      }),
+      catchError((error) => {
+        this.message = 'Error creating patient!';
+        this.toast.danger(this.message, '', 3000);
+        console.error(error);
+        return of(error);
+      }),
+    )
+    .subscribe();
   }
 
   private resetForm() {
     this.patient = Util.initializePatient();
   }
-
 }

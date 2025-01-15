@@ -7,6 +7,10 @@ import {PatientService} from '../../../services/patient.service';
 import {NgIf} from '@angular/common';
 import {NgToastModule,} from 'ng-angular-popup';
 import {MatTableModule} from '@angular/material/table';
+import {MatCard, MatCardContent, MatCardHeader, MatCardTitle} from "@angular/material/card";
+import {MatIcon} from "@angular/material/icon";
+import {MatProgressSpinner} from "@angular/material/progress-spinner";
+import {ScrollerComponent} from "../../scroller/scroller.component";
 
 @Component({
   selector: 'app-patient-details',
@@ -17,7 +21,14 @@ import {MatTableModule} from '@angular/material/table';
     FormsModule,
     NgIf,
     NgToastModule,
-    MatTableModule
+    MatTableModule,
+    MatCard,
+    MatCardContent,
+    MatCardTitle,
+    MatCardHeader,
+    MatIcon,
+    MatProgressSpinner,
+    ScrollerComponent
   ],
   templateUrl: './patient-details.component.html',
   styleUrl: './patient-details.component.scss'
@@ -71,6 +82,5 @@ export class PatientDetailsComponent implements OnInit {
       next: (data) => (this.patient = data)
     });
   }
-
 
 }
