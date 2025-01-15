@@ -25,6 +25,10 @@ export const AppRoutes: Routes = [
         path: 'patient',
         loadChildren: () => import('./components/patient/patient.module').then(m => m.PatientModule)
       },
+      {
+        path: 'doctor',
+        loadChildren: () => import('./components/doctor/doctor.module').then(m => m.DoctorModule)
+      }
 
     ]
   }
