@@ -4,7 +4,6 @@ import {Observable} from 'rxjs';
 import {Doctor} from "../models/doctor.model";
 
 
-
 @Injectable({
   providedIn: 'root'
 })
@@ -21,5 +20,18 @@ export class DoctorService {
 
   createDoctor(doctor: { name: string; }): Observable<string> {
     return this.http.post<string>(`${this.apiUrl}/doctor`, doctor);
+  }
+
+  deleteDoctorById(doctorId: string): Observable<void> {
+    return this.http.delete<void>(`${this.apiUrl}/doctor/${doctorId}`);
+  }
+
+  getDoctorById(doctorId: string): Observable<Doctor> {
+    return this.http.get<Doctor>(`${this.apiUrl}/doctor/${doctorId}`);
+  }
+
+
+  updateDoctorById(doctorId: string, doctor: Doctor): Observable<Doctor> {
+    return this.http.put<Doctor>(`${this.apiUrl}/doctor/${doctorId}`, doctor);
   }
 }

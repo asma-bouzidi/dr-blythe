@@ -27,12 +27,12 @@ export class Util {
       identificationDocumentUrl: '',
     };
   }
+
   static initializeDoctor(): Doctor {
     return {
       id: '',
       name: '',
       image: '',
-      patients: '',
     }
   }
 }

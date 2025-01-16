@@ -1,6 +1,5 @@
 <div class="container">
-  <h2>Create Doctor</h2>
-
+  <h2 class="header-title">Create Doctor</h2>
 
   <form (ngSubmit)="createDoctor()">
     <mat-card>
@@ -10,7 +9,17 @@
           <label>Name</label>
           <input [(ngModel)]="doctor.name" id="name" matInput name="name"/>
         </mat-form-field>
-        </mat-card-content>
+      </mat-card-content>
     </mat-card>
+
+    <button class="align-right" color="primary" mat-flat-button type="submit">
+      Add new doctor
+    </button>
   </form>
+
+  <p *ngIf="message">
+    <ng-toast [position]="ToasterPosition.BOTTOM_CENTER" [width]="300"></ng-toast>
+  </p>
+
 </div>
+<app-scroller></app-scroller>

@@ -1,7 +1,57 @@
-<div class="header-container" (click)="addDoctor()">
-  <h2>List of Doctors</h2>
-  <button mat-flat-button color="primary">
+<div class="header-container">
+  <h2 class="header-title">List of Doctors</h2>
+  <button (click)="addDoctor()" color="primary" mat-flat-button>
     Add Doctor
   </button>
 </div>
 
+<div class="table-container mat-elevation-z8" id="tableContainer">
+  <table [dataSource]="doctors" class="demo-table" mat-table>
+    <!-- Name Column -->
+    <ng-container matColumnDef="name">
+      <th *matHeaderCellDef mat-header-cell> Name</th>
+      <td *matCellDef="let doctor" mat-cell> {{ doctor.name }}</td>
+    </ng-container>
+
+
+    <!-- Image Column -->
+    <ng-container matColumnDef="image">
+      <th *matHeaderCellDef mat-header-cell> Image</th>
+      <td *matCellDef="let doctor" mat-cell> {{ doctor.image }}</td>
+    </ng-container>
+
+    <!-- Actions Column -->
+    <ng-container matColumnDef="actions">
+      <th *matHeaderCellDef mat-header-cell> Actions</th>
+      <td *matCellDef="let doctor" class="actions-cell" mat-cell>
+        <button
+          (click)="navigateToDoctorDetails(doctor.id)"
+          aria-label="View details"
+          color="primary"
+          mat-icon-button>
+          <mat-icon>visibility</mat-icon>
+        </button>
+        <button
+          (click)="navigateToDoctorEdit(doctor.id)"
+          aria-label="Edit doctor"
+          color="accent"
+          mat-icon-button
+        >
+          <mat-icon>edit</mat-icon>
+        </button>
+        <button
+          (click)="deleteDoctor(doctor.id)"
+          aria-label="Delete doctor"
+          color="warn"
+          mat-icon-button
+        >
+          <mat-icon>delete</mat-icon>
+        </button>
+      </td>
+    </ng-container>
+
+
+    <tr *matHeaderRowDef="displayedColumns" mat-header-row></tr>
+    <tr *matRowDef="let row; columns: displayedColumns;" mat-row></tr>
+  </table>
+</div>

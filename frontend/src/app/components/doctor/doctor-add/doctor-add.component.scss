@@ -1,0 +1,34 @@
+.container {
+  height: 78vh; /* Adjust to fit your layout */
+  overflow-y: scroll; /* Enable scrolling */
+
+  /* Hide the scrollbar in WebKit-based browsers (Chrome, Safari) */
+  ::-webkit-scrollbar {
+    display: none;
+  }
+
+  /* Firefox */
+  scrollbar-width: none; /* hides the scrollbar in Firefox */
+}
+
+.header-container {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 1rem;
+}
+
+.header-title {
+  text-align: center;
+  color: #1976d2;
+  font-size: 28px;
+  font-weight: bold;
+  margin-bottom: 24px;
+}
+
+.table-container {
+  margin: 16px 0;
+  padding: 16px;
+  background: white;
+  border-radius: 4px;
+}
