@@ -1,0 +1,27 @@
+<div class="container">
+  <div *ngIf="doctor" class="doctor-details">
+    <h2 class="header-title">Doctor Details</h2>
+
+    <!-- Patient Identification -->
+    <mat-card class="doctor-card">
+      <mat-card-header>
+        <mat-card-title>
+          <mat-icon>badge</mat-icon>
+          Doctor Identification
+        </mat-card-title>
+      </mat-card-header>
+      <mat-card-content>
+        <div class="doctor-info">
+          <p><strong>Name:</strong> {{ doctor.name }}</p>
+          <p><strong>image:</strong> {{ doctor.image }}</p>
+        </div>
+      </mat-card-content>
+    </mat-card>
+
+  </div>
+
+  <div *ngIf="!doctor && !error" class="loading-container">
+    <mat-spinner></mat-spinner>
+    <p>Loading doctor data...</p>
+  </div>
+</div>
