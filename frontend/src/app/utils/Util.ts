@@ -1,5 +1,6 @@
 import {Patient} from '../models/patient.model';
 import {Doctor} from '../models/doctor.model';
+import {Appointment} from '../models/appointment.model';
 
 export class Util {
   static initializePatient(): Patient {
@@ -34,5 +35,16 @@ export class Util {
       name: '',
       image: '',
     }
+  }
+
+  static initializeAppointment(): Appointment {
+    return {
+      id: '',
+      primaryPhysician: '',
+      reason: '',
+      note: '',
+      cancellationReason: '',
+      schedule: '',
+    };
   }
 }

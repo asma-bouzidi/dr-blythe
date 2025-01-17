@@ -1,0 +1,19 @@
+<div class="header-container">
+    <h2 class="header-title">List of Appointments</h2>
+    <button (click)="addAppointment()" color="primary" mat-flat-button>
+        Add Appointment
+    </button>
+</div>
+
+<div class="table-container mat-elevation-z8" id="tableContainer">
+    <table [dataSource]="appointments" class="demo-table" mat-table>
+        <!-- Name Column -->
+        <ng-container matColumnDef="primaryPhysician:">
+            <th *matHeaderCellDef mat-header-cell> Primary Physician</th>
+            <td *matCellDef="let appointment" mat-cell> {{ appointment.primaryPhysician }}</td>
+        </ng-container>
+
+
+        
+    </table>
+</div>
