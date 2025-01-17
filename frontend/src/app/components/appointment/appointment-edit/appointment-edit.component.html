@@ -1,0 +1,64 @@
+<div class="container">
+
+    <div *ngIf="appointment" class="appointment-details">
+        <h2 class="header-title">Update Appointment</h2>
+
+        <form (ngSubmit)="updateAppointment()">
+
+            <mat-card class="appointment-card">
+                <mat-card-header>
+                    <mat-card-title>
+                      <mat-icon>badge</mat-icon>
+                      Appointment Identification
+                    </mat-card-title>
+                  </mat-card-header>
+                  <mat-card-content>
+                    <div class="appointment">
+                      <mat-form-field appearance="outline">
+                        <mat-label>Primary Physician:</mat-label>
+                        <input [(ngModel)]="appointment.primaryPhysician" matInput name="primaryPhysician"/>
+                      </mat-form-field>
+                      <mat-form-field appearance="outline">
+                        <mat-label>Reason:</mat-label>
+                        <input [(ngModel)]="patient.age" matInput name="age" type="number"/>
+                      </mat-form-field>
+                      <mat-form-field appearance="outline">
+                        <mat-label>Note:</mat-label>
+                        <mat-select [(ngModel)]="patient.gender" name="gender">
+                          <mat-option value="Male">Male</mat-option>
+                          <mat-option value="Female">Female</mat-option>
+                          <mat-option value="Other">Other</mat-option>
+                        </mat-select>
+                      </mat-form-field>
+                    </div>
+                  </mat-card-content>
+                </mat-card>
+          
+                <!-- Contact Information -->
+                <mat-card class="patient-card">
+                  <mat-card-header>
+                    <mat-card-title>
+                      <mat-icon>contact_phone</mat-icon>
+                      Contact Information
+                    </mat-card-title>
+                  </mat-card-header>
+                  <mat-card-content>
+                    <div class="patient-info">
+                      <mat-form-field appearance="outline">
+                        <mat-label>Email</mat-label>
+                        <input [(ngModel)]="patient.email" matInput name="email" type="email"/>
+                      </mat-form-field>
+                      <mat-form-field appearance="outline">
+                        <mat-label>Phone</mat-label>
+                        <input [(ngModel)]="patient.phone" matInput name="phone" type="tel"/>
+                      </mat-form-field>
+                      <mat-form-field appearance="outline">
+                        <mat-label>Address</mat-label>
+                        <textarea [(ngModel)]="patient.address" matInput name="address" rows="3"></textarea>
+                      </mat-form-field>
+                    </div>
+                  </mat-card-content>
+            </mat-card>
+        </form>
+    </div>
+</div>
