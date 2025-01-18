@@ -1,0 +1,39 @@
+<div class="container">
+    <h2 class="header-title">Create Appointment</h2>
+    <form (ngSubmit)="createAppointment()">
+        <mat-card>
+            <h4>Appointment Identification</h4>
+            <mat-card-content>
+                <mat-form-field>
+                    <label>Primary Physician:</label>
+                    <input [(ngModel)]="appointment.primaryPhysician" id="primaryPhysician" matInput name="primaryPhysician" />
+                </mat-form-field>
+                <mat-form-field>
+                    <label>Reason:</label>
+                    <input [(ngModel)]="appointment.reason" id="reason" matInput name="reason" type="reason" />
+                </mat-form-field>
+                <mat-form-field>
+                    <label>Note:</label>
+                    <input [(ngModel)]="appointment.note" id="note" matInput name="note" type="text" />
+                </mat-form-field>
+                <mat-form-field>
+                    <label>Cancellation Reason:</label>
+                    <input [(ngModel)]="appointment.cancellationReason" id="cancellationReason:" matInput name="cancellationReason:" type="text" />
+                </mat-form-field>
+                <mat-form-field>
+                    <label>Schedule:</label>
+                    <input [(ngModel)]="appointment.schedule" id="schedule" matInput name="schedule" type="text" />
+                </mat-form-field>
+        </mat-card-content>
+        </mat-card>
+
+
+
+
+
+        <button class="align-right" color="primary" mat-flat-button type="submit">
+            Add new appointment
+        </button>
+    </form>
+</div>
+<app-scroller></app-scroller>

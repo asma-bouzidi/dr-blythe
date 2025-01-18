@@ -1,0 +1,25 @@
+<div class="container">
+<div *ngIf="appointment" class="appointment-details">
+    <h2 class="header-title">Appointment Details</h2>
+
+    <!-- Appointment Information -->
+    <mat-card class="appointment-card">
+        <mat-card-header>
+            <mat-card-title>
+                <mat-icon>event</mat-icon>
+                Appointment Information
+            </mat-card-title>
+        </mat-card-header>
+        <mat-card-content>
+            <div class="appointment-info">
+                <p><strong>Primary Physician</strong> {{ appointment.primaryPhysician }}</p>
+                <p><strong>Reason:</strong> {{ appointment.reason }}</p>
+                <p><strong>Note:</strong> {{ appointment.note}}</p>
+                <p><strong>Cancellation Reason:</strong>{{ appointment.cancellationReason }}</p>
+                <p><strong>Schedule:</strong>{{ appointment.schedule }}</p>
+            </div>
+        </mat-card-content>
+    </mat-card>
+</div>
+
+</div>
