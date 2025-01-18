@@ -5,5 +5,6 @@ export interface Appointment {
     note: string;
     cancellationReason: string;
     schedule: string;
+    status: string;
     
 }

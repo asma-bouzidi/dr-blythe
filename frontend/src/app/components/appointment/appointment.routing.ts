@@ -5,7 +5,8 @@ import { AppointmentDetailsComponent } from "./appointment-details/appointment-d
 import { AppointmentEditComponent } from "./appointment-edit/appointment-edit.component";
 
 
-export const AppointmentRoutes: Routes = [
+export const AppointmentRoutes: Routes = 
+[
   {
     path: '',
     component: AppointmentComponent

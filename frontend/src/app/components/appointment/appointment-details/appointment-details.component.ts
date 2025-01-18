@@ -42,14 +42,16 @@ export class AppointmentDetailsComponent {
     'reason',
     'note',
     'cancellationReason',
-    'schedule'
+    'schedule',
+    'status',
   ];
 
   message: string = '';
 
   constructor(
+    private route: ActivatedRoute,
     private appointmentService: AppointmentService, 
-    private route: ActivatedRoute) {
+   ) {
 }
 
   ngOnInit(): void {
