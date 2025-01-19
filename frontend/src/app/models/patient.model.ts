@@ -17,7 +17,6 @@ export interface Patient {
   familyMedicalHistory: string;
   pastMedicalHistory: string;
   identificationType: string;
-  identificationNumber: string;
   identificationDocumentId: string;
   identificationDocumentUrl: string;
 }

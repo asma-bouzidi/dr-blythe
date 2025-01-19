@@ -98,3 +98,15 @@
     margin-bottom: 16px;
   }
 }
+
+.document-image-container {
+  text-align: center;
+  margin-top: 12px;
+}
+
+.document-image {
+  max-width: 100%;
+  height: auto;
+  border-radius: 4px;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+}

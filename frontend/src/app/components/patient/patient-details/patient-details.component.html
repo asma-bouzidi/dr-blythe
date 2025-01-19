@@ -46,8 +46,13 @@
       </mat-card-header>
       <mat-card-content>
         <div class="patient-info">
-          <p><strong>Contact Name:</strong> {{ patient.emergencyContactName }}</p>
-          <p><strong>Contact Number:</strong> {{ patient.emergencyContactNumber }}</p>
+          <p>
+            <strong>Contact Name:</strong> {{ patient.emergencyContactName }}
+          </p>
+          <p>
+            <strong>Contact Number:</strong>
+            {{ patient.emergencyContactNumber }}
+          </p>
         </div>
       </mat-card-content>
     </mat-card>
@@ -63,10 +68,18 @@
       <mat-card-content>
         <div class="patient-info">
           <p><strong>Allergies:</strong> {{ patient.allergies }}</p>
-          <p><strong>Current Medication:</strong> {{ patient.currentMedication }}</p>
+          <p>
+            <strong>Current Medication:</strong> {{ patient.currentMedication }}
+          </p>
           <p><strong>Primary Consent:</strong> {{ patient.primaryConsent }}</p>
-          <p><strong>Family Medical History:</strong> {{ patient.familyMedicalHistory }}</p>
-          <p><strong>Past Medical History:</strong> {{ patient.pastMedicalHistory }}</p>
+          <p>
+            <strong>Family Medical History:</strong>
+            {{ patient.familyMedicalHistory }}
+          </p>
+          <p>
+            <strong>Past Medical History:</strong>
+            {{ patient.pastMedicalHistory }}
+          </p>
         </div>
       </mat-card-content>
     </mat-card>
@@ -82,7 +95,9 @@
       <mat-card-content>
         <div class="patient-info">
           <p><strong>Provider:</strong> {{ patient.insuranceProvider }}</p>
-          <p><strong>Policy Number:</strong> {{ patient.insurancePolicyNumber }}</p>
+          <p>
+            <strong>Policy Number:</strong> {{ patient.insurancePolicyNumber }}
+          </p>
         </div>
       </mat-card-content>
     </mat-card>
@@ -98,9 +113,19 @@
       <mat-card-content>
         <div class="patient-info">
           <p><strong>Type:</strong> {{ patient.identificationType }}</p>
-          <p><strong>Number:</strong> {{ patient.identificationNumber }}</p>
-          <p><strong>Document ID:</strong> {{ patient.identificationDocumentId }}</p>
-          <p><strong>Document URL: </strong>{{ patient.identificationDocumentUrl }}</p>
+          <p>
+            <strong>Document ID:</strong> {{ patient.identificationDocumentId }}
+          </p>
+          <p>
+            <strong>Document image:</strong>
+          </p>
+          <div class="document-image-container">
+            <img
+              [src]="patient.identificationDocumentUrl"
+              alt="Patient Document"
+              class="document-image"
+            />
+          </div>
         </div>
       </mat-card-content>
     </mat-card>

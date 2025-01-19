@@ -23,7 +23,6 @@ export class Util {
       familyMedicalHistory: '',
       pastMedicalHistory: '',
       identificationType: '',
-      identificationNumber: '',
       identificationDocumentId: '',
       identificationDocumentUrl: '',
     };
