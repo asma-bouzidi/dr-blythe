@@ -2,7 +2,6 @@ package com.iset.drblythe.controller;
 
 import com.iset.drblythe.api.PatientApi;
 import com.iset.drblythe.exception.MatchingException;
-import com.iset.drblythe.model.DeleteResponse;
 import com.iset.drblythe.model.Patient;
 import com.iset.drblythe.service.patient.PatientService;
 import java.util.List;
@@ -32,15 +31,13 @@ public class PatientController implements PatientApi {
   }
 
   @Override
-  public ResponseEntity<DeleteResponse> deletePatient(UUID patientId) {
+  public ResponseEntity<Patient> deletePatient(UUID patientId) {
     log.debug("Response: updated patient with Id: {}", patientId);
-    String deletePatientResponse = patientService.deletePatient(patientId);
 
-    DeleteResponse deleteResponse = new DeleteResponse();
-    deleteResponse.setSuccess(true);
-    deleteResponse.setMessage(deletePatientResponse);
+    Patient patient = patientService.getPatientById(patientId);
+    patientService.deletePatient(patientId);
 
-    return ResponseEntity.status(HttpStatus.OK).body(deleteResponse);
+    return ResponseEntity.status(HttpStatus.OK).body(patient);
   }
 
   @Override
