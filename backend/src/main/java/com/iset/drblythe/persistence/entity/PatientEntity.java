@@ -76,13 +76,10 @@ public class PatientEntity {
   @Column(name = "identification_type", length = 100)
   private String identificationType;
 
-  @Column(name = "identification_number", length = 100)
-  private String identificationNumber;
-
   @Column(name = "identification_document_id", length = 100)
   private String identificationDocumentId;
 
-  @Column(name = "identification_document_url", length = 100)
+  @Column(name = "identification_document_url", length = 1000)
   private String identificationDocumentUrl;
 
   @Column(name = "primary_physician", length = 100)

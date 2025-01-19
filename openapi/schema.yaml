@@ -364,8 +364,6 @@ components:
           type: string
         identificationType:
           type: string
-        identificationNumber:
-          type: string
         identificationDocumentId:
           type: string
         identificationDocumentUrl:
