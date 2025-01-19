@@ -24,16 +24,6 @@
             <td *matCellDef="let appointment" mat-cell> {{ appointment.note }}</td>
         </ng-container>
 
-        <ng-container matColumnDef="cancellationReason">
-            <th *matHeaderCellDef mat-header-cell> Cancellation Reason</th>
-            <td *matCellDef="let appointment" mat-cell> {{ appointment.cancellationReason }}</td>
-        </ng-container>
-
-        <ng-container matColumnDef="schedule">
-            <th *matHeaderCellDef mat-header-cell> Schedule</th>
-            <td *matCellDef="let appointment" mat-cell> {{ appointment.schedule }}</td>
-        </ng-container>
-
         <ng-container matColumnDef="status">
           <th *matHeaderCellDef mat-header-cell> Status</th>
           <td *matCellDef="let appointment" mat-cell> {{ appointment.status }}</td>

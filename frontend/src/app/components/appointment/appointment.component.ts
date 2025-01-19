@@ -25,7 +25,7 @@ import { MatIcon } from "@angular/material/icon";
 export class AppointmentComponent implements OnInit{
   appointments: Appointment[] = [];
 
-  displayedColumns: string[] = ['primaryPhysician', 'reason', 'note', 'cancellationReason', 'schedule', 'status', 'actions'];
+  displayedColumns: string[] = ['primaryPhysician', 'reason', 'note', 'status', 'actions'];
   
   message: string = '';
 
