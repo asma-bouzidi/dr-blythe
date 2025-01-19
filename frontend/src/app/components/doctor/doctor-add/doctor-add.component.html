@@ -1,14 +1,22 @@
 <div class="container">
+  <div class="doctor-details">
   <h2 class="header-title">Create Doctor</h2>
 
   <form (ngSubmit)="createDoctor()">
-    <mat-card>
-      <h4>Doctor Identification</h4>
+    <mat-card class="doctor-card">
+      <mat-card-header>
+        <mat-card-title>
+          <mat-icon>badge</mat-icon>
+          Patient Identification
+        </mat-card-title>
+      </mat-card-header>
       <mat-card-content>
-        <mat-form-field>
-          <label>Name</label>
+        <div class="doctor-info">
+        <mat-form-field appearance="outline">
+          <mat-label>Name</mat-label>
           <input [(ngModel)]="doctor.name" id="name" matInput name="name"/>
         </mat-form-field>
+        </div>
       </mat-card-content>
     </mat-card>
 
@@ -16,6 +24,7 @@
       Add new doctor
     </button>
   </form>
+  </div>
 
   <p *ngIf="message">
     <ng-toast [position]="ToasterPosition.BOTTOM_CENTER" [width]="300"></ng-toast>

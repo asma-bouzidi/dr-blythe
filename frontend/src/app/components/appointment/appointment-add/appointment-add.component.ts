@@ -8,12 +8,13 @@ import { catchError, tap } from 'rxjs/operators';
 import { of } from 'rxjs';
 import { NgIf } from '@angular/common';
 import { NgToastModule, NgToastService, ToasterPosition, } from 'ng-angular-popup';
-import { MatCard, MatCardContent } from '@angular/material/card';
+import { MatCard, MatCardContent, MatCardTitle, MatCardHeader } from '@angular/material/card';
 import { Appointment } from '../../../models/appointment.model';
 import { Util } from '../../../utils/Util';
 import { MatButton } from "@angular/material/button";
 import { Router } from "@angular/router";
 import { ScrollerComponent } from "../../scroller/scroller.component";
+import {MatIcon} from "@angular/material/icon";
 
 @Component({
   selector: 'app-appointment-add',
@@ -21,6 +22,9 @@ import { ScrollerComponent } from "../../scroller/scroller.component";
   imports: [
     MatFormFieldModule,
     MatInputModule,
+    MatCardTitle,
+    MatCardHeader,
+    MatIcon,
     MatSelectModule,
     FormsModule,
     NgToastModule,
