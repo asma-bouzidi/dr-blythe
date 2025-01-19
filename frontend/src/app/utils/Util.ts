@@ -45,6 +45,7 @@ export class Util {
       note: '',
       cancellationReason: '',
       schedule: '',
+      status: '',
     };
   }
 }

@@ -110,7 +110,7 @@ export class AppointmentEditComponent implements OnInit{
         }
       }
 
-      navigateToAppointmentEdit(appointmentId: string) {
-        this.router.navigate(['/appointment/details', appointmentId]);
+      navigateToAppointmentEdit(appointmentId: string): void{
+        this.router.navigate(['/appointment/details/', appointmentId]);
       }
     }

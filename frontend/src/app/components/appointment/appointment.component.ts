@@ -25,7 +25,8 @@ import { MatIcon } from "@angular/material/icon";
 export class AppointmentComponent implements OnInit{
   appointments: Appointment[] = [];
 
-  displayedColumns: string[] = ['primaryPhysician', 'reason', 'note', 'cancellationReason', 'schedule', 'actions'];
+  displayedColumns: string[] = ['primaryPhysician', 'reason', 'note', 'cancellationReason', 'schedule', 'status', 'actions'];
+  
   message: string = '';
 
   constructor(
@@ -59,12 +60,12 @@ export class AppointmentComponent implements OnInit{
     if (confirm('Are you sure you want to delete this Appointment?')) {
       this.appointmentService.deleteAppointmentById(appointmentId).pipe(
         tap(() => {
+          this.appointments = this.appointments.filter(appointment => appointment.id !== appointmentId);
           this.message = 'Appointment deleted successfully!';
           this.toast.success(this.message, '', 3000);
-          this.loadAppointments();
         }),
         catchError((error) => {
-          this.message = 'Error deleting appointment!';
+          this.message = 'Error deleting appointment';
           this.toast.danger(this.message, '', 3000);
           console.error(error);
           return EMPTY;

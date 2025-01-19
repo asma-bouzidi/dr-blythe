@@ -61,14 +61,13 @@ export class AppointmentAddComponent {
             this.router.navigate(['/appointment']);
           }, 3000);
         }),
-        catchError((err) => {
+        catchError((error) => {
           this.message = 'Error creating appointment';
-          setTimeout(() => {
             this.toast.danger(this.message, '', 3000);
-          });
-          return of([]);
-        })
-      )
+            console.error(error);
+            return of(error);
+          }),
+        )
       .subscribe();
   }
 

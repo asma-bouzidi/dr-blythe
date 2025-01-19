@@ -394,13 +394,13 @@ components:
           type: string
           format: date
         status:
-          $ref: "#/components/schemas/Status"
+          type: string
     
-    Status:
-      type: string
-      enum:
-        - ON
-        - OFF
+    #Status:
+      #type: string
+      #enum:
+        #- ON
+        #- OFF
     
     Doctor:
       properties:
