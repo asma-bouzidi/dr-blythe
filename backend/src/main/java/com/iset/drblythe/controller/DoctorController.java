@@ -58,11 +58,13 @@ public class DoctorController implements DoctorApi {
   }
 
   @Override
-  public ResponseEntity<String> deleteDoctor(UUID doctorId){
-    log.debug("Response: updated doctor with Id: {}", doctorId);
-    String deleteDoctorResponse = doctorService.deleteDoctor(doctorId);
-    return ResponseEntity.status(HttpStatus.OK).body(deleteDoctorResponse);
-  }
+  public ResponseEntity<Doctor> deleteDoctor(UUID doctorId){
+    log.debug("Response: delete doctor with Id: {}", doctorId);
+    
+    Doctor doctor = doctorService.getDoctorById(doctorId);
+    doctorService.deleteDoctor(doctorId);
 
+    return ResponseEntity.status(HttpStatus.OK).body(doctor);
+  }
 
 }

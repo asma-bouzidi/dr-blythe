@@ -41,11 +41,11 @@ public class AppointmentController implements AppointmentApi {
 
     @Override
     public ResponseEntity<Appointment> createAppointment(Appointment appointment) {
-    log.debug("Request: create a new appointment");
-    Appointment createdAppointment = appointmentService.createAppointment(appointment);
-    log.debug("Response: appointment created with id {}", createdAppointment.getId());
-    return ResponseEntity.status(HttpStatus.CREATED).body(createdAppointment);
-  }
+      log.debug("Request: create a new appointment");
+      Appointment createdAppointment = appointmentService.createAppointment(appointment);
+      log.debug("Response: appointment created with id {}", createdAppointment.getId());
+      return ResponseEntity.status(HttpStatus.CREATED).body(createdAppointment);
+    }
 
   @Override
   public ResponseEntity<Appointment> updateAppointment(UUID appointmentId, Appointment appointment){
@@ -61,10 +61,13 @@ public class AppointmentController implements AppointmentApi {
   }
 
   @Override
-  public ResponseEntity<String> deleteAppointment(UUID appointmentId){
-    log.debug("Response: updated appointment with Id: {}", appointmentId);
-    String deleteAppointmentResponse = appointmentService.deleteAppointment(appointmentId);
-    return ResponseEntity.status(HttpStatus.OK).body(deleteAppointmentResponse);
+  public ResponseEntity<Appointment> deleteAppointment(UUID appointmentId){
+    log.debug("Response: delete appointment with Id: {}", appointmentId);
+
+    Appointment appointment = appointmentService.getAppointmentById(appointmentId);
+    appointmentService.deleteAppointment(appointmentId);
+
+    return ResponseEntity.status(HttpStatus.OK).body(appointment);
   }
 
 }
