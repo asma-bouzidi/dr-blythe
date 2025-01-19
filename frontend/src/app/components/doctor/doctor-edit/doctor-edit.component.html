@@ -1,1 +1,29 @@
-<p>doctor-edit works!</p>
+<div class="container">
+
+    <div *ngIf="doctor" class="doctor-details">
+      <h2 class="header-title">Update Doctor</h2>
+  
+      <form (ngSubmit)="updateDoctor()">
+        <!-- Patient Identification -->
+        <mat-card class="doctor-card">
+          <mat-card-header>
+            <mat-card-title>
+              <mat-icon>badge</mat-icon>
+              Doctor Identification
+            </mat-card-title>
+          </mat-card-header>
+          <mat-card-content>
+            <div class="doctor-info">
+              <mat-form-field appearance="outline">
+                <mat-label>Name</mat-label>
+                <input [(ngModel)]="doctor.name" matInput name="name"/>
+              </mat-form-field>
+            </div>
+            </mat-card-content>
+        </mat-card>
+        <button color="primary" mat-raised-button type="submit">Update</button>
+
+        </form>
+        </div>
+        </div>
+        <app-scroller></app-scroller>

@@ -8,19 +8,23 @@ import {catchError, tap} from 'rxjs/operators';
 import {of} from 'rxjs';
 import {NgIf} from '@angular/common';
 import {NgToastModule, NgToastService, ToasterPosition,} from 'ng-angular-popup';
-import {MatCard, MatCardContent} from '@angular/material/card';
+import {MatCard, MatCardContent, MatCardHeader, MatCardTitle} from '@angular/material/card';
 import {Doctor} from '../../../models/doctor.model';
 import {Util} from '../../../utils/Util';
 import {MatButton} from "@angular/material/button";
 import {Router} from "@angular/router";
 import {ScrollerComponent} from "../../scroller/scroller.component";
+import {MatIcon} from "@angular/material/icon";
 
 @Component({
   selector: 'app-doctor-add',
   standalone: true,
   imports: [
     MatFormFieldModule,
+    MatIcon,
     MatInputModule,
+    MatCardTitle,
+    MatCardHeader,
     MatSelectModule,
     FormsModule,
     NgToastModule,

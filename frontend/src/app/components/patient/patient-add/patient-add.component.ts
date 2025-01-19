@@ -8,13 +8,14 @@ import {catchError, tap} from 'rxjs/operators';
 import {of} from 'rxjs';
 import {NgIf} from '@angular/common';
 import {NgToastModule, NgToastService, ToasterPosition,} from 'ng-angular-popup';
-import {MatCard, MatCardContent, MatCardTitle} from '@angular/material/card';
+import {MatCard, MatCardContent, MatCardTitle, MatCardHeader} from '@angular/material/card';
 import {Patient} from '../../../models/patient.model';
 import {MatCheckbox} from '@angular/material/checkbox';
 import {Util} from '../../../utils/Util';
 import {MatButton} from "@angular/material/button";
 import {Router} from "@angular/router";
 import {ScrollerComponent} from "../../scroller/scroller.component";
+import {MatIcon} from "@angular/material/icon";
 
 @Component({
   selector: 'app-patient-add',
@@ -24,9 +25,11 @@ import {ScrollerComponent} from "../../scroller/scroller.component";
     MatInputModule,
     MatSelectModule,
     FormsModule,
+    MatIcon,
     NgIf,
     NgToastModule,
     MatCardTitle,
+    MatCardHeader,
     MatCardContent,
     MatCard,
     MatCheckbox,
