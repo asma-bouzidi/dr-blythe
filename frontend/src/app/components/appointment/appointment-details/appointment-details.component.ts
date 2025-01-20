@@ -12,6 +12,7 @@ import { MatIcon } from "@angular/material/icon";
 import { MatProgressSpinner } from "@angular/material/progress-spinner";
 import { ScrollerComponent } from "../../scroller/scroller.component";
 
+
 @Component({
   selector: 'app-appointment-details',
   standalone: true,
@@ -28,7 +29,7 @@ import { ScrollerComponent } from "../../scroller/scroller.component";
     MatCardHeader,
     MatIcon,
     MatProgressSpinner,
-    ScrollerComponent
+    ScrollerComponent,
   ],
   templateUrl: './appointment-details.component.html',
   styleUrl: './appointment-details.component.scss'

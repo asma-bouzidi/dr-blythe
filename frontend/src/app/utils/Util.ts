@@ -33,6 +33,11 @@ export class Util {
       id: '',
       name: '',
       image: '',
+      email: '',
+      contactNumber: '',
+      address: '',
+      experienceYears: '',
+      specialization: '',
     }
   }
 

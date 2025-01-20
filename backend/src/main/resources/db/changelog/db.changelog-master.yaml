@@ -13,3 +13,5 @@ databaseChangeLog:
       file: classpath:/db/migrations/20241228-2_add_one_to_many_migration.sql
   - include:
       file: classpath:/db/migrations/20250119-1_alter_patient_table.sql
+  - include:
+      file: classpath:/db/migrations/20250120-1_add_fields_to_doctor_table.sql

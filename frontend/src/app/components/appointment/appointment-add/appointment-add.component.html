@@ -13,27 +13,28 @@
             <mat-card-content>
                 <div class="appointment-info">
                 <mat-form-field appearance="outline">
-                    <label>Primary Physician:</label>
+                    <mat-label>Primary Physician:</mat-label>
                     <input [(ngModel)]="appointment.primaryPhysician" id="primaryPhysician" matInput name="primaryPhysician" />
                 </mat-form-field>
                 <mat-form-field appearance="outline">
-                    <label>Reason:</label>
-                    <input [(ngModel)]="appointment.reason" id="reason" matInput name="reason" type="reason" />
+                    <mat-label>Reason:</mat-label>
+                    <textarea [(ngModel)]="appointment.reason" 
+                    id="reason" matInput name="reason" type="reason"></textarea>
                 </mat-form-field>
                 <mat-form-field appearance="outline">
-                    <label>Note:</label>
-                    <input [(ngModel)]="appointment.note" id="note" matInput name="note" type="text" />
+                    <mat-label>Note:</mat-label>
+                    <textarea [(ngModel)]="appointment.note" id="note" matInput name="note" type="text"></textarea>
                 </mat-form-field>
                 <mat-form-field appearance="outline">
-                    <label>Cancellation Reason:</label>
-                    <input [(ngModel)]="appointment.cancellationReason" id="cancellationReason:" matInput name="cancellationReason:" type="text" />
+                    <mat-label>Cancellation Reason:</mat-label>
+                    <textarea [(ngModel)]="appointment.cancellationReason" id="cancellationReason:" matInput name="cancellationReason:" type="text"></textarea>
                 </mat-form-field>
                 <mat-form-field appearance="outline">
-                    <label>Schedule:</label>
+                    <mat-label>Schedule:</mat-label>
                     <input [(ngModel)]="appointment.schedule" id="schedule" matInput name="schedule" type="text" />
                 </mat-form-field>
                 <mat-form-field appearance="outline">
-                    <label>Status:</label>
+                    <mat-label>Status:</mat-label>
                     <input [(ngModel)]="appointment.status" id="schedule" matInput name="status" type="text" />
                 </mat-form-field>
             </div>
@@ -49,5 +50,9 @@
             Add new appointment
         </button>
     </form>
+
+    <p *ngIf="message">
+        <ng-toast [position]="ToasterPosition.BOTTOM_CENTER" [width]="300"></ng-toast>
+      </p>
 </div>
 <app-scroller></app-scroller>
