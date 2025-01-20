@@ -407,6 +407,16 @@ components:
           format: uuid
         name:
           type: string
+        email:
+          type: string
+        contact_number:
+          type: string
+        address:
+          type: string
+        specialization:
+          type: string
+        experience_years:
+          type: string
         image:
           type: string
         patients:
