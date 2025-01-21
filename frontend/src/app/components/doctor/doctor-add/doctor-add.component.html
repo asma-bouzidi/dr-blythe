@@ -1,23 +1,23 @@
 <div class="container">
   <div class="doctor-details">
-  <h2 class="header-title">Create Doctor</h2>
+    <h2 class="header-title">Create Doctor</h2>
 
-  <form (ngSubmit)="createDoctor()">
-    <mat-card class="doctor-card">
-      <mat-card-header>
-        <mat-card-title>
-          <mat-icon>badge</mat-icon>
-          Doctor Identification
-        </mat-card-title>
-      </mat-card-header>
-      <mat-card-content>
-        <div class="doctor-info">
-        <mat-form-field appearance="outline">
-          <mat-label>Name:</mat-label>
-          <input [(ngModel)]="doctor.name" id="name" matInput name="name"/>
-        </mat-form-field>
-        </div>
-      </mat-card-content>
+    <form (ngSubmit)="createDoctor()">
+      <mat-card class="doctor-card">
+        <mat-card-header>
+          <mat-card-title>
+            <mat-icon>badge</mat-icon>
+            Doctor Identification
+          </mat-card-title>
+        </mat-card-header>
+        <mat-card-content>
+          <div class="doctor-info">
+            <mat-form-field appearance="outline">
+              <mat-label>Name:</mat-label>
+              <input [(ngModel)]="doctor.name" id="name" matInput name="name" />
+            </mat-form-field>
+          </div>
+        </mat-card-content>
       </mat-card>
       <mat-card class="doctor-card">
         <mat-card-header>
@@ -26,68 +26,112 @@
             Contact information
           </mat-card-title>
         </mat-card-header>
-      <mat-card-content>
-        <div class="doctor-info">
-      <mat-form-field appearance="outline">
-        <mat-label>Email:</mat-label>
-        <input [(ngModel)]="doctor.email" id="email" matInput name="email"/>
-      </mat-form-field>
-      <mat-form-field appearance="outline">
-        <mat-label>Contact number</mat-label>
-        <input [(ngModel)]="doctor.contactNumber" id="contactNumber" matInput name="contactNumber"/>
-      </mat-form-field>
-      <mat-form-field appearance="outline">
-        <mat-label>Address</mat-label>
-        <input [(ngModel)]="doctor.address" id="address" matInput name="address"/>
-      </mat-form-field>
-      </div>
-    </mat-card-content>
-    </mat-card>
-    <mat-card class="doctor-card">
-      <mat-card-header>
-        <mat-card-title>
-          <mat-icon>fingerprint</mat-icon>
-          Identification
-        </mat-card-title>
-      </mat-card-header>
-    <mat-card-content>
-      <div class="doctor-info">
-        <mat-form-field appearance="outline">
-          <mat-label>Specialization:</mat-label>
-          <input [(ngModel)]="doctor.specialization" id="specialization" matInput name="specialization"/>
-        </mat-form-field>
-        <mat-form-field appearance="outline">
-          <mat-label>Experience years:</mat-label>
-          <input [(ngModel)]="doctor.experienceYears" id="experienceYears" matInput name="experienceYears"/>
-        </mat-form-field>
-        <mat-form-field appearance="outline">
-          <mat-label>Doctor image</mat-label>
-          <input
-            [(ngModel)]="doctor.image"
-            id="image"
-            matInput
-            name="image"
-            type="url"
-          />
-        </mat-form-field>
-      </div>
-    </mat-card-content>
-    </mat-card>
+        <mat-card-content>
+          <div class="doctor-info">
+            <mat-form-field appearance="outline">
+              <mat-label>Email:</mat-label>
+              <input
+                [(ngModel)]="doctor.email"
+                id="email"
+                matInput
+                name="email"
+              />
+            </mat-form-field>
+            <mat-form-field appearance="outline">
+              <mat-label>Contact number</mat-label>
+              <input
+                [(ngModel)]="doctor.contactNumber"
+                id="contactNumber"
+                matInput
+                name="contactNumber"
+              />
+            </mat-form-field>
+            <mat-form-field appearance="outline">
+              <mat-label>Address</mat-label>
+              <input
+                [(ngModel)]="doctor.address"
+                id="address"
+                matInput
+                name="address"
+              />
+            </mat-form-field>
+          </div>
+        </mat-card-content>
+      </mat-card>
+      <mat-card class="doctor-card">
+        <mat-card-header>
+          <mat-card-title>
+            <mat-icon>fingerprint</mat-icon>
+            Identification
+          </mat-card-title>
+        </mat-card-header>
+        <mat-card-content>
+          <div class="doctor-info">
+            <mat-form-field appearance="outline">
+              <mat-label>Specialization:</mat-label>
+              <input
+                [(ngModel)]="doctor.specialization"
+                id="specialization"
+                matInput
+                name="specialization"
+              />
+            </mat-form-field>
+            <mat-form-field appearance="outline">
+              <mat-label>Experience years:</mat-label>
+              <input
+                [(ngModel)]="doctor.experienceYears"
+                id="experienceYears"
+                matInput
+                name="experienceYears"
+              />
+            </mat-form-field>
+            <mat-form-field appearance="outline">
+              <mat-label>Doctor image</mat-label>
+              <input
+                [(ngModel)]="doctor.image"
+                id="image"
+                matInput
+                name="image"
+                type="url"
+              />
+            </mat-form-field>
+          </div>
+        </mat-card-content>
+      </mat-card>
 
+      <mat-card class="doctor-card">
+        <mat-card-header>
+          <mat-card-title>
+            <mat-icon></mat-icon>
+            Assigned patients
+          </mat-card-title>
+        </mat-card-header>
+        <mat-card-content>
+          <div class="doctor-info">
+            <button
+              (click)="openDialog()"
+              color="primary"
+              mat-flat-button
+              id="specialization"
+              name="specialization"
+            >
+              Open dialog
+            </button>
+          </div>
+        </mat-card-content>
+      </mat-card>
 
-
-
-
-
-    <button class="align-right" color="primary" mat-flat-button type="submit">
-      Add new doctor
-    </button>
-  </form>
+      <button class="align-right" color="primary" mat-flat-button type="submit">
+        Add new doctor
+      </button>
+    </form>
   </div>
 
   <p *ngIf="message">
-    <ng-toast [position]="ToasterPosition.BOTTOM_CENTER" [width]="300"></ng-toast>
+    <ng-toast
+      [position]="ToasterPosition.BOTTOM_CENTER"
+      [width]="300"
+    ></ng-toast>
   </p>
-
 </div>
 <app-scroller></app-scroller>
