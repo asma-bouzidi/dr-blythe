@@ -15,6 +15,9 @@ import { MatButton } from "@angular/material/button";
 import { Router } from "@angular/router";
 import { ScrollerComponent } from "../../scroller/scroller.component";
 import {MatIcon} from "@angular/material/icon";
+import { MatDatepickerModule } from '@angular/material/datepicker';
+import { MatNativeDateModule } from '@angular/material/core';
+
 
 @Component({
   selector: 'app-appointment-add',
@@ -22,6 +25,8 @@ import {MatIcon} from "@angular/material/icon";
   imports: [
     MatFormFieldModule,
     MatInputModule,
+    MatDatepickerModule,
+    MatNativeDateModule,
     MatCardTitle,
     MatCardHeader,
     MatIcon,

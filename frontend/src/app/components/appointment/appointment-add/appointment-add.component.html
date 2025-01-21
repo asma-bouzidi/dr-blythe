@@ -1,53 +1,90 @@
 <div class="container">
-    <div class="appointment-details">
+  <div class="appointment-details">
     <h2 class="header-title">Create Appointment</h2>
     <form (ngSubmit)="createAppointment()">
-        <mat-card>
-            <mat-card class="appointment-card">
-                <mat-card-header>
-                  <mat-card-title>
-                    <mat-icon>badge</mat-icon>
-                    Appointment Identification
-                  </mat-card-title>
-                </mat-card-header>
-            <mat-card-content>
-                <div class="appointment-info">
-                <mat-form-field appearance="outline">
-                    <label>Primary Physician:</label>
-                    <input [(ngModel)]="appointment.primaryPhysician" id="primaryPhysician" matInput name="primaryPhysician" />
-                </mat-form-field>
-                <mat-form-field appearance="outline">
-                    <label>Reason:</label>
-                    <input [(ngModel)]="appointment.reason" id="reason" matInput name="reason" type="reason" />
-                </mat-form-field>
-                <mat-form-field appearance="outline">
-                    <label>Note:</label>
-                    <input [(ngModel)]="appointment.note" id="note" matInput name="note" type="text" />
-                </mat-form-field>
-                <mat-form-field appearance="outline">
-                    <label>Cancellation Reason:</label>
-                    <input [(ngModel)]="appointment.cancellationReason" id="cancellationReason:" matInput name="cancellationReason:" type="text" />
-                </mat-form-field>
-                <mat-form-field appearance="outline">
-                    <label>Schedule:</label>
-                    <input [(ngModel)]="appointment.schedule" id="schedule" matInput name="schedule" type="text" />
-                </mat-form-field>
-                <mat-form-field appearance="outline">
-                    <label>Status:</label>
-                    <input [(ngModel)]="appointment.status" id="schedule" matInput name="status" type="text" />
-                </mat-form-field>
+      <mat-card>
+        <mat-card class="appointment-card">
+          <mat-card-header>
+            <mat-card-title>
+              <mat-icon>badge</mat-icon>
+              Appointment Identification
+            </mat-card-title>
+          </mat-card-header>
+          <mat-card-content>
+            <div class="appointment-info">
+              <mat-form-field appearance="outline">
+                <mat-label>Primary Physician:</mat-label>
+                <input
+                  [(ngModel)]="appointment.primaryPhysician"
+                  id="primaryPhysician"
+                  matInput
+                  name="primaryPhysician"
+                />
+              </mat-form-field>
+              <mat-form-field appearance="outline">
+                <mat-label>Reason:</mat-label>
+                <input
+                  [(ngModel)]="appointment.reason"
+                  id="reason"
+                  matInput
+                  name="reason"
+                  type="reason"
+                />
+              </mat-form-field>
+              <mat-form-field appearance="outline">
+                <mat-label>Note:</mat-label>
+                <input
+                  [(ngModel)]="appointment.note"
+                  id="note"
+                  matInput
+                  name="note"
+                  type="text"
+                />
+              </mat-form-field>
+              <mat-form-field appearance="outline">
+                <mat-label>Cancellation Reason:</mat-label>
+                <input
+                  [(ngModel)]="appointment.cancellationReason"
+                  id="cancellationReason:"
+                  matInput
+                  name="cancellationReason:"
+                  type="text"
+                />
+              </mat-form-field>
+              <mat-form-field appearance="outline">
+                <mat-label>Schedule</mat-label>
+                <input
+                  [(ngModel)]="appointment.schedule"
+                  id="schedule"
+                  matInput
+                  name="schedule"
+                  [matDatepicker]="picker"
+                />
+                <mat-datepicker-toggle
+                  matSuffix
+                  [for]="picker"
+                ></mat-datepicker-toggle>
+                <mat-datepicker #picker></mat-datepicker>
+              </mat-form-field>
+              <mat-form-field appearance="outline">
+                <mat-label>Status:</mat-label>
+                <input
+                  [(ngModel)]="appointment.status"
+                  id="schedule"
+                  matInput
+                  name="status"
+                  type="text"
+                />
+              </mat-form-field>
             </div>
-        </mat-card-content>
+          </mat-card-content>
         </mat-card>
-    </mat-card>
+      </mat-card>
 
-
-
-
-
-        <button class="align-right" color="primary" mat-flat-button type="submit">
-            Add new appointment
-        </button>
+      <button class="align-right" color="primary" mat-flat-button type="submit">
+        Add new appointment
+      </button>
     </form>
+  </div>
+  <app-scroller></app-scroller>
 </div>
-<app-scroller></app-scroller>
