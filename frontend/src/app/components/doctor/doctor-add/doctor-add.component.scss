@@ -89,3 +89,10 @@ button {
   display: block;
   margin: 20px auto;
 }
+
+
+.pill-button {
+  border-radius: 50px; /* Makes it pill-shaped */
+  padding: 10px 20px; /* Adjust padding for a better look */
+  min-width: 120px; /* Ensures a reasonable width */
+}

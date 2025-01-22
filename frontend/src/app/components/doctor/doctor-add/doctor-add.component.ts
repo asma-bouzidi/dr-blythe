@@ -15,6 +15,14 @@ import {MatButton} from "@angular/material/button";
 import {Router} from "@angular/router";
 import {ScrollerComponent} from "../../scroller/scroller.component";
 import {MatIcon} from "@angular/material/icon";
+import {
+  MatDialog,
+} from '@angular/material/dialog';
+import { DialogComponent } from '../../dialog/dialog.component';
+
+export interface DialogData {
+  animal: 'panda' | 'unicorn' | 'lion';
+}
 
 @Component({
   selector: 'app-doctor-add',
@@ -46,12 +54,15 @@ export class DoctorAddComponent {
 
   constructor(
     private router: Router,
+    private dialog: MatDialog,
     private doctorService: DoctorService,
     private toast: NgToastService,
   ) {
   }
 
+
   createDoctor() {
+    console.log("hi");
     this.doctorService
     .createDoctor(this.doctor)
     .pipe(
@@ -73,6 +84,14 @@ export class DoctorAddComponent {
       }),
     )
     .subscribe();
+  }
+
+  openDialog() {
+    this.dialog.open(DialogComponent, {
+      data: {
+        animal: 'panda',
+      },
+    });
   }
 
   private resetForm() {
