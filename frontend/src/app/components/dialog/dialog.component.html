@@ -1,21 +1,41 @@
-<h2 mat-dialog-title>Favorite Animal</h2>
+<h2 mat-dialog-title>Select Patients</h2>
 <mat-dialog-content>
-  My favorite animal is:
-  <ul>
-    <li>
-      @if (data.animal === 'panda') {
-      <span>&#10003;</span>
-      } Panda
-    </li>
-    <li>
-      @if (data.animal === 'unicorn') {
-      <span>&#10003;</span>
-      } Unicorn
-    </li>
-    <li>
-      @if (data.animal === 'lion') {
-      <span>&#10003;</span>
-      } Lion
-    </li>
-  </ul>
+  <div *ngIf="patients.length > 0; else noPatients">
+    <form>
+      <table mat-table [dataSource]="patients" class="mat-elevation-z8">
+        <!-- Checkbox Column -->
+        <ng-container matColumnDef="select">
+          <th mat-header-cell *matHeaderCellDef> Select </th>
+          <td mat-cell *matCellDef="let patient">
+            <mat-checkbox [(ngModel)]="patient.selected" name="{{ 'patient_' + patient.id }}"></mat-checkbox>
+          </td>
+        </ng-container>
+
+        <!-- Name Column -->
+        <ng-container matColumnDef="name">
+          <th mat-header-cell *matHeaderCellDef> Name </th>
+          <td mat-cell *matCellDef="let patient"> {{ patient.name }} </td>
+        </ng-container>
+
+        <!-- Age Column -->
+        <ng-container matColumnDef="age">
+          <th mat-header-cell *matHeaderCellDef> Age </th>
+          <td mat-cell *matCellDef="let patient"> {{ patient.age }} </td>
+        </ng-container>
+
+        <!-- Gender Column -->
+        <ng-container matColumnDef="gender">
+          <th mat-header-cell *matHeaderCellDef> Gender </th>
+          <td mat-cell *matCellDef="let patient"> {{ patient.gender }} </td>
+        </ng-container>
+
+        <!-- Header and Rows -->
+        <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+        <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+      </table>
+    </form>
+  </div>
+  <ng-template #noPatients>
+    <p>No patients available.</p>
+  </ng-template>
 </mat-dialog-content>

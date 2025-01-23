@@ -108,15 +108,15 @@
         </mat-card-header>
         <mat-card-content>
           <div class="doctor-info">
-            <button
-              (click)="openDialog()"
+            <mat-chip
+              class="pill-chip"
               color="primary"
-              mat-flat-button
-              id="specialization"
-              name="specialization"
+              selected
+              clickable
+              (click)="openDialog()"
             >
-              Open dialog
-            </button>
+              Open Dialog
+            </mat-chip>
           </div>
         </mat-card-content>
       </mat-card>
