@@ -15,10 +15,10 @@ import {MatButton} from "@angular/material/button";
 import {Router} from "@angular/router";
 import {ScrollerComponent} from "../../scroller/scroller.component";
 import {MatIcon} from "@angular/material/icon";
-import {
-  MatDialog,
-} from '@angular/material/dialog';
+import {MatDialog} from '@angular/material/dialog';
 import { DialogComponent } from '../../dialog/dialog.component';
+import { MatChipsModule } from '@angular/material/chips';
+import { MatDialogModule } from '@angular/material/dialog';
 
 export interface DialogData {
   animal: 'panda' | 'unicorn' | 'lion';
@@ -41,6 +41,8 @@ export interface DialogData {
     MatButton,
     NgIf,
     ScrollerComponent,
+    MatChipsModule,
+    MatDialogModule,
   ],
   templateUrl: './doctor-add.component.html',
   styleUrl: './doctor-add.component.scss'
