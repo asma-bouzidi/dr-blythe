@@ -21,8 +21,9 @@ import { MatChipsModule } from '@angular/material/chips';
 import { MatDialogModule } from '@angular/material/dialog';
 
 export interface DialogData {
-  animal: 'panda' | 'unicorn' | 'lion';
+  assignedPatients: number[]; // Array of patient IDs already assigned to the doctor
 }
+
 
 @Component({
   selector: 'app-doctor-add',
@@ -88,11 +89,23 @@ export class DoctorAddComponent {
     .subscribe();
   }
 
-  openDialog() {
+  /*openDialog() {
     this.dialog.open(DialogComponent, {
       data: {
         animal: 'panda',
       },
+    });
+  }*/
+
+  openDialog() {
+    const assignedPatients = [1, 2, 3]; // Example of already assigned patient IDs
+  
+    const dialogRef = this.dialog.open(DialogComponent, {
+      data: { assignedPatients } // Pass the assigned patients data
+    });
+  
+    dialogRef.afterClosed().subscribe(result => {
+      console.log('Dialog closed');
     });
   }
 
