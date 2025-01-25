@@ -38,6 +38,7 @@ export class Util {
       address: '',
       experienceYears: '',
       specialization: '',
+      patients: [],
     }
   }
 

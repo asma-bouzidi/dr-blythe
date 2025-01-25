@@ -1,3 +1,5 @@
+import { Patient } from "./patient.model";
+
 export interface Doctor {
   id: string;
   name: string;
@@ -7,4 +9,5 @@ export interface Doctor {
   address: string;
   experienceYears: string;
   specialization: string;
+  patients: Patient[]
 }
