@@ -1,7 +1,6 @@
 import { Component, Inject, OnInit } from '@angular/core';
 import { MAT_DIALOG_DATA, MatDialogContent, MatDialogTitle, MatDialogModule, MatDialogRef} from '@angular/material/dialog';
 import { MatTableDataSource } from '@angular/material/table';  // Ensure this import
-
 import { MatCheckboxModule } from '@angular/material/checkbox';
 import { PatientService } from 'src/app/services/patient.service';
 import { Patient } from 'src/app/models/patient.model';
@@ -28,7 +27,7 @@ export class DialogComponent implements OnInit {
   patients: Patient[] = []; // List of available patients
   selectedPatients: Set<string> = new Set(); // Tracks selected patient IDs
   displayedColumns: string[] = ['select', 'name', 'age', 'gender'];
-  dataSource: MatTableDataSource<Patient> = new MatTableDataSource();  // Explicitly type the dataSource
+  dataSource = new MatTableDataSource<Patient>([]);
   isLoading = true;
   errorMessage = '';
 
@@ -49,7 +48,7 @@ export class DialogComponent implements OnInit {
     this.patientService.getAllPatients().subscribe(
       (data: Patient[]) => {
         this.patients = data.filter(patient => !this.selectedPatients.has(patient.id));
-        this.dataSource = this.patients;
+        this.dataSource.data = this.patients;  // Update the data in MatTableDataSource
         this.isLoading = false;
       },
       (error) => {
