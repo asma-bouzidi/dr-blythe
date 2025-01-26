@@ -68,7 +68,10 @@ export class DialogComponent implements OnInit {
   }
 
   assignPatients(): void {
-    const selectedPatientIds = Array.from(this.selectedPatients);
-    this.dialogRef.close(selectedPatientIds);
+    const selectedPatientObjects = this.patients
+      .filter(patient => this.selectedPatients.has(patient.id))
+      .map(patient => ({ id: patient.id })); // Convert to expected format
+  
+    this.dialogRef.close(selectedPatientObjects);
   }
 }

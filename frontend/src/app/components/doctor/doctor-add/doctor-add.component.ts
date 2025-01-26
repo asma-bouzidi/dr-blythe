@@ -84,12 +84,12 @@ export class DoctorAddComponent {
 
   openDialog() {
     const dialogRef = this.dialog.open(DialogComponent, {
-      data: { assignedPatients: this.doctor.patients }
+      data: { assignedPatients: this.doctor.patients.map(p => p.id) } // Send only IDs
     });
-
+  
     dialogRef.afterClosed().subscribe(result => {
       if (result) {
-        this.doctor.patients = result;
+        this.doctor.patients = result; // Directly assign selected patient objects
       }
     });
   }
