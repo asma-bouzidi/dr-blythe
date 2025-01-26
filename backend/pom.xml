@@ -13,7 +13,7 @@
   <artifactId>dr-blythe-backend</artifactId>
   <version>0.0.1-SNAPSHOT</version>
   <name>dr-blythe-backend</name>
-  <description>lead management portal backend</description>
+  <description>dr-blythe backend</description>
   <properties>
     <java.version>17</java.version>
     <org.mapstruct.version>1.5.5.Final</org.mapstruct.version>

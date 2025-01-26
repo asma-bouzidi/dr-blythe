@@ -21,8 +21,9 @@ import { MatChipsModule } from '@angular/material/chips';
 import { MatDialogModule } from '@angular/material/dialog';
 
 export interface DialogData {
-  animal: 'panda' | 'unicorn' | 'lion';
+  assignedPatients: number[]; // Array of patient IDs already assigned to the doctor
 }
+
 
 @Component({
   selector: 'app-doctor-add',
@@ -48,26 +49,20 @@ export interface DialogData {
   styleUrl: './doctor-add.component.scss'
 })
 export class DoctorAddComponent {
-
   doctor: Doctor = Util.initializeDoctor();
   message = '';
-
   protected readonly ToasterPosition = ToasterPosition;
 
   constructor(
     private router: Router,
     private dialog: MatDialog,
     private doctorService: DoctorService,
-    private toast: NgToastService,
-  ) {
-  }
-
+    private toast: NgToastService
+  ) {}
 
   createDoctor() {
-    console.log("hi");
-    this.doctorService
-    .createDoctor(this.doctor)
-    .pipe(
+    console.log('Creating doctor...');
+    this.doctorService.createDoctor(this.doctor).pipe(
       tap(() => {
         this.message = 'Doctor created successfully!';
         setTimeout(() => {
@@ -83,16 +78,19 @@ export class DoctorAddComponent {
         this.toast.danger(this.message, '', 3000);
         console.error(error);
         return of(error);
-      }),
-    )
-    .subscribe();
+      })
+    ).subscribe();
   }
 
   openDialog() {
-    this.dialog.open(DialogComponent, {
-      data: {
-        animal: 'panda',
-      },
+    const dialogRef = this.dialog.open(DialogComponent, {
+      data: { assignedPatients: this.doctor.patients }
+    });
+
+    dialogRef.afterClosed().subscribe(result => {
+      if (result) {
+        this.doctor.patients = result;
+      }
     });
   }
 

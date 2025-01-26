@@ -19,11 +19,12 @@
           </div>
         </mat-card-content>
       </mat-card>
+
       <mat-card class="doctor-card">
         <mat-card-header>
           <mat-card-title>
             <mat-icon>contact_phone</mat-icon>
-            Contact information
+            Contact Information
           </mat-card-title>
         </mat-card-header>
         <mat-card-content>
@@ -38,7 +39,7 @@
               />
             </mat-form-field>
             <mat-form-field appearance="outline">
-              <mat-label>Contact number</mat-label>
+              <mat-label>Contact Number:</mat-label>
               <input
                 [(ngModel)]="doctor.contactNumber"
                 id="contactNumber"
@@ -47,7 +48,7 @@
               />
             </mat-form-field>
             <mat-form-field appearance="outline">
-              <mat-label>Address</mat-label>
+              <mat-label>Address:</mat-label>
               <input
                 [(ngModel)]="doctor.address"
                 id="address"
@@ -58,6 +59,7 @@
           </div>
         </mat-card-content>
       </mat-card>
+
       <mat-card class="doctor-card">
         <mat-card-header>
           <mat-card-title>
@@ -77,7 +79,7 @@
               />
             </mat-form-field>
             <mat-form-field appearance="outline">
-              <mat-label>Experience years:</mat-label>
+              <mat-label>Experience Years:</mat-label>
               <input
                 [(ngModel)]="doctor.experienceYears"
                 id="experienceYears"
@@ -86,7 +88,7 @@
               />
             </mat-form-field>
             <mat-form-field appearance="outline">
-              <mat-label>Doctor image</mat-label>
+              <mat-label>Doctor Image:</mat-label>
               <input
                 [(ngModel)]="doctor.image"
                 id="image"
@@ -103,7 +105,7 @@
         <mat-card-header>
           <mat-card-title>
             <mat-icon></mat-icon>
-            Assigned patients
+            Assigned Patients
           </mat-card-title>
         </mat-card-header>
         <mat-card-content>
@@ -122,7 +124,7 @@
       </mat-card>
 
       <button class="align-right" color="primary" mat-flat-button type="submit">
-        Add new doctor
+        Add New Doctor
       </button>
     </form>
   </div>
