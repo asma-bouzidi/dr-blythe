@@ -11,6 +11,7 @@ import org.springframework.stereotype.Repository;
 import com.iset.drblythe.exception.NotFoundException;
 import com.iset.drblythe.model.Doctor;
 import com.iset.drblythe.persistence.entity.DoctorEntity;
+import com.iset.drblythe.persistence.entity.PatientEntity;
 import com.iset.drblythe.persistence.mappers.DoctorMapper;
 
 import lombok.AllArgsConstructor;
@@ -55,13 +56,21 @@ public class DoctorRepository {
 
         if (doctor.getPatients() != null) {
             for (Patient patient : doctor.getPatients()) {
-                var patientEntity = patientMapper.patientToPatientEntity(patient);
-                patientEntity.setDoctor(newDoctorEntity);
+                PatientEntity patientEntity;
 
-                if (patientEntity.getId() != null) {
-                    patientEntity = patientJpaRepository.save(patientEntity);
+                // Check if the patient already exists in the database
+                if (patient.getId() != null) {
+                    patientEntity = patientJpaRepository.findById(patient.getId())
+                            .orElseThrow(() -> new NotFoundException("Patient not found with id: " + patient.getId()));
+                    // Assign the doctor to the existing patient
+                    patientEntity.setDoctor(newDoctorEntity);
+                } else {
+                    // If it's a new patient, map it as usual
+                    patientEntity = patientMapper.patientToPatientEntity(patient);
+                    patientEntity.setDoctor(newDoctorEntity);
                 }
 
+                patientEntity = patientJpaRepository.save(patientEntity);
                 newDoctorEntity.getPatients().add(patientEntity);
             }
         }
