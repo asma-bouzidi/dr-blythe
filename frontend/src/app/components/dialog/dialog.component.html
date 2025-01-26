@@ -1,52 +1,43 @@
-<h2 mat-dialog-title>Select Patients</h2>
+<h2 mat-dialog-title>Assign Patients</h2>
 <mat-dialog-content>
-  <!-- Loading State -->
   <ng-container *ngIf="isLoading; else content">
     <p>Loading patients...</p>
   </ng-container>
 
-  <!-- Main Content -->
   <ng-template #content>
-    <ng-container *ngIf="!errorMessage; else errorBlock">
-      <table mat-table [dataSource]="dataSource" class="mat-elevation-z8">
-        <!-- Checkbox Column -->
-        <ng-container matColumnDef="select">
-          <th mat-header-cell *matHeaderCellDef>Select</th>
-          <td mat-cell *matCellDef="let patient">
-            <mat-checkbox [(ngModel)]="patient.selected"></mat-checkbox>
+    <table *ngIf="!errorMessage; else errorBlock" class="table">
+      <thead>
+        <tr>
+          <th>Select</th>
+          <th>Name</th>
+          <th>Age</th>
+          <th>Gender</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let patient of patients">
+          <td>
+            <mat-checkbox
+              [checked]="selectedPatients.has(patient.id)"
+              (change)="toggleSelection(patient.id)"
+            ></mat-checkbox>
           </td>
-        </ng-container>
-
-        <!-- Name Column -->
-        <ng-container matColumnDef="name">
-          <th mat-header-cell *matHeaderCellDef>Name</th>
-          <td mat-cell *matCellDef="let patient">{{ patient.name }}</td>
-        </ng-container>
-
-        <!-- Age Column -->
-        <ng-container matColumnDef="age">
-          <th mat-header-cell *matHeaderCellDef>Age</th>
-          <td mat-cell *matCellDef="let patient">{{ patient.age }}</td>
-        </ng-container>
-
-        <!-- Gender Column -->
-        <ng-container matColumnDef="gender">
-          <th mat-header-cell *matHeaderCellDef>Gender</th>
-          <td mat-cell *matCellDef="let patient">{{ patient.gender }}</td>
-        </ng-container>
-
-        <!-- Header and Rows -->
-        <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
-        <tr mat-row *matRowDef="let row; columns: displayedColumns"></tr>
-      </table>
-    </ng-container>
+          <td>{{ patient.name }}</td>
+          <td>{{ patient.age }}</td>
+          <td>{{ patient.gender }}</td>
+        </tr>
+      </tbody>
+    </table>
   </ng-template>
 
-  <!-- Assign Button -->
-  <button mat-button (click)="assignPatients()">Assign Selected</button>
-
-  <!-- Error State -->
   <ng-template #errorBlock>
-    <p class="error-message">{{ errorMessage }}</p>
+    <p>{{ errorMessage }}</p>
   </ng-template>
 </mat-dialog-content>
+
+<mat-dialog-actions>
+  <button mat-raised-button color="primary" (click)="confirmSelection()">
+    Confirm
+  </button>
+  <button mat-button (click)="closeDialog()">Cancel</button>
+</mat-dialog-actions>
