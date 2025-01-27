@@ -2,7 +2,7 @@
   <div *ngIf="doctor" class="doctor-details">
     <h2 class="header-title">Doctor Details</h2>
 
-    <!-- Patient Identification -->
+    <!-- Doctor Identification -->
     <mat-card class="doctor-card">
       <mat-card-header>
         <mat-card-title>
@@ -13,11 +13,56 @@
       <mat-card-content>
         <div class="doctor-info">
           <p><strong>Name:</strong> {{ doctor.name }}</p>
+          <p>
+            <strong>Specialization:</strong>
+            {{ doctor.specialization }}
+          </p>
+          <p>
+            <strong>Experience Years:</strong>
+            {{ doctor.experienceYears }}
+          </p>
           <p><strong>image:</strong> {{ doctor.image }}</p>
         </div>
       </mat-card-content>
     </mat-card>
 
+    <!-- Contact Information -->
+    <mat-card class="doctor-card">
+      <mat-card-header>
+        <mat-card-title>
+          <mat-icon>contact_phone</mat-icon>
+          Contact Information
+        </mat-card-title>
+      </mat-card-header>
+      <mat-card-content>
+        <div class="doctor-info">
+          <p><strong>Email:</strong> {{ doctor.email }}</p>
+          <p><strong>Address:</strong> {{ doctor.address }}</p>
+        </div>
+      </mat-card-content>
+    </mat-card>
+
+    <!-- Emergency Contact -->
+    <mat-card class="doctor-card">
+      <mat-card-header>
+        <mat-card-title>
+          <mat-icon>emergency</mat-icon>
+          Emergency Contact
+        </mat-card-title>
+      </mat-card-header>
+      <mat-card-content>
+        <div class="doctor-info">
+          <p>
+            <strong>Contact Number:</strong>
+            {{ doctor.contactNumber }}
+          </p>
+        </div>
+      </mat-card-content>
+    </mat-card>
+  </div>
+
+  <div *ngIf="!doctor && error" class="error-container">
+    <p>Error fetching doctor data: {{ error }}</p>
   </div>
 
   <div *ngIf="!doctor && !error" class="loading-container">
@@ -25,3 +70,6 @@
     <p>Loading doctor data...</p>
   </div>
 </div>
+
+<!-- Scroll Buttons -->
+<app-scroller></app-scroller>

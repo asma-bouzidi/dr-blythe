@@ -9,26 +9,35 @@
   <table [dataSource]="doctors" class="demo-table" mat-table>
     <!-- Name Column -->
     <ng-container matColumnDef="name">
-      <th *matHeaderCellDef mat-header-cell> Name</th>
-      <td *matCellDef="let doctor" mat-cell> {{ doctor.name }}</td>
+      <th *matHeaderCellDef mat-header-cell>Name</th>
+      <td *matCellDef="let doctor" mat-cell>{{ doctor.name }}</td>
     </ng-container>
 
+    <ng-container matColumnDef="specialization">
+      <th *matHeaderCellDef mat-header-cell>Specialisation</th>
+      <td *matCellDef="let doctor" mat-cell>{{ doctor.specialization }}</td>
+    </ng-container>
 
-    <!-- Image Column -->
-    <ng-container matColumnDef="image">
-      <th *matHeaderCellDef mat-header-cell> Image</th>
-      <td *matCellDef="let doctor" mat-cell> {{ doctor.image }}</td>
+    <ng-container matColumnDef="email">
+      <th *matHeaderCellDef mat-header-cell>Email</th>
+      <td *matCellDef="let doctor" mat-cell>{{ doctor.email }}</td>
+    </ng-container>
+
+    <ng-container matColumnDef="address">
+      <th *matHeaderCellDef mat-header-cell>Address</th>
+      <td *matCellDef="let doctor" mat-cell>{{ doctor.address }}</td>
     </ng-container>
 
     <!-- Actions Column -->
     <ng-container matColumnDef="actions">
-      <th *matHeaderCellDef mat-header-cell> Actions</th>
+      <th *matHeaderCellDef mat-header-cell>Actions</th>
       <td *matCellDef="let doctor" class="actions-cell" mat-cell>
         <button
           (click)="navigateToDoctorDetails(doctor.id)"
           aria-label="View details"
           color="primary"
-          mat-icon-button>
+          mat-icon-button
+        >
           <mat-icon>visibility</mat-icon>
         </button>
         <button
@@ -50,8 +59,7 @@
       </td>
     </ng-container>
 
-
     <tr *matHeaderRowDef="displayedColumns" mat-header-row></tr>
-    <tr *matRowDef="let row; columns: displayedColumns;" mat-row></tr>
+    <tr *matRowDef="let row; columns: displayedColumns" mat-row></tr>
   </table>
 </div>

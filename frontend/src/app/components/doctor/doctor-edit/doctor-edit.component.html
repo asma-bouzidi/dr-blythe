@@ -1,29 +1,101 @@
 <div class="container">
+  <div *ngIf="doctor" class="doctor-details">
+    <h2 class="header-title">Update Doctor</h2>
 
-    <div *ngIf="doctor" class="doctor-details">
-      <h2 class="header-title">Update Doctor</h2>
-  
-      <form (ngSubmit)="updateDoctor()">
-        <!-- Patient Identification -->
-        <mat-card class="doctor-card">
-          <mat-card-header>
-            <mat-card-title>
-              <mat-icon>badge</mat-icon>
-              Doctor Identification
-            </mat-card-title>
-          </mat-card-header>
-          <mat-card-content>
-            <div class="doctor-info">
-              <mat-form-field appearance="outline">
-                <mat-label>Name</mat-label>
-                <input [(ngModel)]="doctor.name" matInput name="name"/>
-              </mat-form-field>
-            </div>
-            </mat-card-content>
-        </mat-card>
-        <button color="primary" mat-raised-button type="submit">Update</button>
+    <form (ngSubmit)="updateDoctor()">
+      <!-- Patient Identification -->
+      <mat-card class="doctor-card">
+        <mat-card-header>
+          <mat-card-title>
+            <mat-icon>badge</mat-icon>
+            Doctor Identification
+          </mat-card-title>
+        </mat-card-header>
+        <mat-card-content>
+          <div class="doctor-info">
+            <mat-form-field appearance="outline">
+              <mat-label>Name</mat-label>
+              <input [(ngModel)]="doctor.name" matInput name="name" />
+            </mat-form-field>
+            <mat-form-field appearance="outline">
+              <mat-label>Specialization</mat-label>
+              <input
+                [(ngModel)]="doctor.specialization"
+                name="specialization"
+                matInput
+              />
+            </mat-form-field>
+            <mat-form-field appearance="outline">
+              <mat-label>Experience Years</mat-label>
+              <input
+                [(ngModel)]="doctor.experienceYears"
+                name="experienceYears"
+                matInput
+              />
+            </mat-form-field>
+            <mat-form-field appearance="outline">
+              <mat-label>Doctor Image</mat-label>
+              <input
+                [(ngModel)]="doctor.image"
+                id="image"
+                matInput
+                name="image"
+                type="url"
+              />
+            </mat-form-field>
+          </div>
+        </mat-card-content>
+      </mat-card>
 
-        </form>
-        </div>
-        </div>
-        <app-scroller></app-scroller>
+      <mat-card class="doctor-card">
+        <mat-card-header>
+          <mat-card-title>
+            <mat-icon>contact_phone</mat-icon>
+            Contact Information
+          </mat-card-title>
+        </mat-card-header>
+        <mat-card-content>
+          <mat-form-field appearance="outline">
+            <mat-label>Email</mat-label>
+            <input
+              [(ngModel)]="doctor.email"
+              name="email"
+              matInput
+              type="email"
+            />
+          </mat-form-field>
+          <mat-form-field appearance="outline">
+            <mat-label>Address</mat-label>
+            <input [(ngModel)]="doctor.address" name="address" matInput />
+          </mat-form-field>
+        </mat-card-content>
+      </mat-card>
+
+      <mat-card class="doctor-card">
+        <mat-card-header>
+          <mat-card-title>
+            <mat-icon>emergency</mat-icon>
+            Emergency Contact
+          </mat-card-title>
+        </mat-card-header>
+        <mat-card-content>
+          <div class="doctor-info">
+            <mat-form-field appearance="outline">
+              <mat-label>Contact Number</mat-label>
+              <input
+                [(ngModel)]="doctor.contactNumber"
+                name="contactNumber"
+                matInput
+                type="contactNumber"
+                required
+              />
+            </mat-form-field>
+          </div>
+        </mat-card-content>
+      </mat-card>
+
+      <button color="primary" mat-raised-button type="submit">Update</button>
+    </form>
+  </div>
+</div>
+<app-scroller></app-scroller>
