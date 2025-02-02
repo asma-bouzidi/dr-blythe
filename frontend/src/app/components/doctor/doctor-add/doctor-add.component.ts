@@ -7,6 +7,7 @@ import { DoctorService } from '../../../services/doctor.service';
 import { catchError, tap } from 'rxjs/operators';
 import { of } from 'rxjs';
 import { NgIf } from '@angular/common';
+import { NgFor } from '@angular/common';
 import {
   NgToastModule,
   NgToastService,
@@ -22,7 +23,6 @@ import { Doctor } from '../../../models/doctor.model';
 import { Util } from '../../../utils/Util';
 import { MatButton } from '@angular/material/button';
 import { Router } from '@angular/router';
-import { ScrollerComponent } from '../../scroller/scroller.component';
 import { MatIcon } from '@angular/material/icon';
 import { MatDialog } from '@angular/material/dialog';
 import { DialogComponent } from '../../dialog/dialog.component';
@@ -40,6 +40,7 @@ export interface DialogData {
   standalone: true,
   imports: [
     MatFormFieldModule,
+    NgFor,
     MatIcon,
     MatInputModule,
     MatCardTitle,
@@ -51,7 +52,6 @@ export interface DialogData {
     MatCard,
     MatButton,
     NgIf,
-    ScrollerComponent,
     MatChipsModule,
     MatDialogModule,
   ],
