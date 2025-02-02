@@ -10,7 +10,6 @@ import { CdkTableModule } from '@angular/cdk/table';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 import { MaterialRoutes } from './material.routing';
-import { ButtonsComponent } from './buttons/buttons.component';
 
 import { GridComponent } from './grid/grid.component';
 import { ListsComponent } from './lists/lists.component';
@@ -24,7 +23,7 @@ import { ProgressSnipperComponent } from './progress-snipper/progress-snipper.co
 import { ProgressComponent } from './progress/progress.component';
 import {
   DialogComponent,
-  DialogOverviewExampleDialogComponent
+  DialogOverviewExampleDialogComponent,
 } from './dialog/dialog.component';
 import { TooltipComponent } from './tooltip/tooltip.component';
 import { SnackbarComponent } from './snackbar/snackbar.component';
@@ -40,8 +39,6 @@ import { SlideToggleComponent } from './slide-toggle/slide-toggle.component';
     FormsModule,
     ReactiveFormsModule,
     CdkTableModule,
-
-    ButtonsComponent,
     GridComponent,
     ListsComponent,
     MenuComponent,
@@ -56,7 +53,7 @@ import { SlideToggleComponent } from './slide-toggle/slide-toggle.component';
     TooltipComponent,
     SnackbarComponent,
     SliderComponent,
-    SlideToggleComponent
+    SlideToggleComponent,
   ],
   providers: [],
 })

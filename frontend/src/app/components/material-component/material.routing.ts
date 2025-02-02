@@ -1,6 +1,5 @@
 import { Routes } from '@angular/router';
 
-import { ButtonsComponent } from './buttons/buttons.component';
 import { GridComponent } from './grid/grid.component';
 import { ListsComponent } from './lists/lists.component';
 import { MenuComponent } from './menu/menu.component';
@@ -19,67 +18,63 @@ import { SlideToggleComponent } from './slide-toggle/slide-toggle.component';
 
 export const MaterialRoutes: Routes = [
   {
-    path: 'button',
-    component: ButtonsComponent
-  },
-  {
     path: 'grid',
-    component: GridComponent
+    component: GridComponent,
   },
   {
     path: 'lists',
-    component: ListsComponent
+    component: ListsComponent,
   },
   {
     path: 'menu',
-    component: MenuComponent
+    component: MenuComponent,
   },
   {
     path: 'tabs',
-    component: TabsComponent
+    component: TabsComponent,
   },
   {
     path: 'stepper',
-    component: StepperComponent
+    component: StepperComponent,
   },
   {
     path: 'expansion',
-    component: ExpansionComponent
+    component: ExpansionComponent,
   },
   {
     path: 'chips',
-    component: ChipsComponent
+    component: ChipsComponent,
   },
   {
     path: 'toolbar',
-    component: ToolbarComponent
+    component: ToolbarComponent,
   },
   {
     path: 'progress-snipper',
-    component: ProgressSnipperComponent
+    component: ProgressSnipperComponent,
   },
   {
     path: 'progress',
-    component: ProgressComponent
+    component: ProgressComponent,
   },
   {
     path: 'dialog',
-    component: DialogComponent
+    component: DialogComponent,
   },
   {
     path: 'tooltip',
-    component: TooltipComponent
+    component: TooltipComponent,
   },
   {
     path: 'snackbar',
-    component: SnackbarComponent
+    component: SnackbarComponent,
   },
   {
     path: 'slider',
-    component: SliderComponent
+    component: SliderComponent,
   },
   {
     path: 'slide-toggle',
-    component: SlideToggleComponent
-  }
+    component: SlideToggleComponent,
+  },
 ];
