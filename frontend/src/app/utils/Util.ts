@@ -1,6 +1,6 @@
-import {Patient} from '../models/patient.model';
-import {Doctor} from '../models/doctor.model';
-import {Appointment} from '../models/appointment.model';
+import { Patient } from '../models/patient.model';
+import { Doctor } from '../models/doctor.model';
+import { Appointment } from '../models/appointment.model';
 
 export class Util {
   static initializePatient(): Patient {
@@ -25,6 +25,7 @@ export class Util {
       identificationType: '',
       identificationDocumentId: '',
       identificationDocumentUrl: '',
+      appointments: [],
     };
   }
 
@@ -39,7 +40,7 @@ export class Util {
       experienceYears: '',
       specialization: '',
       patients: [],
-    }
+    };
   }
 
   static initializeAppointment(): Appointment {

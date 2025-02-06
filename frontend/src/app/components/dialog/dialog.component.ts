@@ -6,13 +6,13 @@ import {
   MatDialogModule,
   MatDialogRef,
 } from '@angular/material/dialog';
-import { MatTableDataSource } from '@angular/material/table'; // Ensure this import
+import { MatTableDataSource } from '@angular/material/table';
 import { MatCheckboxModule } from '@angular/material/checkbox';
 import { PatientService } from 'src/app/services/patient.service';
 import { Patient } from 'src/app/models/patient.model';
 import { FormsModule } from '@angular/forms';
 import { MatTableModule } from '@angular/material/table';
-import { CommonModule } from '@angular/common'; // Import CommonModule for *ngIf and *ngFor
+import { CommonModule } from '@angular/common';
 
 @Component({
   selector: 'app-dialog',
