@@ -1,0 +1,43 @@
+<h2 mat-dialog-title>Assign Patients</h2>
+<mat-dialog-content>
+  <ng-container *ngIf="isLoading; else content">
+    <p>Loading appointments...</p>
+  </ng-container>
+
+  <ng-template #content>
+    <table *ngIf="!errorMessage; else errorBlock" class="table">
+      <thead>
+        <tr>
+          <th>Select</th>
+          <th>Primary Physician</th>
+          <th>Reason</th>
+          <th>Note</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let appointment of appointments">
+          <td>
+            <mat-checkbox
+              [checked]="selectedAppointments.has(appointment.id)"
+              (change)="toggleSelection(appointment.id)"
+            ></mat-checkbox>
+          </td>
+          <td>{{ appointment.primaryPhysician }}</td>
+          <td>{{ appointment.reason }}</td>
+          <td>{{ appointment.note }}</td>
+        </tr>
+      </tbody>
+    </table>
+  </ng-template>
+
+  <ng-template #errorBlock>
+    <p>{{ errorMessage }}</p>
+  </ng-template>
+</mat-dialog-content>
+
+<mat-dialog-actions>
+  <button mat-raised-button color="primary" (click)="confirmSelection()">
+    Confirm
+  </button>
+  <button mat-button (click)="closeDlg()">Cancel</button>
+</mat-dialog-actions>

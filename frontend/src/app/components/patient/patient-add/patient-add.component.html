@@ -123,8 +123,6 @@
           </div>
         </mat-card-content>
       </mat-card>
-
-      <!-- Medical Information -->
       <mat-card class="patient-card">
         <mat-card-header>
           <mat-card-title>
@@ -254,6 +252,30 @@
               />
             </mat-form-field>
           </div>
+        </mat-card-content>
+      </mat-card>
+
+      <mat-card class="patient-card">
+        <mat-card-header>
+          <mat-card-title>Assigned Appointments</mat-card-title>
+        </mat-card-header>
+        <mat-card-content>
+          <div *ngIf="assignedAppointments.length === 0">
+            <p>No appointments assigned.</p>
+          </div>
+          <mat-chip-listbox *ngIf="assignedAppointments.length > 0">
+            <mat-chip *ngFor="let appointment of assignedAppoinments" removable>
+              {{ appointment.primaryPhysician }}
+            </mat-chip>
+          </mat-chip-listbox>
+          <button
+            mat-raised-button
+            color="primary"
+            type="button"
+            (click)="openDlg()"
+          >
+            Assign Appoinments
+          </button>
         </mat-card-content>
       </mat-card>
 

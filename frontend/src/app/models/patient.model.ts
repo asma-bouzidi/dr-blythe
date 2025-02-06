@@ -1,3 +1,5 @@
+import { Appointment } from './appointment.model';
+
 export interface Patient {
   id: string;
   name: string;
@@ -19,4 +21,5 @@ export interface Patient {
   identificationType: string;
   identificationDocumentId: string;
   identificationDocumentUrl: string;
+  appointments: Appointment[];
 }

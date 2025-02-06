@@ -1,8 +1,6 @@
 <div class="container">
   <div *ngIf="patient" class="patient-details">
     <h2 class="header-title">Patient Details</h2>
-
-    <!-- Patient Identification -->
     <mat-card class="patient-card">
       <mat-card-header>
         <mat-card-title>
@@ -18,8 +16,6 @@
         </div>
       </mat-card-content>
     </mat-card>
-
-    <!-- Contact Information -->
     <mat-card class="patient-card">
       <mat-card-header>
         <mat-card-title>
@@ -35,8 +31,6 @@
         </div>
       </mat-card-content>
     </mat-card>
-
-    <!-- Emergency Contact -->
     <mat-card class="patient-card">
       <mat-card-header>
         <mat-card-title>
@@ -56,8 +50,6 @@
         </div>
       </mat-card-content>
     </mat-card>
-
-    <!-- Medical Information -->
     <mat-card class="patient-card">
       <mat-card-header>
         <mat-card-title>
@@ -83,8 +75,6 @@
         </div>
       </mat-card-content>
     </mat-card>
-
-    <!-- Insurance Information -->
     <mat-card class="patient-card">
       <mat-card-header>
         <mat-card-title>
@@ -101,8 +91,6 @@
         </div>
       </mat-card-content>
     </mat-card>
-
-    <!-- Identification -->
     <mat-card class="patient-card">
       <mat-card-header>
         <mat-card-title>
@@ -130,16 +118,12 @@
       </mat-card-content>
     </mat-card>
   </div>
-
   <div *ngIf="!patient && error" class="error-container">
     <p>Error fetching patient data: {{ error }}</p>
   </div>
-
   <div *ngIf="!patient && !error" class="loading-container">
     <mat-spinner></mat-spinner>
     <p>Loading patient data...</p>
   </div>
 </div>
-
-<!-- Scroll Buttons -->
 <app-scroller></app-scroller>
