@@ -104,7 +104,7 @@ paths:
           required: true
           description: Id of the patient
       responses:
-        '200':
+        "200":
           description: Patient successfully deleted.
           content:
             application/json:
@@ -211,7 +211,7 @@ paths:
           required: true
           description: Id of the appointment
       responses:
-        '200':
+        "200":
           description: Appointment successfully deleted.
           content:
             application/json:
@@ -315,13 +315,12 @@ paths:
           required: true
           description: Id of the doctor
       responses:
-        '200':
+        "200":
           description: Doctor successfully deleted.
           content:
             application/json:
               schema:
                 $ref: "#/components/schemas/Doctor"
-
 
 components:
   schemas:
@@ -370,6 +369,8 @@ components:
           type: string
         primaryPhysician:
           type: string
+        isAssigned:
+          type: boolean
         appointments:
           type: array
           items:
@@ -393,13 +394,7 @@ components:
           format: date
         status:
           type: string
-    
-    #Status:
-      #type: string
-      #enum:
-        #- ON
-        #- OFF
-    
+
     Doctor:
       properties:
         id:

@@ -15,3 +15,5 @@ databaseChangeLog:
       file: classpath:/db/migrations/20250119-1_alter_patient_table.sql
   - include:
       file: classpath:/db/migrations/20250120-1_add_fields_to_doctor_table.sql
+  - include:
+      file: classpath:/db/migrations/20250122-1_alter_table_patient.sql

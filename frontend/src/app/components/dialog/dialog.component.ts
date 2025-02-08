@@ -49,7 +49,9 @@ export class DialogComponent implements OnInit {
   loadPatients(): void {
     this.patientService.getAllPatients().subscribe(
       (patients) => {
-        this.patients = patients;
+        this.patients = patients.filter(
+          (patient) => patient.isAssigned !== true
+        );
         this.isLoading = false;
       },
       (error) => {
