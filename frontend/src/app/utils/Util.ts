@@ -25,6 +25,7 @@ export class Util {
       identificationType: '',
       identificationDocumentId: '',
       identificationDocumentUrl: '',
+      isAssigned: false,
       appointments: [],
     };
   }

@@ -85,6 +85,9 @@ public class PatientEntity {
   @Column(name = "primary_physician", length = 100)
   private String primaryPhysician;
 
+  @Column(name = "is_assigned")
+  private Boolean isAssigned;
+
   @ManyToOne
   @JoinColumn(name = "doctor_id")
   private DoctorEntity doctor;

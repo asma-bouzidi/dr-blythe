@@ -4,8 +4,8 @@ import { MatInputModule } from '@angular/material/input';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { FormsModule } from '@angular/forms';
 import { DoctorService } from '../../../services/doctor.service';
-import { catchError, tap } from 'rxjs/operators';
-import { of } from 'rxjs';
+import { catchError, switchMap, tap } from 'rxjs/operators';
+import { forkJoin, of } from 'rxjs';
 import { NgIf } from '@angular/common';
 import { NgFor } from '@angular/common';
 import {
@@ -76,13 +76,25 @@ export class DoctorAddComponent {
 
   createDoctor(): void {
     this.isSubmitting = true;
-    this.doctor.patients = this.assignedPatients.map((patient) => ({
+
+    // Modify patient isAssigned before updating them in the backend
+    const updatedPatients = this.assignedPatients.map((patient) => ({
       ...patient,
+      isAssigned: true, // Example modification
     }));
 
-    this.doctorService
-      .createDoctor(this.doctor)
+    // Create an array of update observables for each patient
+    const updateObservables = updatedPatients.map((patient) =>
+      this.patientService.updatePatientById(patient.id, patient)
+    );
+
+    // Execute all updates before creating the doctor
+    forkJoin(updateObservables)
       .pipe(
+        switchMap(() => {
+          this.doctor.patients = updatedPatients; // Ensure doctor has updated patients
+          return this.doctorService.createDoctor(this.doctor);
+        }),
         tap(() => {
           this.toast.success(this.message, '', 3000);
           this.resetForm();

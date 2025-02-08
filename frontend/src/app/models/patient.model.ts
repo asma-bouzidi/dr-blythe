@@ -21,5 +21,6 @@ export interface Patient {
   identificationType: string;
   identificationDocumentId: string;
   identificationDocumentUrl: string;
+  isAssigned: boolean;
   appointments: Appointment[];
 }
