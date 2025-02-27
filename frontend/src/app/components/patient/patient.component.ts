@@ -7,6 +7,7 @@ import {MatButton, MatIconButton} from "@angular/material/button";
 import {MatIcon} from "@angular/material/icon";
 import {Router} from "@angular/router";
 import {MatTableModule} from '@angular/material/table';
+import { ScrollerComponent } from '../scroller/scroller.component';
 
 @Component({
   selector: 'app-patient',
@@ -14,6 +15,7 @@ import {MatTableModule} from '@angular/material/table';
   imports: [
     MatButton,
     MatIcon,
+    ScrollerComponent,
     MatIconButton,
     MatTableModule,
   ],

@@ -8,6 +8,7 @@ import {MatButton, MatIconButton} from "@angular/material/button";
 import { MatTableModule } from '@angular/material/table';
 import { FormsModule } from "@angular/forms";
 import { MatIcon } from "@angular/material/icon";
+import { ScrollerComponent } from '../scroller/scroller.component';
 
 @Component({
   selector: 'app-appointment',
@@ -15,6 +16,7 @@ import { MatIcon } from "@angular/material/icon";
   imports: [
     MatTableModule,
     FormsModule,
+    ScrollerComponent,
     MatIcon,
     MatButton,
     MatIconButton

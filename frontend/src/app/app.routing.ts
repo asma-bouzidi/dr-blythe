@@ -12,15 +12,10 @@ export const AppRoutes: Routes = [
         redirectTo: '/patient',
         pathMatch: 'full'
       },
-      {
-        path: '',
-        loadChildren:
-          () => import('./components/material-component/material.module').then(m => m.MaterialComponentsModule)
-      },
-      {
+      /*{
         path: 'dashboard',
         loadChildren: () => import('./components/dashboard/dashboard.module').then(m => m.DashboardModule)
-      },
+      },*/
       {
         path: 'patient',
         loadChildren: () => import('./components/patient/patient.module').then(m => m.PatientModule)

@@ -8,11 +8,12 @@ import { Router } from '@angular/router';
 import { MatTableModule } from '@angular/material/table';
 import { FormsModule } from '@angular/forms';
 import { MatIcon } from '@angular/material/icon';
+import { ScrollerComponent } from '../scroller/scroller.component';
 
 @Component({
   selector: 'app-doctor',
   standalone: true,
-  imports: [MatButton, MatTableModule, FormsModule, MatIcon, MatIconButton],
+  imports: [MatButton, MatTableModule, FormsModule, MatIcon, ScrollerComponent, MatIconButton],
   templateUrl: './doctor.component.html',
   styleUrl: './doctor.component.scss',
 })
