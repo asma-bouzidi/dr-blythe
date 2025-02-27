@@ -7,7 +7,6 @@
 
 <div class="table-container mat-elevation-z8" id="tableContainer">
   <table [dataSource]="doctors" class="demo-table" mat-table>
-    <!-- Name Column -->
     <ng-container matColumnDef="name">
       <th *matHeaderCellDef mat-header-cell>Name</th>
       <td *matCellDef="let doctor" mat-cell>{{ doctor.name }}</td>
@@ -28,7 +27,6 @@
       <td *matCellDef="let doctor" mat-cell>{{ doctor.address }}</td>
     </ng-container>
 
-    <!-- Actions Column -->
     <ng-container matColumnDef="actions">
       <th *matHeaderCellDef mat-header-cell>Actions</th>
       <td *matCellDef="let doctor" class="actions-cell" mat-cell>
@@ -63,3 +61,5 @@
     <tr *matRowDef="let row; columns: displayedColumns" mat-row></tr>
   </table>
 </div>
+
+<app-scroller></app-scroller>

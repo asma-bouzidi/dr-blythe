@@ -7,37 +7,34 @@
 
 <div class="table-container mat-elevation-z8" id="tableContainer">
   <table [dataSource]="patients" class="demo-table" mat-table>
-    <!-- Name Column -->
+    
     <ng-container matColumnDef="name">
       <th *matHeaderCellDef mat-header-cell> Name</th>
       <td *matCellDef="let patient" mat-cell> {{ patient.name }}</td>
     </ng-container>
 
-    <!-- Age Column -->
+    
     <ng-container matColumnDef="age">
       <th *matHeaderCellDef mat-header-cell> Age</th>
       <td *matCellDef="let patient" mat-cell> {{ patient.age }}</td>
     </ng-container>
 
-    <!-- Gender Column -->
+  
     <ng-container matColumnDef="gender">
       <th *matHeaderCellDef mat-header-cell> Gender</th>
       <td *matCellDef="let patient" mat-cell> {{ patient.gender }}</td>
     </ng-container>
 
-    <!-- Allergies Column -->
     <ng-container matColumnDef="allergies">
       <th *matHeaderCellDef mat-header-cell> Allergies</th>
       <td *matCellDef="let patient" mat-cell> {{ patient.allergies }}</td>
     </ng-container>
 
-    <!-- Current Medication Column -->
     <ng-container matColumnDef="currentMedication">
       <th *matHeaderCellDef mat-header-cell> Current Medication</th>
       <td *matCellDef="let patient" mat-cell> {{ patient.currentMedication }}</td>
     </ng-container>
 
-    <!-- Actions Column -->
     <ng-container matColumnDef="actions">
       <th *matHeaderCellDef mat-header-cell> Actions</th>
       <td *matCellDef="let patient" class="actions-cell" mat-cell>
@@ -72,3 +69,5 @@
     <tr *matRowDef="let row; columns: displayedColumns;" mat-row></tr>
   </table>
 </div>
+
+<app-scroller></app-scroller>
